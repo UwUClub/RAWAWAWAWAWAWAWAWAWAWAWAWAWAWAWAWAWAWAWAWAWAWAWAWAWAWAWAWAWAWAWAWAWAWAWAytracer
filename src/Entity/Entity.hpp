@@ -17,6 +17,9 @@ namespace RayTracer::Entity
 
             [[nodiscard]] EntityType getType() const override;
 
+            void translate(Vector &vector) override {};
+            void rotate(Vector &vector) override {};
+
         private:
             EntityType _type;
     };

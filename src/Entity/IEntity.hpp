@@ -5,7 +5,7 @@
 #ifndef RAYTRACER_IENTITY_HPP
 #define RAYTRACER_IENTITY_HPP
 
-#include "Vector.hpp"
+#include "Utils/Vector.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -17,7 +17,8 @@ namespace RayTracer::Entity
         LIGHT,
         CAMERA,
         SKYBOX,
-        UNDEFINED
+        UNDEFINED,
+        COLOR
     };
 
     class IEntity

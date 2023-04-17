@@ -13,14 +13,15 @@ namespace RayTracer::Plugin
         for (const auto &entry : std::filesystem::recursive_directory_iterator("./plugins")) {
             if (entry.path().string().find(".so") != std::string::npos)
                 loadPlugin(entry.path());
-            std::cout << entry.path() << std::endl;
         }
     }
 
     PluginManager::~PluginManager()
     {
+        auto entities = Entity::IEntityMap();
+
         for (auto &plugin : _pluginsMap)
-            unloadPlugin(plugin.first);
+            unloadPlugin(plugin.first, entities);
     }
 
     void PluginManager::loadPlugin(const std::string &path)
@@ -29,22 +30,26 @@ namespace RayTracer::Plugin
             auto plugin = std::make_unique<Plugin>(path);
             auto &name = plugin->getName();
 
-            if (_pluginsMap.find(name) != _pluginsMap.end())
+            if (_pluginsMap.find(name) != _pluginsMap.end() && _pluginsMap[name] != nullptr)
                 throw Plugin::Plugin::PluginException("Plugin " + name + " already loaded");
 
             _pluginsMap[plugin->getName()] = std::move(plugin);
+            std::cout << "Plugin " << name << " loaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void PluginManager::unloadPlugin(const std::string &name)
+    void PluginManager::unloadPlugin(const std::string &name, Entity::IEntityMap &entities)
     {
         try {
             if (_pluginsMap.find(name) == _pluginsMap.end())
                 throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
 
-            _pluginsMap.erase(name);
+            deleteEntities(name, entities);
+
+            _pluginsMap[name].reset();
+            std::cout << "Plugin " << name << " unloaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -62,16 +67,21 @@ namespace RayTracer::Plugin
         }
     }
 
-    void PluginManager::deleteEntities(const std::string &name, Entity::IEntityVector &entities)
+    void PluginManager::deleteEntities(const std::string &name, Entity::IEntityMap &entities)
     {
-        for (auto &entity : entities)
+        for (auto &entity : entities[name])
             deleteEntity(name, entity);
+
+        entities[name].clear();
+        entities.erase(name);
     }
 
     void PluginManager::deleteEntities(Entity::IEntityMap &entities)
     {
         for (auto &entity : entities)
-            deleteEntities(entity.first, entity.second);
+            deleteEntities(entity.first, entities);
+
+        entities.clear();
     }
 
     Entity::IEntityPtr PluginManager::createEntity(const std::string &name)
