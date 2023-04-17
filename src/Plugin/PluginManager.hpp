@@ -19,11 +19,11 @@ namespace RayTracer::Plugin
             PluginManager();
             ~PluginManager();
 
-            void deleteEntity(const std::string &name, Primitive::IEntityPtr &entity);
-            void deleteEntities(const std::string &name, Primitive::IEntityVector &entities);
-            void deleteEntities(Primitive::IEntityMap &entities);
+            void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
+            void deleteEntities(const std::string &name, Entity::IEntityVector &entities);
+            void deleteEntities(Entity::IEntityMap &entities);
 
-            Primitive::IEntityPtr createEntity(const std::string &name);
+            Entity::IEntityPtr createEntity(const std::string &name);
 
         private:
             void loadPlugin(const std::string &path);

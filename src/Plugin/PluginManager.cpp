@@ -48,7 +48,7 @@ namespace RayTracer::Plugin
         }
     }
 
-    void PluginManager::deleteEntity(const std::string &name, Primitive::IEntityPtr &entity)
+    void PluginManager::deleteEntity(const std::string &name, Entity::IEntityPtr &entity)
     {
         try {
             if (_pluginsMap.find(name) == _pluginsMap.end())
@@ -60,24 +60,24 @@ namespace RayTracer::Plugin
         }
     }
 
-    void PluginManager::deleteEntities(const std::string &name, Primitive::IEntityVector &entities)
+    void PluginManager::deleteEntities(const std::string &name, Entity::IEntityVector &entities)
     {
         for (auto &entity : entities)
             deleteEntity(name, entity);
     }
 
-    void PluginManager::deleteEntities(Primitive::IEntityMap &entities)
+    void PluginManager::deleteEntities(Entity::IEntityMap &entities)
     {
         for (auto &entity : entities)
             deleteEntities(entity.first, entity.second);
     }
 
-    Primitive::IEntityPtr PluginManager::createEntity(const std::string &name)
+    Entity::IEntityPtr PluginManager::createEntity(const std::string &name)
     {
         if (_pluginsMap.find(name) == _pluginsMap.end())
             throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
 
         auto entity = _pluginsMap[name]->createEntity();
-        return std::unique_ptr<Primitive::IEntity>(entity);
+        return std::unique_ptr<Entity::IEntity>(entity);
     }
 } // namespace RayTracer::Plugin

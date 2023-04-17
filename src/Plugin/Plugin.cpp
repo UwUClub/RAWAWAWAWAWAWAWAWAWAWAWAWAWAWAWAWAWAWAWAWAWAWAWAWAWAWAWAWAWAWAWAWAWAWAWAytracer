@@ -29,20 +29,19 @@ namespace RayTracer::Plugin
         dlclose(_handle);
     }
 
-    Primitive::IEntity *Plugin::createEntity()
+    Entity::IEntity *Plugin::createEntity()
     {
-        auto getEntity
-            = reinterpret_cast<Primitive::IEntity *(*) ()>(dlsym(_handle, "createEntity"));
+        auto getEntity = reinterpret_cast<Entity::IEntity *(*) ()>(dlsym(_handle, "createEntity"));
 
         if (!getEntity)
             throw PluginException("Cannot load symbol 'getEntity': " + std::string(dlerror()));
         return getEntity();
     }
 
-    void Plugin::destroyEntity(std::unique_ptr<Primitive::IEntity> &entity)
+    void Plugin::destroyEntity(std::unique_ptr<Entity::IEntity> &entity)
     {
         auto destroyEntity
-            = reinterpret_cast<void (*)(Primitive::IEntity *)>(dlsym(_handle, "destroyEntity"));
+            = reinterpret_cast<void (*)(Entity::IEntity *)>(dlsym(_handle, "destroyEntity"));
 
         if (!destroyEntity)
             throw PluginException("Cannot load symbol 'destroyEntity': " + std::string(dlerror()));
