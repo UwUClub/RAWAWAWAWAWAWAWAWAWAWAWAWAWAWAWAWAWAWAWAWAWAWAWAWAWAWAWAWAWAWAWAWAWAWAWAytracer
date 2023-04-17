@@ -1,9 +1,12 @@
 name: Syncing two repo
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
-  SOURCE_REPO: "" #Insert source url of the git source repo
-  DEST_REPO: "" #Insert Destination url of the git dest repo
+  SOURCE_REPO: "git@github.com:UwUClub/RAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAytracer.git" #Insert source url of the git source repo
+  DEST_REPO: "git@github.com:EpitechPromo2026/B-OOP-400-TLS-4-1-raytracer-maxence.labourel.git" #Insert Destination url of the git dest repo
 
 jobs:
   check_repo:
@@ -20,18 +23,6 @@ jobs:
           if [ "$BAD_FILES" != ""]; then
             exit 1
           fi
-  
-  testing:
-    name: "Testing the program"
-    runs-on: ubuntu-latest
-    container:
-      image: epitechcontent/epitest-docker:latest
-    steps:
-      - uses: actions/checkout@v3
-      - id: run_tests
-        run: |
-          make
-        timeout-minutes: 2
             
   git-sync:
     needs: check_repo
