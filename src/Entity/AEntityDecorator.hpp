@@ -12,8 +12,13 @@ namespace RayTracer::Entity
     class AEntityDecorator : public IEntity
     {
         public:
-            AEntityDecorator(IEntityPtr entity);
+            explicit AEntityDecorator(IEntityPtr entity);
             ~AEntityDecorator() override = default;
+
+            [[nodiscard]] EntityType getType() const override;
+
+            void translate(Vector &vector) override;
+            void rotate(Vector &vector) override;
 
         protected:
             IEntityPtr _entity;
