@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cyberryteam/epitech-docker:latest
-      steps:
-        - uses: actions/checkout@v3
-        - id: run_tests
-          run: |
-            cmake .
-            make
-          timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v3
+      - id: run_tests
+        run: |
+          cmake .
+          make
+        timeout-minutes: 2
