@@ -13,3 +13,4 @@ CMakeCache.txt
 *.ninja*
 Makefile
 .cmake*
+raytracer
