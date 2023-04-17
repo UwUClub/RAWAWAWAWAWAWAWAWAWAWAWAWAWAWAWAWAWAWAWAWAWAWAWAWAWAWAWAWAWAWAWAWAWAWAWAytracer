@@ -10,4 +10,19 @@ namespace RayTracer::Entity
         : _entity(std::move(entity))
     {
     }
+
+    EntityType AEntityDecorator::getType() const
+    {
+        return _entity->getType();
+    }
+
+    void AEntityDecorator::translate(Vector &vector)
+    {
+        _entity->translate(vector);
+    }
+
+    void AEntityDecorator::rotate(Vector &vector)
+    {
+        _entity->rotate(vector);
+    }
 } // namespace RayTracer::Entity

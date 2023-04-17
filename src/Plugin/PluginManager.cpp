@@ -10,9 +10,11 @@ namespace RayTracer::Plugin
 {
     PluginManager::PluginManager()
     {
-        for (const auto &entry : std::filesystem::recursive_directory_iterator("./plugins"))
+        for (const auto &entry : std::filesystem::recursive_directory_iterator("./plugins")) {
+            if (entry.path().string().find(".so") != std::string::npos)
+                loadPlugin(entry.path());
             std::cout << entry.path() << std::endl;
-        //            loadPlugin(entry.path());
+        }
     }
 
     PluginManager::~PluginManager()

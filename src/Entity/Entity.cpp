@@ -6,7 +6,15 @@
 
 namespace RayTracer::Entity
 {
-    Entity::Entity() = default;
+    Entity::Entity(EntityType type)
+        : _type(type)
+    {
+    }
 
     Entity::~Entity() = default;
+
+    EntityType Entity::getType() const
+    {
+        return _type;
+    }
 } // namespace RayTracer::Entity
