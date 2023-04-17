@@ -7,5 +7,7 @@
 int main(int argc, char *argv[])
 {
     RayTracer::Plugin::PluginManager pluginManager;
+    argc = argc;
+    argv = argv;
     return 0;
 }
