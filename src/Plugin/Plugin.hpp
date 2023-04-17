@@ -5,7 +5,7 @@
 #ifndef RAYTRACER_PLUGIN_HPP
 #define RAYTRACER_PLUGIN_HPP
 
-#include "IEntity.hpp"
+#include "Entity/IEntity.hpp"
 #include <memory>
 #include <string>
 
@@ -17,10 +17,10 @@ namespace RayTracer::Plugin
             explicit Plugin(const std::string &path);
             ~Plugin();
 
-            Primitive::IEntity *createEntity();
+            Entity::IEntity *createEntity();
             [[nodiscard]] const std::string &getName() const;
 
-            void destroyEntity(std::unique_ptr<Primitive::IEntity> &entity);
+            void destroyEntity(std::unique_ptr<Entity::IEntity> &entity);
 
             class PluginException : public std::exception
             {

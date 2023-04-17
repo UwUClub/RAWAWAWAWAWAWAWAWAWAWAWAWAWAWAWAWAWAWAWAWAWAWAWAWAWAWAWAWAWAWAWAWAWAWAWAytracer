@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace RayTracer::Primitive
+namespace RayTracer::Entity
 {
     class IEntity
     {
@@ -20,6 +20,6 @@ namespace RayTracer::Primitive
     using IEntityPtr = std::unique_ptr<IEntity>;
     using IEntityVector = std::vector<IEntityPtr>;
     using IEntityMap = std::unordered_map<std::string, IEntityVector>;
-} // namespace RayTracer::Primitive
+} // namespace RayTracer::Entity
 
 #endif // RAYTRACER_IENTITY_HPP
