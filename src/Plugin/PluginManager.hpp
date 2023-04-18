@@ -24,6 +24,7 @@ namespace RayTracer::Plugin
              * @brief Delete an entity
              * @param name The name of the entity
              * @param entity The entity to delete
+             * @throw PluginException if the plugin doesn't exist
              */
             void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
             /**
@@ -41,6 +42,7 @@ namespace RayTracer::Plugin
             /**
              * @brief Create an entity
              * @param name The name of the entity
+             * @throw PluginException if the plugin doesn't exist
              * @return The entity created as a unique_ptr
              */
             Entity::IEntityPtr createEntity(const std::string &name);

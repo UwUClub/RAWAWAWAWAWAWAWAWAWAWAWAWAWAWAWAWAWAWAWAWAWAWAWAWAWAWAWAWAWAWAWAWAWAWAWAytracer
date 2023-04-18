@@ -20,6 +20,7 @@ namespace RayTracer::Plugin
             /**
              * @brief Plugin constructor
              * @param path The path of the plugin
+             * @throw PluginException if the plugin can't be loaded
              */
             explicit Plugin(const std::string &path);
             /**
@@ -30,18 +31,21 @@ namespace RayTracer::Plugin
             /**
              * @brief Create an entity
              * @return The entity of the plugin
+             * @throw PluginException if the plugin doesn't have the createEntity function
              */
             Entity::IEntity *createEntity();
             /**
              * @brief Get the name of the plugin
              * @return The name of the plugin which is the name of all the entities created by the
              * plugin
+             * @throw PluginException if the plugin doesn't have the getName function
              */
             [[nodiscard]] const std::string &getName() const;
 
             /**
              * @brief Destroy an entity
              * @param entity The entity to destroy
+             * @throw PluginException if the plugin doesn't have the destroyEntity function
              */
             void destroyEntity(std::unique_ptr<Entity::IEntity> &entity);
 
