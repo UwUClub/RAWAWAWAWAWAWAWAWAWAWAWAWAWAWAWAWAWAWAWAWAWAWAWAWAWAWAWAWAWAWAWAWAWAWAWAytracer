@@ -14,3 +14,8 @@ CMakeCache.txt
 Makefile
 .cmake*
 raytracer
+*.cpb
+*.cbp
+*.log
+Testing/
+raytracer.cbp

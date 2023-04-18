@@ -6,6 +6,7 @@
 #define RAYTRACER_PLUGINMANAGER_HPP
 
 #include "Plugin.hpp"
+#include "Subscriber.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -13,17 +14,19 @@
 
 namespace RayTracer::Plugin
 {
-    class PluginManager
+    class PluginManager : public Subscriber
     {
         public:
             PluginManager();
-            ~PluginManager();
+            ~PluginManager() override;
 
             void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
             void deleteEntities(const std::string &name, Entity::IEntityMap &entities);
             void deleteEntities(Entity::IEntityMap &entities);
 
             Entity::IEntityPtr createEntity(const std::string &name);
+
+            void getNotified(const std::string &message, Entity::IEntityMap &entityMap) override;
 
         private:
             void loadPlugin(const std::string &path);

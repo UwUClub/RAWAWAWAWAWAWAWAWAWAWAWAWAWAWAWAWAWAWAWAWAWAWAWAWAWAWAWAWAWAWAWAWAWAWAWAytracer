@@ -92,4 +92,18 @@ namespace RayTracer::Plugin
         auto entity = _pluginsMap[name]->createEntity();
         return std::unique_ptr<Entity::IEntity>(entity);
     }
+
+    void PluginManager::getNotified(const std::string &message, Entity::IEntityMap &entities)
+    {
+        std::string path;
+        if (message.starts_with("APPEARING")) {
+            path = message.substr(message.find("APPEARING") + 10);
+            loadPlugin(path);
+            return;
+        }
+        if (message.starts_with("DISAPPEARING")) {
+            path = message.substr(message.find("DISAPPEARING") + 13);
+            unloadPlugin(path, entities);
+        }
+    }
 } // namespace RayTracer::Plugin
