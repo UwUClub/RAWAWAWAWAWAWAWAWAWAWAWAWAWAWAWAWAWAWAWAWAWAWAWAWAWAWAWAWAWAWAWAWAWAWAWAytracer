@@ -6,6 +6,7 @@
 #define RAYTRACER_PLUGINMANAGER_HPP
 
 #include "Plugin.hpp"
+#include "Subscriber.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -13,21 +14,58 @@
 
 namespace RayTracer::Plugin
 {
-    class PluginManager
+    class PluginManager : public Subscriber
     {
         public:
             PluginManager();
-            ~PluginManager();
+            ~PluginManager() override;
 
+            /**
+             * @brief Delete an entity
+             * @param name The name of the entity
+             * @param entity The entity to delete
+             * @throw PluginException if the plugin doesn't exist
+             */
             void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
-            void deleteEntities(const std::string &name, Entity::IEntityVector &entities);
+            /**
+             * @brief Delete all the entities in the vector at key "name"
+             * @param name the key of the map which contains the entities to delete
+             * @param entities The entities to delete
+             */
+            void deleteEntities(const std::string &name, Entity::IEntityMap &entities);
+            /**
+             * @brief Delete all the entities in the map
+             * @param entities The entities to delete
+             */
             void deleteEntities(Entity::IEntityMap &entities);
 
+            /**
+             * @brief Create an entity
+             * @param name The name of the entity
+             * @throw PluginException if the plugin doesn't exist
+             * @return The entity created as a unique_ptr
+             */
             Entity::IEntityPtr createEntity(const std::string &name);
 
+            /**
+             * @brief Event called when the observer notify the subscriber
+             * @param message The message to notify
+             * @param entityMap The entity map
+             */
+            void getNotified(const std::string &message, Entity::IEntityMap &entityMap) override;
+
         private:
+            /**
+             * @brief Load a plugin
+             * @param path The path of the plugin
+             */
             void loadPlugin(const std::string &path);
-            void unloadPlugin(const std::string &name);
+            /**
+             * @brief Unload a plugin
+             * @param name The name of the plugin
+             * @param entities The entity map
+             */
+            void unloadPlugin(const std::string &name, Entity::IEntityMap &entities);
 
         private:
             std::unordered_map<std::string, std::unique_ptr<Plugin>> _pluginsMap;

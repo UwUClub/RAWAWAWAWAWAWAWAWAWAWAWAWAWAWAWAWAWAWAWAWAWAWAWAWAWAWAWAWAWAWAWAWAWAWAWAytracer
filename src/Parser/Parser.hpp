@@ -6,10 +6,13 @@
 #define RAYTRACER_PARSER_HPP
 
 #include <fstream>
-#include "Camera.cpp"
-#include "Primitives.cpp"
-#include "Light.cpp"
+#include "Camera.hpp"
+#include "Sphere.hpp"
+#include "Plane.hpp"
+#include "DirectionalLight.hpp"
+#include "PointLight.hpp"
 #include <libconfig.h++>
+#include <utility>
 
 namespace RayTracer::Parser
 {
@@ -18,7 +21,7 @@ namespace RayTracer::Parser
         class ParserException : public std::exception
         {
             public:
-                explicit ParserException(const std::string &message) : _message(message){}
+                explicit ParserException(std::string message) : _message(std::move(message)){}
 
                 ~ParserException() override = default;
 
@@ -30,12 +33,13 @@ namespace RayTracer::Parser
         public:
             explicit Parser(int ac, char **av);
             ~Parser();
-            RayTracer::Camera::Camera getCamera();
-            RayTracer::Primitives::Primitives getPrimitive();
-            RayTracer::Light::Light getLight();
+            RayTracer::Camera::Camera CreateCamera();
+            void CreatePrimitive();
+            void CreateLight();
 
         private:
             libconfig::Config _cfg;
+            RayTracer::Scene &_scene;
     };
 } // RayTracer
 

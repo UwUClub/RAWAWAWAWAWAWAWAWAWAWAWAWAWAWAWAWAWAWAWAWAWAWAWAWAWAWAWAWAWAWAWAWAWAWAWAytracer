@@ -14,11 +14,18 @@
     namespace RayTracer::Camera {
         class Camera : public Entity::IEntity {
         public:
+            explicit Camera();
+            ~Camera() override = default;
+
+            void setPosition(const RayTracer::Vector &position);
+            void setRotation(const RayTracer::Vector &rotation);
+            void setResolution(const std::pair<int, int> &resolution);
+            void setFieldOfView(float fov);
         private:
             std::pair<int, int> _resolution;
             RayTracer::Vector _position;
             RayTracer::Vector _rotation;
-            int fieldOfView;
+            float fieldOfView;
         };
     } // RayTracer
 

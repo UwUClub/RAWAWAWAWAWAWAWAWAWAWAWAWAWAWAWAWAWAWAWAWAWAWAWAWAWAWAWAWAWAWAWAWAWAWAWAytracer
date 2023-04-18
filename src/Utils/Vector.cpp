@@ -25,12 +25,12 @@ namespace RayTracer {
 
     Vector Vector::operator+(const Vector &other) const
     {
-        return Vector(_x + other._x, _y + other._y, _z + other._z);
+        return {_x + other._x, _y + other._y, _z + other._z};
     }
 
     Vector Vector::operator-(const Vector &other) const
     {
-        return Vector(_x - other._x, _y - other._y, _z - other._z);
+        return {_x - other._x, _y - other._y, _z - other._z};
     }
 
     double Vector::operator|(const Vector &other) const
@@ -40,16 +40,16 @@ namespace RayTracer {
 
     Vector Vector::operator*(const Vector &other) const
     {
-        return Vector(_y * other._z - _z * other._y, _z * other._x - _x * other._z, _x * other._y - _y * other._x);
+        return {_y * other._z - _z * other._y, _z * other._x - _x * other._z, _x * other._y - _y * other._x};
     }
 
     Vector Vector::operator*(const double other) const
     {
-        return Vector(_x * other, _y * other, _z * other);
+        return {_x * other, _y * other, _z * other};
     }
 
     Vector Vector::operator/(const double other) const
     {
-        return Vector(_x / other, _y / other, _z / other);
+        return {_x / other, _y / other, _z / other};
     }
 } // namespace RayTracer
