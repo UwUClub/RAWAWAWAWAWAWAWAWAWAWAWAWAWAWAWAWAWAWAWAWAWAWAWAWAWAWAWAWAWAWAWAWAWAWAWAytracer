@@ -5,6 +5,7 @@
 #ifndef RAYTRACER_ENTITY_HPP
 #define RAYTRACER_ENTITY_HPP
 
+#include "Utils/Point.hpp"
 #include "IEntity.hpp"
 
 namespace RayTracer::Entity
@@ -19,7 +20,7 @@ namespace RayTracer::Entity
              * @brief Construct a new Entity object
              * @param type The type of the entity
              */
-            explicit Entity(EntityType type);
+            explicit Entity(EntityType type, Point position);
             ~Entity() override;
 
             /**
@@ -32,7 +33,7 @@ namespace RayTracer::Entity
              * @brief Translate the entity
              * @param vector The vector to translate the entity
              */
-            void translate(Vector &vector) override {};
+            void translate(Vector &vector) override;
             /**
              * @brief Rotate the entity
              * @param vector The vector to rotate the entity
@@ -41,6 +42,7 @@ namespace RayTracer::Entity
 
         private:
             EntityType _type;
+            Point _position;
     };
 } // namespace RayTracer::Entity
 
