@@ -6,6 +6,7 @@
 #define RAYTRACER_IENTITY_HPP
 
 #include "Utils/Vector.hpp"
+#include "Utils/Point.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -38,6 +39,17 @@ namespace RayTracer::Entity
             [[nodiscard]] virtual EntityType getType() const = 0;
 
             // virtual Color intersect(Scene &scene, Ray &viewRay) const = 0;
+
+            /**
+             * @brief Get the position of the entity
+             */
+            virtual Point getPosition() const = 0;
+
+            /**
+             * @brief Set the position of the entity
+             * @param point The position of the entity
+             */
+            virtual void setPosition(Point &point) = 0;
 
             /**
              * @brief Translate the entity

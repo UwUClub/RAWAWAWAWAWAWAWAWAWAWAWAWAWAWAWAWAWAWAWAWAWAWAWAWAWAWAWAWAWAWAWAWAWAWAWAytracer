@@ -8,7 +8,7 @@
 namespace RayTracer::Entity
 {
     Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-        : Entity(EntityType::COLOR, Point(0, 0, 0))
+        : Entity(EntityType::COLOR)
         , _r(r)
         , _g(g)
         , _b(b)

@@ -20,7 +20,7 @@ namespace RayTracer::Entity
              * @brief Construct a new Entity object
              * @param type The type of the entity
              */
-            explicit Entity(EntityType type, Point position);
+            explicit Entity(EntityType type);
             ~Entity() override;
 
             /**
@@ -28,6 +28,18 @@ namespace RayTracer::Entity
              * @return The type of the entity
              */
             [[nodiscard]] EntityType getType() const override;
+
+            /**
+             * @brief Get the position of the entity
+             * @return The position of the entity
+             */
+            Point getPosition() const override;
+
+            /**
+             * @brief Set the position of the entity
+             * @param point The position of the entity
+             */
+            void setPosition(Point &point) override;
 
             /**
              * @brief Translate the entity
