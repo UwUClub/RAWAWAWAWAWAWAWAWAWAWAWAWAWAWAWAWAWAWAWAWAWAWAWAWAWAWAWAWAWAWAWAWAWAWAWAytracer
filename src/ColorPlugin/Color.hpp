@@ -10,9 +10,19 @@
 
 namespace RayTracer::Entity
 {
+    /**
+     * @brief The Color class
+     */
     class Color : public Entity
     {
         public:
+            /**
+             * @brief Construct a new Color object
+             * @param r The red value
+             * @param g The green value
+             * @param b The blue value
+             * @param a The alpha value
+             */
             Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255);
             ~Color() override;
 
