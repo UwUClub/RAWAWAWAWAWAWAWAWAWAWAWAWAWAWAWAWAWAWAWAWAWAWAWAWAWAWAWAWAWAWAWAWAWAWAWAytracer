@@ -6,9 +6,9 @@ target_sources(raytracer PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/Main.cpp"
 		)
 
-add_subdirectory(Plugin)
+add_subdirectory(ColorPlugin)
 add_subdirectory(Entity)
 add_subdirectory(Parser)
-add_subdirectory(Utils)
+add_subdirectory(Plugin)
 add_subdirectory(Scene)
-add_subdirectory(ColorPlugin)
+add_subdirectory(Utils)

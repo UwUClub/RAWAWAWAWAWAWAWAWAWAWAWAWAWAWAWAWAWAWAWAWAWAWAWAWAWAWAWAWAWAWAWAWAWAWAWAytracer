@@ -15,9 +15,15 @@
     namespace RayTracer::Light {
         class PointLight : public Entity::IEntity, public Light {
         public:
+            explicit PointLight();
+            ~PointLight() override = default;
+
+            void setPosition(const RayTracer::Vector &position);
+            [[nodiscard]] Entity::EntityType getType() const override;
+            void rotate(Vector &vector) override;
+            void translate(Vector &vector) override;
         private:
             RayTracer::Vector _position;
-            RayTracer::Vector _color;
         };
     } // RayTracer
 

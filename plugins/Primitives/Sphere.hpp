@@ -14,9 +14,19 @@
     namespace RayTracer::Primitives {
         class Sphere : public Entity::IEntity {
         public:
+            explicit Sphere();
+            ~Sphere() override = default;
+
+            void setPosition(const RayTracer::Vector &position);
+            void setRadius(int radius);
+            void setColor(const RayTracer::Vector &color);
+
+            [[nodiscard]] Entity::EntityType getType() const override;
+            void rotate(Vector &vector) override;
+            void translate(Vector &vector) override;
         private:
             RayTracer::Vector _position;
-            float _radius;
+            int _radius;
             RayTracer::Vector _color;
         };
     }

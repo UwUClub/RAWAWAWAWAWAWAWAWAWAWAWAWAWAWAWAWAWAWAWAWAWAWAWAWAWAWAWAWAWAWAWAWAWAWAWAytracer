@@ -5,6 +5,7 @@
 #include "Entity/IEntity.hpp"
 #include "Plugin/PluginManager.hpp"
 #include "Plugin/PluginObserver.hpp"
+#include "Parser/Parser.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -17,5 +18,7 @@ int main(int argc, char *argv[])
 //    while (true) {
 //        pluginObserver.checkPlugins(entityMap);
 //    }
+    RayTracer::Scene::Scene scene;
+    RayTracer::Parser::Parser parser(argv, scene);
     return 0;
 }
