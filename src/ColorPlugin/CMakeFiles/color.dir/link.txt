@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -Wextra -Wpedantic -Wall -Wextra -fno-gnu-unique -fPIC -shared -Wl,-soname,color.so -o ../../plugins/color.so CMakeFiles/color.dir/Color.cpp.o CMakeFiles/color.dir/Api.cpp.o CMakeFiles/color.dir/__/Entity/Entity.cpp.o 

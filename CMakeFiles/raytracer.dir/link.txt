@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Wpedantic -fno-gnu-unique CMakeFiles/raytracer.dir/src/Main.cpp.o CMakeFiles/raytracer.dir/src/Plugin/Plugin.cpp.o CMakeFiles/raytracer.dir/src/Plugin/PluginManager.cpp.o CMakeFiles/raytracer.dir/src/Entity/Entity.cpp.o -o raytracer  -ldl 
