@@ -18,7 +18,9 @@ jobs:
           sudo apt-get install -y doxygen
 
       - name: Build documentation
-        run: doxygen doxyfile
+        run: |
+          doxygen doxyfile
+          touch documentation/.nojekyll
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
