@@ -40,7 +40,6 @@ jobs:
           sudo dnf install -y libconfig-devel
           cmake .
           make
-        timeout-minutes: 2
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
