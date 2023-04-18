@@ -42,7 +42,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo dnf install -y libconfig-devel
+        sudo apt install -y libconfig-devel
         
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
