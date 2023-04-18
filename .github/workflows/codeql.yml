@@ -20,7 +20,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: fedora-latest
     permissions:
       actions: read
       contents: read
@@ -43,6 +43,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt install -y libconfig-dev
+        reboot
         
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
