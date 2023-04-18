@@ -9,10 +9,8 @@ include_directories(src)
 add_executable(${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    CXX_STANDARD 20
-    COMPILE_FLAGS ""
-)
-
-target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS})
+		CXX_STANDARD 20
+		COMPILE_FLAGS ""
+		)
 
 add_subdirectory(src)
