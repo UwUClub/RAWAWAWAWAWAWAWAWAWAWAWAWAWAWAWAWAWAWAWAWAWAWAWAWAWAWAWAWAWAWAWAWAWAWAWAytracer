@@ -20,7 +20,9 @@ jobs:
       - name: Build documentation
         run: |
           doxygen doxyfile
-          touch documentation/.nojekyll
+          cd documentation
+          touch .nojekyll
+          git submodule add https://github.com/jothepro/doxygen-awesome-css.git
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
