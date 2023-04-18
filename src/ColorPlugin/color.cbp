@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="color"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\ColorPlugin\;CMake Files\src\Plugin\;CMake Files\src\Entity\;CMake Files\src\Utils\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="color">
+				<Option output="/home/patatofour/Documents/Epitech/teck2/raytracer/plugins/color.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/patatofour/Documents/Epitech/teck2/raytracer/src"/>
+					<Add directory="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/../Entity"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 color"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="color/fast">
+				<Option output="/home/patatofour/Documents/Epitech/teck2/raytracer/plugins/color.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/patatofour/Documents/Epitech/teck2/raytracer/src"/>
+					<Add directory="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/../Entity"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 color/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Api.cpp">
+			<Option target="color"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Color.cpp">
+			<Option target="color"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/Color.hpp">
+			<Option target="color"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/Entity/Entity.cpp">
+			<Option target="color"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/Entity/Entity.hpp">
+			<Option target="color"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/ColorPlugin/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\ColorPlugin\"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/Plugin/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\Plugin\"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/Entity/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\Entity\"/>
+		</Unit>
+		<Unit filename="/home/patatofour/Documents/Epitech/teck2/raytracer/src/Utils/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\Utils\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
