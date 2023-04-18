@@ -7,7 +7,7 @@
 
 #include "Camera.hpp"
 
-namespace RayTracer::Camera {
+namespace RayTracer {
     Camera::Camera() : _resolution(0, 0), _position(0, 0, 0), _rotation(0, 0, 0), fieldOfView(0)
     {
     }
@@ -30,6 +30,20 @@ namespace RayTracer::Camera {
     void Camera::setFieldOfView(float fov)
     {
         fieldOfView = fov;
+    }
+
+    void Camera::translate(Vector &vector)
+    {
+        _position._x += vector._x;
+        _position._y += vector._y;
+        _position._z += vector._z;
+    }
+
+    void Camera::rotate(Vector &vector)
+    {
+        _rotation._x += vector._x;
+        _rotation._y += vector._y;
+        _rotation._z += vector._z;
     }
 
 } // RayTracer

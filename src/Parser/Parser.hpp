@@ -6,6 +6,7 @@
 #define RAYTRACER_PARSER_HPP
 
 #include <fstream>
+#include "Scene.hpp"
 #include "Camera.hpp"
 #include "Sphere.hpp"
 #include "Plane.hpp"
@@ -31,15 +32,15 @@ namespace RayTracer::Parser
                 std::string _message;
         };
         public:
-            explicit Parser(int ac, char **av);
+            explicit Parser(char **av, RayTracer::Scene::Scene &scene);
             ~Parser();
-            RayTracer::Camera::Camera CreateCamera();
+            RayTracer::Camera CreateCamera();
             void CreatePrimitive();
             void CreateLight();
 
         private:
             libconfig::Config _cfg;
-            RayTracer::Scene &_scene;
+            RayTracer::Scene::Scene &_scene;
     };
 } // RayTracer
 

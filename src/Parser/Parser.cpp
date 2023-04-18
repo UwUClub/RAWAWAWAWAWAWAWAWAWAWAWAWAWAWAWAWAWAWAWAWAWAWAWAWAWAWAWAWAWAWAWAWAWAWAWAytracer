@@ -8,9 +8,8 @@
 #include "Parser.hpp"
 
 namespace RayTracer::Parser {
-    Parser::Parser(char **av, RayTracer::Scene &scene)
+    Parser::Parser(char **av, RayTracer::Scene::Scene &scene) : _cfg(), _scene(scene)
     {
-        _scene = scene;
         try {
             _cfg.readFile(av[1]);
         }
@@ -26,11 +25,6 @@ namespace RayTracer::Parser {
             error += pex.getError();
             throw ParserException(error);
         }
-        try {
-            _scene.addEntity(CreateCamera());
-        } catch (const libconfig::SettingNotFoundException &nfex) {
-            throw ParserException("No 'camera' setting in configuration file.");
-        }
     }
 
     Parser::~Parser()
@@ -38,7 +32,7 @@ namespace RayTracer::Parser {
 
     }
 
-    RayTracer::Camera::Camera Parser::CreateCamera()
+    RayTracer::Camera Parser::CreateCamera()
     {
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("camera") || !root["camera"].isGroup())
@@ -46,16 +40,19 @@ namespace RayTracer::Parser {
         const libconfig::Setting &camera = root["camera"];
         if (!camera.exists("x") || !camera.exists("y") || !camera.exists("fov"))
             throw ParserException("Camera is missing parameters (x, y, fov).");
-        RayTracer::Camera::Camera cam;
+        RayTracer::Camera cam;
         int x;
         int y;
         float fov;
+        std::string resolution;
 
-        camera.lookupValue("x", x);
+        camera.lookupValue("resolution", resolution);
+        std::cout << resolution << std::endl;
         camera.lookupValue("y", y);
         camera.lookupValue("fov", fov);
         cam.setResolution(std::make_pair(x, y));
         cam.setFieldOfView(fov);
+        return cam;
     }
     
 } // RayTracer

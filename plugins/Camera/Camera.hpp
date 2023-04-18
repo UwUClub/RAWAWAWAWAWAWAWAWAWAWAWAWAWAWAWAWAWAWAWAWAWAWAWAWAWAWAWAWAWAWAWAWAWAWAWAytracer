@@ -11,7 +11,7 @@
     #include "IEntity.hpp"
     #include "Vector.hpp"
 
-    namespace RayTracer::Camera {
+    namespace RayTracer {
         class Camera : public Entity::IEntity {
         public:
             explicit Camera();
@@ -21,6 +21,10 @@
             void setRotation(const RayTracer::Vector &rotation);
             void setResolution(const std::pair<int, int> &resolution);
             void setFieldOfView(float fov);
+            [[nodiscard]] Entity::EntityType getType() const override { return Entity::EntityType::CAMERA; };
+            void translate(Vector &vector) override;
+            void rotate(Vector &vector) override;
+
         private:
             std::pair<int, int> _resolution;
             RayTracer::Vector _position;
