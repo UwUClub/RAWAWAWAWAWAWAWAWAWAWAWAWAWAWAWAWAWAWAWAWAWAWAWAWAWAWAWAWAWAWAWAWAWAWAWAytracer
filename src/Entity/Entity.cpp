@@ -19,7 +19,7 @@ namespace RayTracer::Entity
         return _type;
     }
 
-    Point Entity::getPosition() const
+    Point const &Entity::getPosition()
     {
         return _position;
     }

@@ -33,7 +33,7 @@ namespace RayTracer::Entity
              * @brief Get the position of the entity
              * @return The position of the entity
              */
-            Point getPosition() const override;
+            Point const &getPosition() override;
 
             /**
              * @brief Set the position of the entity

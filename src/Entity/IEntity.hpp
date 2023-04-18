@@ -43,7 +43,7 @@ namespace RayTracer::Entity
             /**
              * @brief Get the position of the entity
              */
-            virtual Point getPosition() const = 0;
+            virtual const Point &getPosition() = 0;
 
             /**
              * @brief Set the position of the entity
