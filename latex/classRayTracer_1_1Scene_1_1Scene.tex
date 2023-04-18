@@ -1,0 +1,105 @@
+\hypertarget{classRayTracer_1_1Scene_1_1Scene}{}\doxysection{Ray\+Tracer\+::Scene\+::Scene Class Reference}
+\label{classRayTracer_1_1Scene_1_1Scene}\index{RayTracer::Scene::Scene@{RayTracer::Scene::Scene}}
+
+
+The \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Scene}} class.  
+
+
+
+
+{\ttfamily \#include $<$Scene.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_1_1SceneException}{Scene\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_a81d76e2d45c72c8607c00021d87ea0ac}{add\+Entity}} (const std\+::string \&name, Entity\+::\+IEntity\+Ptr \&entity)
+\begin{DoxyCompactList}\small\item\em Add an entity to the scene. \end{DoxyCompactList}\item 
+Entity\+::\+IEntity\+Map \& \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_a90a78a9d89acb6513cc412a0a40a608f}{get\+Entities}} ()
+\begin{DoxyCompactList}\small\item\em Get the entities of the scene. \end{DoxyCompactList}\item 
+Entity\+::\+IEntity\+Ptr \& \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_ad1b8abba409124cd5f2455e5883a9c69}{get\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Get the camera of the scene. \end{DoxyCompactList}\item 
+Entity\+::\+IEntity\+Vector \& \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_abec708ad8f65b7c59d8386dd30b4419e}{get\+Lights}} ()
+\begin{DoxyCompactList}\small\item\em Get the lights of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Scene}} class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Scene_1_1Scene_a81d76e2d45c72c8607c00021d87ea0ac}\label{classRayTracer_1_1Scene_1_1Scene_a81d76e2d45c72c8607c00021d87ea0ac}} 
+\index{RayTracer::Scene::Scene@{RayTracer::Scene::Scene}!addEntity@{addEntity}}
+\index{addEntity@{addEntity}!RayTracer::Scene::Scene@{RayTracer::Scene::Scene}}
+\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Scene\+::\+Scene\+::add\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{Entity\+::\+IEntity\+Ptr \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+Add an entity to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the entity which is the key of the map \\
+\hline
+{\em entity} & The entity to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Scene_1_1Scene_ad1b8abba409124cd5f2455e5883a9c69}\label{classRayTracer_1_1Scene_1_1Scene_ad1b8abba409124cd5f2455e5883a9c69}} 
+\index{RayTracer::Scene::Scene@{RayTracer::Scene::Scene}!getCamera@{getCamera}}
+\index{getCamera@{getCamera}!RayTracer::Scene::Scene@{RayTracer::Scene::Scene}}
+\doxysubsubsection{\texorpdfstring{getCamera()}{getCamera()}}
+{\footnotesize\ttfamily Entity\+::\+IEntity\+Ptr \& Ray\+Tracer\+::\+Scene\+::\+Scene\+::get\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the camera of the scene. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_1_1SceneException}{Scene\+Exception}}} & if there is no camera in the scene \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The camera of the scene 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Scene_1_1Scene_a90a78a9d89acb6513cc412a0a40a608f}\label{classRayTracer_1_1Scene_1_1Scene_a90a78a9d89acb6513cc412a0a40a608f}} 
+\index{RayTracer::Scene::Scene@{RayTracer::Scene::Scene}!getEntities@{getEntities}}
+\index{getEntities@{getEntities}!RayTracer::Scene::Scene@{RayTracer::Scene::Scene}}
+\doxysubsubsection{\texorpdfstring{getEntities()}{getEntities()}}
+{\footnotesize\ttfamily Entity\+::\+IEntity\+Map \& Ray\+Tracer\+::\+Scene\+::\+Scene\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the entities of the scene. 
+
+\begin{DoxyReturn}{Returns}
+The entities of the scene 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Scene_1_1Scene_abec708ad8f65b7c59d8386dd30b4419e}\label{classRayTracer_1_1Scene_1_1Scene_abec708ad8f65b7c59d8386dd30b4419e}} 
+\index{RayTracer::Scene::Scene@{RayTracer::Scene::Scene}!getLights@{getLights}}
+\index{getLights@{getLights}!RayTracer::Scene::Scene@{RayTracer::Scene::Scene}}
+\doxysubsubsection{\texorpdfstring{getLights()}{getLights()}}
+{\footnotesize\ttfamily Entity\+::\+IEntity\+Vector \& Ray\+Tracer\+::\+Scene\+::\+Scene\+::get\+Lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the lights of the scene. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene_1_1SceneException}{Scene\+Exception}}} & if there is no light in the scene \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The lights of the scene 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Scene/Scene.\+hpp\item 
+src/\+Scene/Scene.\+cpp\end{DoxyCompactItemize}

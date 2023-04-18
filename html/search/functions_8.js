@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['translate_124',['translate',['../classRayTracer_1_1Entity_1_1Entity.html#ac1672b88071c908536ceb9c323e21a07',1,'RayTracer::Entity::Entity::translate()'],['../classRayTracer_1_1Entity_1_1IEntity.html#a0a9f51d83ad149326677595964684565',1,'RayTracer::Entity::IEntity::translate()'],['../classRayTracer_1_1Camera.html#accf931cd9774b96556c7fd33f7160a93',1,'RayTracer::Camera::translate()'],['../classRayTracer_1_1Light_1_1PointLight.html#aa6941532687cd08f77259c748281ad76',1,'RayTracer::Light::PointLight::translate()'],['../classRayTracer_1_1Primitives_1_1Plane.html#a2cec3ed4cc2e5a27c0f442f9efa7dc14',1,'RayTracer::Primitives::Plane::translate()'],['../classRayTracer_1_1Primitives_1_1Sphere.html#a92ca7b7bb2307e71c7f6fdb74c856c02',1,'RayTracer::Primitives::Sphere::translate()']]]
+];

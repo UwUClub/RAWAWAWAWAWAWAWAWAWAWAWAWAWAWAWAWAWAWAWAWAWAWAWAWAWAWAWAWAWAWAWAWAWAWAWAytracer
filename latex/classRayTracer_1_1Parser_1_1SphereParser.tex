@@ -1,0 +1,105 @@
+\hypertarget{classRayTracer_1_1Parser_1_1SphereParser}{}\doxysection{Ray\+Tracer\+::Parser\+::Sphere\+Parser Class Reference}
+\label{classRayTracer_1_1Parser_1_1SphereParser}\index{RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}}
+
+
+Sphere \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}}, parse the sphere from the config file.  
+
+
+
+
+{\ttfamily \#include $<$Sphere\+Parser.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classRayTracer_1_1Parser_1_1SphereParser_aa56543aac0319dade97803dace24a51d}{create\+Sphere}} (const libconfig\+::\+Setting \&sphere, \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Create a Sphere object and add it to the scene. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& \mbox{\hyperlink{classRayTracer_1_1Parser_1_1SphereParser_a83063398cd3c141f6a09014a24afd04d}{get\+Sphere\+Position}} (const libconfig\+::\+Setting \&sphere)
+\begin{DoxyCompactList}\small\item\em Get the Sphere Position object from the config file. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classRayTracer_1_1Parser_1_1SphereParser_a99c3086c41fe7cb024e016071cf585d5}{get\+Sphere\+Radius}} (const libconfig\+::\+Setting \&sphere)
+\begin{DoxyCompactList}\small\item\em Get the Sphere Radius object from the config file. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} \mbox{\hyperlink{classRayTracer_1_1Parser_1_1SphereParser_a7754535da0d9448bf6b9a6c2d7920252}{get\+Sphere\+Color}} (const libconfig\+::\+Setting \&sphere)
+\begin{DoxyCompactList}\small\item\em Get the Sphere Color object from the config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sphere \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}}, parse the sphere from the config file. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1SphereParser_aa56543aac0319dade97803dace24a51d}\label{classRayTracer_1_1Parser_1_1SphereParser_aa56543aac0319dade97803dace24a51d}} 
+\index{RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}!createSphere@{createSphere}}
+\index{createSphere@{createSphere}!RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}}
+\doxysubsubsection{\texorpdfstring{createSphere()}{createSphere()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Parser\+::\+Sphere\+Parser\+::create\+Sphere (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{sphere,  }\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Sphere object and add it to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the sphere setting from the config file \\
+\hline
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & the scene to add the sphere to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1SphereParser_a7754535da0d9448bf6b9a6c2d7920252}\label{classRayTracer_1_1Parser_1_1SphereParser_a7754535da0d9448bf6b9a6c2d7920252}} 
+\index{RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}!getSphereColor@{getSphereColor}}
+\index{getSphereColor@{getSphereColor}!RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}}
+\doxysubsubsection{\texorpdfstring{getSphereColor()}{getSphereColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} Ray\+Tracer\+::\+Parser\+::\+Sphere\+Parser\+::get\+Sphere\+Color (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{sphere }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Sphere Color object from the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the sphere setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} the color of the sphere 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1SphereParser_a83063398cd3c141f6a09014a24afd04d}\label{classRayTracer_1_1Parser_1_1SphereParser_a83063398cd3c141f6a09014a24afd04d}} 
+\index{RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}!getSpherePosition@{getSpherePosition}}
+\index{getSpherePosition@{getSpherePosition}!RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}}
+\doxysubsubsection{\texorpdfstring{getSpherePosition()}{getSpherePosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& Ray\+Tracer\+::\+Parser\+::\+Sphere\+Parser\+::get\+Sphere\+Position (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{sphere }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Sphere Position object from the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the sphere setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} the position of the sphere 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1SphereParser_a99c3086c41fe7cb024e016071cf585d5}\label{classRayTracer_1_1Parser_1_1SphereParser_a99c3086c41fe7cb024e016071cf585d5}} 
+\index{RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}!getSphereRadius@{getSphereRadius}}
+\index{getSphereRadius@{getSphereRadius}!RayTracer::Parser::SphereParser@{RayTracer::Parser::SphereParser}}
+\doxysubsubsection{\texorpdfstring{getSphereRadius()}{getSphereRadius()}}
+{\footnotesize\ttfamily int Ray\+Tracer\+::\+Parser\+::\+Sphere\+Parser\+::get\+Sphere\+Radius (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{sphere }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Sphere Radius object from the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the sphere setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the radius of the sphere (int) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Parser/Sphere\+Parser.\+hpp\item 
+src/\+Parser/Sphere\+Parser.\+cpp\end{DoxyCompactItemize}

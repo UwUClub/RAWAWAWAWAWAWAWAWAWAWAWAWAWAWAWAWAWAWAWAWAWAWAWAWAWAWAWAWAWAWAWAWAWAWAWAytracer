@@ -1,0 +1,65 @@
+\hypertarget{classRayTracer_1_1Light_1_1PointLightParser}{}\doxysection{Ray\+Tracer\+::Light\+::Point\+Light\+Parser Class Reference}
+\label{classRayTracer_1_1Light_1_1PointLightParser}\index{RayTracer::Light::PointLightParser@{RayTracer::Light::PointLightParser}}
+
+
+\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} Parser, parse the point light from the config file.  
+
+
+
+
+{\ttfamily \#include $<$Point\+Light\+Parser.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLightParser_aae54d181f464a7dadf99913112f72eaf}{get\+Point\+Light\+Position}} (const libconfig\+::\+Setting \&point\+Light)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} Position object. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLightParser_a97c48c2f09f1449090646c85eae70c76}{create\+Point\+Light}} (const libconfig\+::\+Setting \&point\+Light, \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} object and add it to the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} Parser, parse the point light from the config file. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLightParser_a97c48c2f09f1449090646c85eae70c76}\label{classRayTracer_1_1Light_1_1PointLightParser_a97c48c2f09f1449090646c85eae70c76}} 
+\index{RayTracer::Light::PointLightParser@{RayTracer::Light::PointLightParser}!createPointLight@{createPointLight}}
+\index{createPointLight@{createPointLight}!RayTracer::Light::PointLightParser@{RayTracer::Light::PointLightParser}}
+\doxysubsubsection{\texorpdfstring{createPointLight()}{createPointLight()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Light\+::\+Point\+Light\+Parser\+::create\+Point\+Light (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{point\+Light,  }\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a \mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} object and add it to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the point light setting from the config file \\
+\hline
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & the scene to add the point light to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLightParser_aae54d181f464a7dadf99913112f72eaf}\label{classRayTracer_1_1Light_1_1PointLightParser_aae54d181f464a7dadf99913112f72eaf}} 
+\index{RayTracer::Light::PointLightParser@{RayTracer::Light::PointLightParser}!getPointLightPosition@{getPointLightPosition}}
+\index{getPointLightPosition@{getPointLightPosition}!RayTracer::Light::PointLightParser@{RayTracer::Light::PointLightParser}}
+\doxysubsubsection{\texorpdfstring{getPointLightPosition()}{getPointLightPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& Ray\+Tracer\+::\+Light\+::\+Point\+Light\+Parser\+::get\+Point\+Light\+Position (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{point\+Light }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the \mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \mbox{\hyperlink{classRayTracer_1_1Light_1_1Light}{Light}} Position object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the point light setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} the position of the point light (\mbox{\hyperlink{structRayTracer_1_1Point}{Point}}) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Parser/Point\+Light\+Parser.\+hpp\item 
+src/\+Parser/Point\+Light\+Parser.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,128 @@
+\hypertarget{classRayTracer_1_1Plugin_1_1PluginManager}{}\doxysection{Ray\+Tracer\+::Plugin\+::Plugin\+Manager Class Reference}
+\label{classRayTracer_1_1Plugin_1_1PluginManager}\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+Inheritance diagram for Ray\+Tracer\+::Plugin\+::Plugin\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRayTracer_1_1Plugin_1_1PluginManager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1PluginManager_a5355514964e39b166c270e8604a6c533}{delete\+Entity}} (const std\+::string \&name, Entity\+::\+IEntity\+Ptr \&entity)
+\begin{DoxyCompactList}\small\item\em Delete an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1PluginManager_ac0803ed7f7643ee41a12cf676aabbb81}{delete\+Entities}} (const std\+::string \&name, Entity\+::\+IEntity\+Map \&entities)
+\begin{DoxyCompactList}\small\item\em Delete all the entities in the vector at key \char`\"{}name\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1PluginManager_aed582a391e36400ed38fcc0f6bb42cd5}{delete\+Entities}} (Entity\+::\+IEntity\+Map \&entities)
+\begin{DoxyCompactList}\small\item\em Delete all the entities in the map. \end{DoxyCompactList}\item 
+Entity\+::\+IEntity\+Ptr \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1PluginManager_ab41cb81cd4e409283dee7d80771d94ec}{create\+Entity}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Create an entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1PluginManager_a076bdddaefcf1efc96970c819fa39819}{get\+Notified}} (const std\+::string \&message, Entity\+::\+IEntity\+Map \&entity\+Map) override
+\begin{DoxyCompactList}\small\item\em Event called when the observer notify the subscriber. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Plugin_1_1PluginManager_ab41cb81cd4e409283dee7d80771d94ec}\label{classRayTracer_1_1Plugin_1_1PluginManager_ab41cb81cd4e409283dee7d80771d94ec}} 
+\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}!createEntity@{createEntity}}
+\index{createEntity@{createEntity}!RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+\doxysubsubsection{\texorpdfstring{createEntity()}{createEntity()}}
+{\footnotesize\ttfamily Entity\+::\+IEntity\+Ptr Ray\+Tracer\+::\+Plugin\+::\+Plugin\+Manager\+::create\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Create an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the entity \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Plugin\+Exception} & if the plugin doesn\textquotesingle{}t exist \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The entity created as a unique\+\_\+ptr 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Plugin_1_1PluginManager_ac0803ed7f7643ee41a12cf676aabbb81}\label{classRayTracer_1_1Plugin_1_1PluginManager_ac0803ed7f7643ee41a12cf676aabbb81}} 
+\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}!deleteEntities@{deleteEntities}}
+\index{deleteEntities@{deleteEntities}!RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+\doxysubsubsection{\texorpdfstring{deleteEntities()}{deleteEntities()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Plugin\+::\+Plugin\+Manager\+::delete\+Entities (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{Entity\+::\+IEntity\+Map \&}]{entities }\end{DoxyParamCaption})}
+
+
+
+Delete all the entities in the vector at key \char`\"{}name\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the key of the map which contains the entities to delete \\
+\hline
+{\em entities} & The entities to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Plugin_1_1PluginManager_aed582a391e36400ed38fcc0f6bb42cd5}\label{classRayTracer_1_1Plugin_1_1PluginManager_aed582a391e36400ed38fcc0f6bb42cd5}} 
+\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}!deleteEntities@{deleteEntities}}
+\index{deleteEntities@{deleteEntities}!RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+\doxysubsubsection{\texorpdfstring{deleteEntities()}{deleteEntities()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Plugin\+::\+Plugin\+Manager\+::delete\+Entities (\begin{DoxyParamCaption}\item[{Entity\+::\+IEntity\+Map \&}]{entities }\end{DoxyParamCaption})}
+
+
+
+Delete all the entities in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entities} & The entities to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Plugin_1_1PluginManager_a5355514964e39b166c270e8604a6c533}\label{classRayTracer_1_1Plugin_1_1PluginManager_a5355514964e39b166c270e8604a6c533}} 
+\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}!deleteEntity@{deleteEntity}}
+\index{deleteEntity@{deleteEntity}!RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+\doxysubsubsection{\texorpdfstring{deleteEntity()}{deleteEntity()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Plugin\+::\+Plugin\+Manager\+::delete\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{Entity\+::\+IEntity\+Ptr \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+Delete an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the entity \\
+\hline
+{\em entity} & The entity to delete \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Plugin\+Exception} & if the plugin doesn\textquotesingle{}t exist \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classRayTracer_1_1Plugin_1_1PluginManager_a076bdddaefcf1efc96970c819fa39819}\label{classRayTracer_1_1Plugin_1_1PluginManager_a076bdddaefcf1efc96970c819fa39819}} 
+\index{RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}!getNotified@{getNotified}}
+\index{getNotified@{getNotified}!RayTracer::Plugin::PluginManager@{RayTracer::Plugin::PluginManager}}
+\doxysubsubsection{\texorpdfstring{getNotified()}{getNotified()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Plugin\+::\+Plugin\+Manager\+::get\+Notified (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{Entity\+::\+IEntity\+Map \&}]{entity\+Map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Event called when the observer notify the subscriber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to notify \\
+\hline
+{\em entity\+Map} & The entity map \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Plugin_1_1Subscriber_a8374ebeab718041dbc3c6291bccd9e1b}{Ray\+Tracer\+::\+Plugin\+::\+Subscriber}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Plugin/Plugin\+Manager.\+hpp\item 
+src/\+Plugin/Plugin\+Manager.\+cpp\end{DoxyCompactItemize}

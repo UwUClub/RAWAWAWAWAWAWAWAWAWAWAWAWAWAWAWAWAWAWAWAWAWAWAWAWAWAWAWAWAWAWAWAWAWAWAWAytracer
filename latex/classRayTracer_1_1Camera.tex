@@ -1,0 +1,98 @@
+\hypertarget{classRayTracer_1_1Camera}{}\doxysection{Ray\+Tracer\+::Camera Class Reference}
+\label{classRayTracer_1_1Camera}\index{RayTracer::Camera@{RayTracer::Camera}}
+Inheritance diagram for Ray\+Tracer\+::Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRayTracer_1_1Camera}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRayTracer_1_1Camera_a5b01626517d9be1fdea1f597f185fd9b}{set\+Position}} (\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&position) override
+\begin{DoxyCompactList}\small\item\em Set the position of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Camera_a968a73c266b4956fad1b5d9ecc1f23cc}\label{classRayTracer_1_1Camera_a968a73c266b4956fad1b5d9ecc1f23cc}} 
+void {\bfseries set\+Rotation} (const \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} \&rotation)
+\item 
+\mbox{\Hypertarget{classRayTracer_1_1Camera_ab3a0239391407340df3b73274bab1247}\label{classRayTracer_1_1Camera_ab3a0239391407340df3b73274bab1247}} 
+void {\bfseries set\+Resolution} (const std\+::pair$<$ int, int $>$ \&resolution)
+\item 
+\mbox{\Hypertarget{classRayTracer_1_1Camera_a6b7bfc9d133066895f9c7c9cd88623ec}\label{classRayTracer_1_1Camera_a6b7bfc9d133066895f9c7c9cd88623ec}} 
+void {\bfseries set\+Field\+Of\+View} (float fov)
+\item 
+\mbox{\Hypertarget{classRayTracer_1_1Camera_ac69556da5a3db0e88ad68f6463d6eb1f}\label{classRayTracer_1_1Camera_ac69556da5a3db0e88ad68f6463d6eb1f}} 
+Entity\+::\+Entity\+Type \mbox{\hyperlink{classRayTracer_1_1Camera_ac69556da5a3db0e88ad68f6463d6eb1f}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get the type of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Camera_accf931cd9774b96556c7fd33f7160a93}{translate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Translate the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Camera_ad4cf2a726b0bbc6053dd01b028b5f0b0}{rotate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Rotate the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Camera_ab7af3f04a12fb6ee265463edc0b8d247}\label{classRayTracer_1_1Camera_ab7af3f04a12fb6ee265463edc0b8d247}} 
+const \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& \mbox{\hyperlink{classRayTracer_1_1Camera_ab7af3f04a12fb6ee265463edc0b8d247}{get\+Position}} () override
+\begin{DoxyCompactList}\small\item\em Get the position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Camera_ad4cf2a726b0bbc6053dd01b028b5f0b0}\label{classRayTracer_1_1Camera_ad4cf2a726b0bbc6053dd01b028b5f0b0}} 
+\index{RayTracer::Camera@{RayTracer::Camera}!rotate@{rotate}}
+\index{rotate@{rotate}!RayTracer::Camera@{RayTracer::Camera}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Camera\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Rotate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to rotate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a8a944eaa8c9cb7f33dbee91b09db4a0e}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Camera_a5b01626517d9be1fdea1f597f185fd9b}\label{classRayTracer_1_1Camera_a5b01626517d9be1fdea1f597f185fd9b}} 
+\index{RayTracer::Camera@{RayTracer::Camera}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RayTracer::Camera@{RayTracer::Camera}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Camera\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the position of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The position of the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a34ea96ceb9a82fcc2de7dc8386fbc4bc}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Camera_accf931cd9774b96556c7fd33f7160a93}\label{classRayTracer_1_1Camera_accf931cd9774b96556c7fd33f7160a93}} 
+\index{RayTracer::Camera@{RayTracer::Camera}!translate@{translate}}
+\index{translate@{translate}!RayTracer::Camera@{RayTracer::Camera}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Camera\+::translate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Translate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to translate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a0a9f51d83ad149326677595964684565}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+plugins/\+Camera/Camera.\+hpp\item 
+plugins/\+Camera/Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,89 @@
+\hypertarget{classRayTracer_1_1Light_1_1PointLight}{}\doxysection{Ray\+Tracer\+::Light\+::Point\+Light Class Reference}
+\label{classRayTracer_1_1Light_1_1PointLight}\index{RayTracer::Light::PointLight@{RayTracer::Light::PointLight}}
+Inheritance diagram for Ray\+Tracer\+::Light\+::Point\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRayTracer_1_1Light_1_1PointLight}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLight_a3af061f46ae79a45a2eec31c27392395}{set\+Position}} (\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&point) override
+\begin{DoxyCompactList}\small\item\em Set the position of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLight_ad9a29cfe85dfe058f049180df5226826}\label{classRayTracer_1_1Light_1_1PointLight_ad9a29cfe85dfe058f049180df5226826}} 
+Entity\+::\+Entity\+Type \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLight_ad9a29cfe85dfe058f049180df5226826}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get the type of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLight_a0aead5daaa669acd290e76e12eaa6125}{rotate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Rotate the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLight_aa6941532687cd08f77259c748281ad76}{translate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Translate the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLight_a1ce300b7f53e414d7fd3ae8016e98b9e}\label{classRayTracer_1_1Light_1_1PointLight_a1ce300b7f53e414d7fd3ae8016e98b9e}} 
+const \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& \mbox{\hyperlink{classRayTracer_1_1Light_1_1PointLight_a1ce300b7f53e414d7fd3ae8016e98b9e}{get\+Position}} () override
+\begin{DoxyCompactList}\small\item\em Get the position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLight_a0aead5daaa669acd290e76e12eaa6125}\label{classRayTracer_1_1Light_1_1PointLight_a0aead5daaa669acd290e76e12eaa6125}} 
+\index{RayTracer::Light::PointLight@{RayTracer::Light::PointLight}!rotate@{rotate}}
+\index{rotate@{rotate}!RayTracer::Light::PointLight@{RayTracer::Light::PointLight}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Light\+::\+Point\+Light\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Rotate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to rotate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a8a944eaa8c9cb7f33dbee91b09db4a0e}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLight_a3af061f46ae79a45a2eec31c27392395}\label{classRayTracer_1_1Light_1_1PointLight_a3af061f46ae79a45a2eec31c27392395}} 
+\index{RayTracer::Light::PointLight@{RayTracer::Light::PointLight}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RayTracer::Light::PointLight@{RayTracer::Light::PointLight}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Light\+::\+Point\+Light\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the position of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The position of the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a34ea96ceb9a82fcc2de7dc8386fbc4bc}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Light_1_1PointLight_aa6941532687cd08f77259c748281ad76}\label{classRayTracer_1_1Light_1_1PointLight_aa6941532687cd08f77259c748281ad76}} 
+\index{RayTracer::Light::PointLight@{RayTracer::Light::PointLight}!translate@{translate}}
+\index{translate@{translate}!RayTracer::Light::PointLight@{RayTracer::Light::PointLight}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Light\+::\+Point\+Light\+::translate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Translate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to translate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a0a9f51d83ad149326677595964684565}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+plugins/\+Light/Point\+Light.\+hpp\item 
+plugins/\+Light/Point\+Light.\+cpp\end{DoxyCompactItemize}

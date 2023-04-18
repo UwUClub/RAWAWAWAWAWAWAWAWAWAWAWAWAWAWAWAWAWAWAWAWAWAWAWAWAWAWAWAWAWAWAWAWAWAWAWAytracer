@@ -1,0 +1,119 @@
+\hypertarget{classRayTracer_1_1Parser_1_1Parser}{}\doxysection{Ray\+Tracer\+::Parser\+::Parser Class Reference}
+\label{classRayTracer_1_1Parser_1_1Parser}\index{RayTracer::Parser::Parser@{RayTracer::Parser::Parser}}
+
+
+The \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}} class, parse the config file and add the camera, primitives and light to the scene.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_1_1ParserException}{Parser\+Exception}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}} Exception class, throw when the config file is not valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_acd1382f72e05587b060abae9fe5e9b8c}{Parser}} (char $\ast$$\ast$av, \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_ab1b2a933f0955b30c8875ecd3cc3f26c}{Create\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Parse the config file and add the camera to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_a3ffde9b2272f75ff4aa1bdb83b53705f}{Create\+Primitive}} (\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Parse the config file and add the primitives to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_a92d411ad7cb6df87596c379cf7720824}{Create\+Light}} (\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Parse the config file and add the lights to the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}} class, parse the config file and add the camera, primitives and light to the scene. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1Parser_acd1382f72e05587b060abae9fe5e9b8c}\label{classRayTracer_1_1Parser_1_1Parser_acd1382f72e05587b060abae9fe5e9b8c}} 
+\index{RayTracer::Parser::Parser@{RayTracer::Parser::Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!RayTracer::Parser::Parser@{RayTracer::Parser::Parser}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily Ray\+Tracer\+::\+Parser\+::\+Parser\+::\+Parser (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{av,  }\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$$\ast$} & arguments of the program \\
+\hline
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & scene to add the camera, primitives and light to \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_1_1ParserException}{Parser\+Exception}}} & if the config file is not valid \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1Parser_ab1b2a933f0955b30c8875ecd3cc3f26c}\label{classRayTracer_1_1Parser_1_1Parser_ab1b2a933f0955b30c8875ecd3cc3f26c}} 
+\index{RayTracer::Parser::Parser@{RayTracer::Parser::Parser}!CreateCamera@{CreateCamera}}
+\index{CreateCamera@{CreateCamera}!RayTracer::Parser::Parser@{RayTracer::Parser::Parser}}
+\doxysubsubsection{\texorpdfstring{CreateCamera()}{CreateCamera()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Parser\+::\+Parser\+::\+Create\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parse the config file and add the camera to the scene. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_1_1ParserException}{Parser\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1Parser_a92d411ad7cb6df87596c379cf7720824}\label{classRayTracer_1_1Parser_1_1Parser_a92d411ad7cb6df87596c379cf7720824}} 
+\index{RayTracer::Parser::Parser@{RayTracer::Parser::Parser}!CreateLight@{CreateLight}}
+\index{CreateLight@{CreateLight}!RayTracer::Parser::Parser@{RayTracer::Parser::Parser}}
+\doxysubsubsection{\texorpdfstring{CreateLight()}{CreateLight()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Parser\+::\+Parser\+::\+Create\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Parse the config file and add the lights to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & scene to add the lights to \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_1_1ParserException}{Parser\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1Parser_a3ffde9b2272f75ff4aa1bdb83b53705f}\label{classRayTracer_1_1Parser_1_1Parser_a3ffde9b2272f75ff4aa1bdb83b53705f}} 
+\index{RayTracer::Parser::Parser@{RayTracer::Parser::Parser}!CreatePrimitive@{CreatePrimitive}}
+\index{CreatePrimitive@{CreatePrimitive}!RayTracer::Parser::Parser@{RayTracer::Parser::Parser}}
+\doxysubsubsection{\texorpdfstring{CreatePrimitive()}{CreatePrimitive()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Parser\+::\+Parser\+::\+Create\+Primitive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Parse the config file and add the primitives to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & scene to add the primitives to \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser_1_1ParserException}{Parser\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Parser/Parser.\+hpp\item 
+src/\+Parser/Parser.\+cpp\end{DoxyCompactItemize}

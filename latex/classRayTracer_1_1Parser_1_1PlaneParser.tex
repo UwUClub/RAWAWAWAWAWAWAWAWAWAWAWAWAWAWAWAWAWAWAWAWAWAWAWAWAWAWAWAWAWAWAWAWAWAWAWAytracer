@@ -1,0 +1,107 @@
+\hypertarget{classRayTracer_1_1Parser_1_1PlaneParser}{}\doxysection{Ray\+Tracer\+::Parser\+::Plane\+Parser Class Reference}
+\label{classRayTracer_1_1Parser_1_1PlaneParser}\index{RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}}
+
+
+Plane \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}}, parse the plane from the config file.  
+
+
+
+
+{\ttfamily \#include $<$Plane\+Parser.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classRayTracer_1_1Parser_1_1PlaneParser_acbb9a1078370a2c50a38da1c9b6f0a61}{get\+Plane\+Axis}} (const libconfig\+::\+Setting \&plane)
+\begin{DoxyCompactList}\small\item\em Get the Plane Axis object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& \mbox{\hyperlink{classRayTracer_1_1Parser_1_1PlaneParser_a4037f824edee2ff7ccd366992b73541d}{get\+Plane\+Position}} (const libconfig\+::\+Setting \&plane, const std\+::string \&axis)
+\begin{DoxyCompactList}\small\item\em Get the Plane Position object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} \mbox{\hyperlink{classRayTracer_1_1Parser_1_1PlaneParser_ae3fce7e84cd517bd2538f9fda1cf843a}{get\+Plane\+Color}} (const libconfig\+::\+Setting \&plane)
+\begin{DoxyCompactList}\small\item\em Get the Plane Color object. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classRayTracer_1_1Parser_1_1PlaneParser_ad3a1ab06ee2bf48573638e47c38aa3c8}{create\+Plane}} (const libconfig\+::\+Setting \&plane, \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Create a Plane object and add it to the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Plane \mbox{\hyperlink{classRayTracer_1_1Parser_1_1Parser}{Parser}}, parse the plane from the config file. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1PlaneParser_ad3a1ab06ee2bf48573638e47c38aa3c8}\label{classRayTracer_1_1Parser_1_1PlaneParser_ad3a1ab06ee2bf48573638e47c38aa3c8}} 
+\index{RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}!createPlane@{createPlane}}
+\index{createPlane@{createPlane}!RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}}
+\doxysubsubsection{\texorpdfstring{createPlane()}{createPlane()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Parser\+::\+Plane\+Parser\+::create\+Plane (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{plane,  }\item[{\mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a Plane object and add it to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & plane setting from the config file \\
+\hline
+{\em \mbox{\hyperlink{classRayTracer_1_1Scene_1_1Scene}{Ray\+Tracer\+::\+Scene\+::\+Scene}}} & scene to add the plane to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1PlaneParser_acbb9a1078370a2c50a38da1c9b6f0a61}\label{classRayTracer_1_1Parser_1_1PlaneParser_acbb9a1078370a2c50a38da1c9b6f0a61}} 
+\index{RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}!getPlaneAxis@{getPlaneAxis}}
+\index{getPlaneAxis@{getPlaneAxis}!RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}}
+\doxysubsubsection{\texorpdfstring{getPlaneAxis()}{getPlaneAxis()}}
+{\footnotesize\ttfamily std\+::string Ray\+Tracer\+::\+Parser\+::\+Plane\+Parser\+::get\+Plane\+Axis (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{plane }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Plane Axis object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the plane setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String string of \char`\"{}x\char`\"{}, \char`\"{}y\char`\"{} or \char`\"{}z\char`\"{} (String) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1PlaneParser_ae3fce7e84cd517bd2538f9fda1cf843a}\label{classRayTracer_1_1Parser_1_1PlaneParser_ae3fce7e84cd517bd2538f9fda1cf843a}} 
+\index{RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}!getPlaneColor@{getPlaneColor}}
+\index{getPlaneColor@{getPlaneColor}!RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}}
+\doxysubsubsection{\texorpdfstring{getPlaneColor()}{getPlaneColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} Ray\+Tracer\+::\+Parser\+::\+Plane\+Parser\+::get\+Plane\+Color (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{plane }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Plane Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the plane setting from the config file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} the vector color of the plane 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRayTracer_1_1Parser_1_1PlaneParser_a4037f824edee2ff7ccd366992b73541d}\label{classRayTracer_1_1Parser_1_1PlaneParser_a4037f824edee2ff7ccd366992b73541d}} 
+\index{RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}!getPlanePosition@{getPlanePosition}}
+\index{getPlanePosition@{getPlanePosition}!RayTracer::Parser::PlaneParser@{RayTracer::Parser::PlaneParser}}
+\doxysubsubsection{\texorpdfstring{getPlanePosition()}{getPlanePosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRayTracer_1_1Point}{Ray\+Tracer\+::\+Point}} \& Ray\+Tracer\+::\+Parser\+::\+Plane\+Parser\+::get\+Plane\+Position (\begin{DoxyParamCaption}\item[{const libconfig\+::\+Setting \&}]{plane,  }\item[{const std\+::string \&}]{axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the Plane Position object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em libconfig\+::\+Setting} & the plane setting from the config file \\
+\hline
+{\em std\+::string} & the axis of the plane \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} the position of the plane 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Parser/Plane\+Parser.\+hpp\item 
+src/\+Parser/Plane\+Parser.\+cpp\end{DoxyCompactItemize}

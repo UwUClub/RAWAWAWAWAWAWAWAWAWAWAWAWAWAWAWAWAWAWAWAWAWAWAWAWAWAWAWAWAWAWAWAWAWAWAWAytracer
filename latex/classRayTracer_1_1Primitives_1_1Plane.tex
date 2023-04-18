@@ -1,0 +1,95 @@
+\hypertarget{classRayTracer_1_1Primitives_1_1Plane}{}\doxysection{Ray\+Tracer\+::Primitives\+::Plane Class Reference}
+\label{classRayTracer_1_1Primitives_1_1Plane}\index{RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}}
+Inheritance diagram for Ray\+Tracer\+::Primitives\+::Plane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRayTracer_1_1Primitives_1_1Plane}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRayTracer_1_1Primitives_1_1Plane_acbbca91cc43e3ede269c215d714bf70e}{set\+Position}} (\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&position) override
+\begin{DoxyCompactList}\small\item\em Set the position of the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_a813f32a673244624bc2c873aff3098ff}\label{classRayTracer_1_1Primitives_1_1Plane_a813f32a673244624bc2c873aff3098ff}} 
+void {\bfseries set\+Axis} (const std\+::string \&axis)
+\item 
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_a0a01e67bc9447c4b7089b4da2813a0bd}\label{classRayTracer_1_1Primitives_1_1Plane_a0a01e67bc9447c4b7089b4da2813a0bd}} 
+void {\bfseries set\+Color} (const \mbox{\hyperlink{structRayTracer_1_1Vector}{Ray\+Tracer\+::\+Vector}} \&color)
+\item 
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_a587103ea27030aa982ec2e2ab958375a}\label{classRayTracer_1_1Primitives_1_1Plane_a587103ea27030aa982ec2e2ab958375a}} 
+Entity\+::\+Entity\+Type \mbox{\hyperlink{classRayTracer_1_1Primitives_1_1Plane_a587103ea27030aa982ec2e2ab958375a}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Get the type of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Primitives_1_1Plane_acb39b37670a55e8a4ca7f0d3d0695507}{rotate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Rotate the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRayTracer_1_1Primitives_1_1Plane_a2cec3ed4cc2e5a27c0f442f9efa7dc14}{translate}} (\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&vector) override
+\begin{DoxyCompactList}\small\item\em Translate the entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_ab24c269701f971a5179b454ca2a55c7a}\label{classRayTracer_1_1Primitives_1_1Plane_ab24c269701f971a5179b454ca2a55c7a}} 
+const \mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \& \mbox{\hyperlink{classRayTracer_1_1Primitives_1_1Plane_ab24c269701f971a5179b454ca2a55c7a}{get\+Position}} () override
+\begin{DoxyCompactList}\small\item\em Get the position of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_acb39b37670a55e8a4ca7f0d3d0695507}\label{classRayTracer_1_1Primitives_1_1Plane_acb39b37670a55e8a4ca7f0d3d0695507}} 
+\index{RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}!rotate@{rotate}}
+\index{rotate@{rotate}!RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Primitives\+::\+Plane\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Rotate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to rotate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a8a944eaa8c9cb7f33dbee91b09db4a0e}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_acbbca91cc43e3ede269c215d714bf70e}\label{classRayTracer_1_1Primitives_1_1Plane_acbbca91cc43e3ede269c215d714bf70e}} 
+\index{RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Primitives\+::\+Plane\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Point}{Point}} \&}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the position of the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & The position of the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a34ea96ceb9a82fcc2de7dc8386fbc4bc}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+\mbox{\Hypertarget{classRayTracer_1_1Primitives_1_1Plane_a2cec3ed4cc2e5a27c0f442f9efa7dc14}\label{classRayTracer_1_1Primitives_1_1Plane_a2cec3ed4cc2e5a27c0f442f9efa7dc14}} 
+\index{RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}!translate@{translate}}
+\index{translate@{translate}!RayTracer::Primitives::Plane@{RayTracer::Primitives::Plane}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void Ray\+Tracer\+::\+Primitives\+::\+Plane\+::translate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRayTracer_1_1Vector}{Vector}} \&}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Translate the entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The vector to translate the entity \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classRayTracer_1_1Entity_1_1IEntity_a0a9f51d83ad149326677595964684565}{Ray\+Tracer\+::\+Entity\+::\+IEntity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+plugins/\+Primitives/Plane.\+hpp\item 
+plugins/\+Primitives/Plane.\+cpp\end{DoxyCompactItemize}
