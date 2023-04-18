@@ -10,12 +10,19 @@
 
 namespace RayTracer::Plugin
 {
+    /**
+     * @brief The Subscriber interface
+     */
     class Subscriber
     {
         public:
-            Subscriber() = default;
             virtual ~Subscriber() = default;
 
+            /**
+            * @brief Get notified by the observer
+            * @param message The message to notify
+            * @param entityMap The entity map
+            */
             virtual void getNotified(const std::string &message, Entity::IEntityMap &entityMap) = 0;
     };
 } // namespace RayTracer::Plugin
