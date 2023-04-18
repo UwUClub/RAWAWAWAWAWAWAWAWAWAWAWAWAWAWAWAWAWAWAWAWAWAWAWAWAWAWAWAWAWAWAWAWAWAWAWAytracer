@@ -12,8 +12,16 @@ namespace RayTracer::Entity
     class Entity : public IEntity
     {
         public:
-            Entity();
+            explicit Entity(EntityType type);
             ~Entity() override;
+
+            [[nodiscard]] EntityType getType() const override;
+
+            void translate(Vector &vector) override {};
+            void rotate(Vector &vector) override {};
+
+        private:
+            EntityType _type;
     };
 } // namespace RayTracer::Entity
 

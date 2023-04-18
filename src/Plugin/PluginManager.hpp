@@ -20,14 +20,14 @@ namespace RayTracer::Plugin
             ~PluginManager();
 
             void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
-            void deleteEntities(const std::string &name, Entity::IEntityVector &entities);
+            void deleteEntities(const std::string &name, Entity::IEntityMap &entities);
             void deleteEntities(Entity::IEntityMap &entities);
 
             Entity::IEntityPtr createEntity(const std::string &name);
 
         private:
             void loadPlugin(const std::string &path);
-            void unloadPlugin(const std::string &name);
+            void unloadPlugin(const std::string &name, Entity::IEntityMap &entities);
 
         private:
             std::unordered_map<std::string, std::unique_ptr<Plugin>> _pluginsMap;

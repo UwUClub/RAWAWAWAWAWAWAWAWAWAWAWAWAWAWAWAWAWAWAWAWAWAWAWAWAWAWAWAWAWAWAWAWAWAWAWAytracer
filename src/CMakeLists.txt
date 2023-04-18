@@ -8,3 +8,5 @@ target_sources(raytracer PRIVATE
 
 add_subdirectory(Plugin)
 add_subdirectory(Entity)
+add_subdirectory(Utils)
+add_subdirectory(ColorPlugin)
