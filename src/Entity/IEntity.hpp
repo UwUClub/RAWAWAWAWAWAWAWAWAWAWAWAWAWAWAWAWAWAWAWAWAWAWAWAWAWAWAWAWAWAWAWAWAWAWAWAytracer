@@ -12,6 +12,9 @@
 
 namespace RayTracer::Entity
 {
+    /**
+     * @brief The EntityType enum
+     */
     enum class EntityType {
         PRIMITIVE,
         LIGHT,
@@ -21,16 +24,30 @@ namespace RayTracer::Entity
         COLOR
     };
 
+    /**
+     * @brief The IEntity Interface
+     */
     class IEntity
     {
         public:
             virtual ~IEntity() = default;
 
+            /**
+             * @brief Get the type of the entity
+             */
             [[nodiscard]] virtual EntityType getType() const = 0;
 
             // virtual Color intersect(Scene &scene, Ray &viewRay) const = 0;
 
+            /**
+             * @brief Translate the entity
+             * @param vector The vector to translate the entity
+             */
             virtual void translate(Vector &vector) = 0;
+            /**
+             * @brief Rotate the entity
+             * @param vector The vector to rotate the entity
+             */
             virtual void rotate(Vector &vector) = 0;
     };
 

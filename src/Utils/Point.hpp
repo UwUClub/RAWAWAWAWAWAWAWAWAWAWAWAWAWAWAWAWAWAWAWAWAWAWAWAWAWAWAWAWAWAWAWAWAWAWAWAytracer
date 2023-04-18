@@ -9,11 +9,16 @@
 #define POINT_HPP_
 
 #include "Vector.hpp"
-namespace RayTracer {
+
+namespace RayTracer
+{
     struct Point {
         public:
-            Point(double x, double y, double z) : x(x), y(y), z(z) {};
-            ~Point();
+            Point(double x, double y, double z)
+                : x(x)
+                , y(y)
+                , z(z) {};
+            ~Point() = default;
             Point operator+(const Vector &other) const;
             double x;
             double y;
