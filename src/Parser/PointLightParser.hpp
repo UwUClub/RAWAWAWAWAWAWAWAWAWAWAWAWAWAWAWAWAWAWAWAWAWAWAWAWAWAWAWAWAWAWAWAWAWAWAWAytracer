@@ -19,7 +19,7 @@
                 explicit PointLightParser() = default;
                 ~PointLightParser() = default;
 
-                static RayTracer::Vector getPointLightPosition(const libconfig::Setting &pointLight);
+                static RayTracer::Point &getPointLightPosition(const libconfig::Setting &pointLight);
                 static void createPointLight(const libconfig::Setting &pointLight, RayTracer::Scene::Scene &scene);
             protected:
             private:

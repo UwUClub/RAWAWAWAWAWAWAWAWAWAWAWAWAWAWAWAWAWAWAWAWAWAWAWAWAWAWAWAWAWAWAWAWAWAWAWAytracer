@@ -8,15 +8,16 @@
 #include "SphereParser.hpp"
 
 namespace RayTracer::Parser {
-    RayTracer::Vector SphereParser::getSpherePosition(const libconfig::Setting &sphere) {
-        RayTracer::Vector pos(0, 0, 0);
+    RayTracer::Point &SphereParser::getSpherePosition(const libconfig::Setting &sphere) {
+        RayTracer::Point pos(0, 0, 0);
+        auto pos_ptr = std::make_shared<Point>(pos);
 
         if (!sphere.exists("x") || !sphere.exists("y") || !sphere.exists("z"))
             throw Parser::ParserException("Sphere is missing parameters (x, y, z).");
-        sphere.lookupValue("x", pos._x);
-        sphere.lookupValue("y", pos._y);
-        sphere.lookupValue("z", pos._z);
-        return pos;
+        sphere.lookupValue("x", pos_ptr->x);
+        sphere.lookupValue("y", pos_ptr->y);
+        sphere.lookupValue("z", pos_ptr->z);
+        return *pos_ptr;
     }
 
     int SphereParser::getSphereRadius(const libconfig::Setting &sphere) {

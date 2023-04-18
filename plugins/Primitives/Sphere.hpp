@@ -17,15 +17,16 @@
             explicit Sphere();
             ~Sphere() override = default;
 
-            void setPosition(const RayTracer::Vector &position);
+            void setPosition(RayTracer::Point &position) override;
             void setRadius(int radius);
             void setColor(const RayTracer::Vector &color);
 
             [[nodiscard]] Entity::EntityType getType() const override;
             void rotate(Vector &vector) override;
             void translate(Vector &vector) override;
+            const Point &getPosition() override { return _position; };
         private:
-            RayTracer::Vector _position;
+            RayTracer::Point _position;
             int _radius;
             RayTracer::Vector _color;
         };

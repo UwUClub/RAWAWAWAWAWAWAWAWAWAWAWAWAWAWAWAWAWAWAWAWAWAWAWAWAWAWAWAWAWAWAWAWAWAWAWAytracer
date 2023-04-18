@@ -12,7 +12,7 @@ namespace RayTracer {
     {
     }
 
-    void Camera::setPosition(const RayTracer::Vector &position)
+    void Camera::setPosition(Point &position)
     {
         _position = position;
     }
@@ -34,9 +34,9 @@ namespace RayTracer {
 
     void Camera::translate(Vector &vector)
     {
-        _position._x += vector._x;
-        _position._y += vector._y;
-        _position._z += vector._z;
+        _position.x += vector._x;
+        _position.y += vector._y;
+        _position.z += vector._z;
     }
 
     void Camera::rotate(Vector &vector)
@@ -45,5 +45,4 @@ namespace RayTracer {
         _rotation._y += vector._y;
         _rotation._z += vector._z;
     }
-
 } // RayTracer

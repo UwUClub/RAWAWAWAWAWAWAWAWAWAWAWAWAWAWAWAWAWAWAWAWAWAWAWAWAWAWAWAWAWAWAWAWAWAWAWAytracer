@@ -1,6 +1,9 @@
-//
-// Created by beafowl on 18/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** raytracer
+** File description:
+** DirectionalLight.hpp
+*/
 
 #ifndef RAYTRACER_DIRECTIONALLIGHT_HPP
     #define RAYTRACER_DIRECTIONALLIGHT_HPP

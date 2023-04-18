@@ -18,7 +18,7 @@
                 ~SphereParser() = default;
 
                 static void createSphere(const libconfig::Setting &sphere, RayTracer::Scene::Scene &scene);
-                static RayTracer::Vector getSpherePosition(const libconfig::Setting &sphere);
+                static RayTracer::Point &getSpherePosition(const libconfig::Setting &sphere);
                 static int getSphereRadius(const libconfig::Setting &sphere);
                 static RayTracer::Vector getSphereColor(const libconfig::Setting &sphere);
         };

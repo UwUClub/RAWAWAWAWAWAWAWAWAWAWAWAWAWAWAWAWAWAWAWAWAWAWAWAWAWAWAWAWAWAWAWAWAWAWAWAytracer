@@ -1,5 +1,8 @@
-//
-// Created by beafowl on 18/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** raytracer
+** File description:
+** DirectionalLight.cpp
+*/
 
 #include "DirectionalLight.hpp"

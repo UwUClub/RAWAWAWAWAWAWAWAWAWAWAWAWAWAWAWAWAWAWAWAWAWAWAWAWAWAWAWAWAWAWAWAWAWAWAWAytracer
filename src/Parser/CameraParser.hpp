@@ -20,7 +20,7 @@
 
                 static std::pair<int, int> getCameraResolution(const libconfig::Setting &camera);
                 static float getCameraFieldOfView(const libconfig::Setting &camera);
-                static RayTracer::Vector getCameraPosition(const libconfig::Setting &camera);
+                static RayTracer::Point &getCameraPosition(const libconfig::Setting &camera);
                 static RayTracer::Vector getCameraRotation(const libconfig::Setting &camera);
             protected:
             private:

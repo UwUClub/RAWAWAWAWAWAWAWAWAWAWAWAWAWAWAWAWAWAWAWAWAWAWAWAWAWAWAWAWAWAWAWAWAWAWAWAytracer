@@ -28,16 +28,17 @@ namespace RayTracer::Parser {
         return fov;
     }
 
-    RayTracer::Vector CameraParser::getCameraPosition(const libconfig::Setting &camera) {
-        RayTracer::Vector pos(0, 0, 0);
+    RayTracer::Point &CameraParser::getCameraPosition(const libconfig::Setting &camera) {
+        RayTracer::Point pos(0, 0, 0);
+        auto pos_ptr = std::make_shared<Point>(pos);
         const libconfig::Setting &position = camera["position"];
 
         if (!position.exists("x") || !position.exists("y") || !position.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
-        position.lookupValue("x", pos._x);
-        position.lookupValue("y", pos._y);
-        position.lookupValue("z", pos._z);
-        return pos;
+        position.lookupValue("x", pos_ptr->x);
+        position.lookupValue("y", pos_ptr->y);
+        position.lookupValue("z", pos_ptr->z);
+        return *pos_ptr;
     }
 
     RayTracer::Vector CameraParser::getCameraRotation(const libconfig::Setting &camera) {

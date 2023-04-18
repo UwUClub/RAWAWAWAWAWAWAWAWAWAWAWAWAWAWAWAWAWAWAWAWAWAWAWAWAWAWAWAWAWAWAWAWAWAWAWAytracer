@@ -8,14 +8,15 @@
 #include "PointLightParser.hpp"
 
 namespace RayTracer::Light {
-    RayTracer::Vector PointLightParser::getPointLightPosition(const libconfig::Setting &pointLight)
+    RayTracer::Point &PointLightParser::getPointLightPosition(const libconfig::Setting &pointLight)
     {
-        RayTracer::Vector position(0, 0, 0);
+        RayTracer::Point position(0, 0, 0);
+        auto pos_ptr = std::make_shared<Point>(position);
 
-        pointLight.lookupValue("x", position._x);
-        pointLight.lookupValue("y", position._y);
-        pointLight.lookupValue("z", position._z);
-        return position;
+        pointLight.lookupValue("x", pos_ptr->x);
+        pointLight.lookupValue("y", pos_ptr->y);
+        pointLight.lookupValue("z", pos_ptr->z);
+        return *pos_ptr;
     }
 
     void PointLightParser::createPointLight(const libconfig::Setting &pointLight, RayTracer::Scene::Scene &scene)

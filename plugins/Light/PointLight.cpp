@@ -1,13 +1,16 @@
-//
-// Created by beafowl on 18/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** raytracer
+** File description:
+** PointLight.cpp
+*/
 
 #include "PointLight.hpp"
 
 namespace RayTracer::Light {
-    PointLight::PointLight() : Light(), _position(0.0f, 0.0f, 0.0f) {}
+    PointLight::PointLight() : Light(), _position(0, 0, 0) {}
 
-    void PointLight::setPosition(const RayTracer::Vector &position)
+    void PointLight::setPosition(Point &position)
     {
         _position = position;
     }
@@ -19,15 +22,15 @@ namespace RayTracer::Light {
 
     void PointLight::translate(RayTracer::Vector &vector)
     {
-        _position._x += vector._x;
-        _position._y += vector._y;
-        _position._z += vector._z;
+        _position.x += vector._x;
+        _position.y += vector._y;
+        _position.z += vector._z;
     }
 
     void PointLight::rotate(RayTracer::Vector &vector)
     {
-        _position._x += vector._x;
-        _position._y += vector._y;
-        _position._z += vector._z;
+        _position.x += vector._x;
+        _position.y += vector._y;
+        _position.z += vector._z;
     }
 }

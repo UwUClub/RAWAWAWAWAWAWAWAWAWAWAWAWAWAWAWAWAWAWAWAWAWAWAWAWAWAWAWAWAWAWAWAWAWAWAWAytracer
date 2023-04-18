@@ -20,7 +20,7 @@
                 ~PlaneParser() = default;
 
                 static std::string getPlaneAxis(const libconfig::Setting &plane);
-                static int getPlanePosition(const libconfig::Setting &plane);
+                static RayTracer::Point &getPlanePosition(const libconfig::Setting &plane, const std::string &axis);
                 static RayTracer::Vector getPlaneColor(const libconfig::Setting &plane);
                 static void createPlane(const libconfig::Setting &plane, RayTracer::Scene::Scene &scene);
             protected:

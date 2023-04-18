@@ -1,6 +1,9 @@
-//
-// Created by beafowl on 18/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** raytracer
+** File description:
+** Plane.hpp
+*/
 
 #ifndef RAYTRACER_PLANE_HPP
     #define RAYTRACER_PLANE_HPP
@@ -14,16 +17,17 @@
             explicit Plane();
             ~Plane() override = default;
 
-            void setPosition(int position);
+            void setPosition(Point &position) override;
             void setAxis(const std::string &axis);
             void setColor(const RayTracer::Vector &color);
 
             [[nodiscard]] Entity::EntityType getType() const override;
             void rotate(Vector &vector) override;
             void translate(Vector &vector) override;
+            const Point &getPosition() override { return _position; };
         private:
             char _axis;
-            int _position;
+            RayTracer::Point _position;
             RayTracer::Vector _color;
         };
     }

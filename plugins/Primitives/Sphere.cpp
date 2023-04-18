@@ -1,13 +1,16 @@
-//
-// Created by beafowl on 18/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** raytracer
+** File description:
+** Sphere.cpp
+*/
 
 #include "Sphere.hpp"
 
 namespace RayTracer::Primitives {
     Sphere::Sphere() : _position(0, 0, 0), _radius(0), _color(0, 0, 0) {}
 
-    void Sphere::setPosition(const RayTracer::Vector &position)
+    void Sphere::setPosition(RayTracer::Point &position)
     {
         _position = position;
     }
@@ -29,15 +32,15 @@ namespace RayTracer::Primitives {
 
     void Sphere::rotate(Vector &vector)
     {
-        _position._x += vector._x;
-        _position._y += vector._y;
-        _position._z += vector._z;
+        _position.x += vector._x;
+        _position.y += vector._y;
+        _position.z += vector._z;
     }
 
     void Sphere::translate(Vector &vector)
     {
-        _position._x += vector._x;
-        _position._y += vector._y;
-        _position._z += vector._z;
+        _position.x += vector._x;
+        _position.y += vector._y;
+        _position.z += vector._z;
     }
 }
