@@ -10,12 +10,13 @@
 #ifndef VECTOR_HPP_
 #define VECTOR_HPP_
 
-
-namespace RayTracer {
+namespace RayTracer
+{
     struct Vector {
         public:
             Vector(double x, double y, double z);
-            ~Vector();
+            ~Vector() = default;
+            
             auto operator<=>(const Vector &other) const;
             Vector operator+(const Vector &other) const;
             Vector operator-(const Vector &other) const;

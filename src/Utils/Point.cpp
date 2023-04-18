@@ -7,9 +7,10 @@
 
 #include "Point.hpp"
 
-namespace RayTracer {
+namespace RayTracer
+{
     Point Point::operator+(const Vector &other) const
     {
-        return Point(x + other._x, y + other._y, z + other._z);
+        return { x + other._x, y + other._y, z + other._z };
     }
 } // namespace RayTracer
