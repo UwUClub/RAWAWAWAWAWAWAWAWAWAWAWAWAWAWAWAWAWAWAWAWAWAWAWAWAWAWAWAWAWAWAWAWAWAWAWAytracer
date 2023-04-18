@@ -39,6 +39,10 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
+
+    - name: Install dependencies
+      run: |
+        sudo dnf install -y libconfig-devel
         
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
