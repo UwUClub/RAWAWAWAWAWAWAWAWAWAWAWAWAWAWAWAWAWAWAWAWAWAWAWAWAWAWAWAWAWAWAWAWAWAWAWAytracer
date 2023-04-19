@@ -14,4 +14,7 @@ set(EXEC_SRC
 		)
 
 add_library(${PROJECT_NAME} SHARED ${EXEC_SRC})
+
+target_include_directories(raytracer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+
 set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../../plugins PREFIX "")
