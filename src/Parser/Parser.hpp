@@ -14,9 +14,6 @@
 #include "Plane.hpp"
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
-#include "Parser/tmp/SphereParser.hpp"
-#include "Parser/tmp/PlaneParser.hpp"
-#include "Parser/tmp/PointLightParser.hpp"
 #include "CameraParser.hpp"
 #include "PluginManager.hpp"
 
