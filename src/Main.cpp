@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 //        pluginObserver.checkPlugins(entityMap);
 //    }
     RayTracer::Scene::Scene scene;
-    RayTracer::Parser::Parser parser(argv, scene);
+    RayTracer::Plugin::PluginManager pluginManager;
+    RayTracer::Parser::Parser parser(argv, scene, pluginManager);
     return 0;
 }
