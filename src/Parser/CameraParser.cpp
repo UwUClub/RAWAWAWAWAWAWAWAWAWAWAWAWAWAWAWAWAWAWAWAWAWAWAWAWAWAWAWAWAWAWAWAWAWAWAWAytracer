@@ -8,49 +8,58 @@
 #include "CameraParser.hpp"
 
 namespace RayTracer::Parser {
-    std::pair<int, int> CameraParser::getCameraResolution(const libconfig::Setting &camera) {
-        std::pair<int, int> res;
+    void CameraParser::getCameraResolution(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+        float width;
+        float height;
         const libconfig::Setting &resolution = camera["resolution"];
 
         if (!resolution.exists("width") || !resolution.exists("height"))
             throw Parser::ParserException("Camera is missing parameters (width, height).");
-        resolution.lookupValue("width", res.first);
-        resolution.lookupValue("height", res.second);
-        return res;
+        resolution.lookupValue("width", width);
+        resolution.lookupValue("height", height);
+        data.insert(std::make_pair("width", width));
+        data.insert(std::make_pair("height", height));
     }
 
-    float CameraParser::getCameraFieldOfView(const libconfig::Setting &camera) {
+    void CameraParser::getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
         float fov;
 
         if (!camera.exists("fieldOfView"))
             throw Parser::ParserException("Camera is missing parameters (fieldOfView).");
         camera.lookupValue("fieldOfView", fov);
-        return fov;
+        data.insert(std::make_pair("fov", fov));
     }
 
-    RayTracer::Point &CameraParser::getCameraPosition(const libconfig::Setting &camera) {
-        RayTracer::Point pos(0, 0, 0);
-        auto pos_ptr = std::make_shared<Point>(pos);
+    void CameraParser::getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+        float x;
+        float y;
+        float z;
         const libconfig::Setting &position = camera["position"];
 
         if (!position.exists("x") || !position.exists("y") || !position.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
-        position.lookupValue("x", pos_ptr->x);
-        position.lookupValue("y", pos_ptr->y);
-        position.lookupValue("z", pos_ptr->z);
-        return *pos_ptr;
+        position.lookupValue("x", x);
+        position.lookupValue("y", y);
+        position.lookupValue("z", z);
+        data.insert(std::make_pair("x", x));
+        data.insert(std::make_pair("y", y));
+        data.insert(std::make_pair("z", z));
     }
 
-    RayTracer::Vector CameraParser::getCameraRotation(const libconfig::Setting &camera) {
-        RayTracer::Vector rot(0, 0, 0);
+    void CameraParser::getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+        float x;
+        float y;
+        float z;
         const libconfig::Setting &rotation = camera["rotation"];
 
         std::cout << "Create camera" << std::endl;
         if (!rotation.exists("x") || !rotation.exists("y") || !rotation.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
-        rotation.lookupValue("x", rot._x);
-        rotation.lookupValue("y", rot._y);
-        rotation.lookupValue("z", rot._z);
-        return rot;
+        rotation.lookupValue("x", x);
+        rotation.lookupValue("y", y);
+        rotation.lookupValue("z", z);
+        data.insert(std::make_pair("r", x));
+        data.insert(std::make_pair("g", y));
+        data.insert(std::make_pair("b", z));
     }
 } // RayTracer

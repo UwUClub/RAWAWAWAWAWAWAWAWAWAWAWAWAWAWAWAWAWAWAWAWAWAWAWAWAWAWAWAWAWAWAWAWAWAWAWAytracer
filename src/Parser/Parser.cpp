@@ -7,12 +7,14 @@
 
 #include "Parser.hpp"
 #include "CameraParser.hpp"
-#include "SphereParser.hpp"
-#include "PlaneParser.hpp"
-#include "PointLightParser.hpp"
+#include "Parser/tmp/SphereParser.hpp"
+#include "Parser/tmp/PlaneParser.hpp"
+#include "Parser/tmp/PointLightParser.hpp"
+#include "DataStructure.hpp"
+#include "PrimitivesParser.hpp"
 
 namespace RayTracer::Parser {
-    Parser::Parser(char **av, RayTracer::Scene::Scene &scene) : _cfg(), _scene(scene)
+    Parser::Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager) : _cfg(), _scene(scene), _pluginManager(pluginManager)
     {
         try {
             _cfg.readFile(av[1]);
@@ -39,35 +41,39 @@ namespace RayTracer::Parser {
 
     void Parser::CreateCamera()
     {
+        std::unordered_map<std::string, double> cameraData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("camera") || !root["camera"].isGroup())
             throw ParserException("No 'camera' setting in configuration file.");
         const libconfig::Setting &camera = root["camera"];
         if (!camera.exists("resolution") || !camera.exists("position") || !camera.exists("rotation") || !camera.exists("fieldOfView"))
             throw ParserException("Camera is missing parameters (resolution, position, rotation, fieldOfView).");
-        RayTracer::Camera cam;
 
-        cam.setResolution(CameraParser::getCameraResolution(camera));
-        cam.setPosition(CameraParser::getCameraPosition(camera));
-        cam.setRotation(CameraParser::getCameraRotation(camera));
-        cam.setFieldOfView(CameraParser::getCameraFieldOfView(camera));
-        RayTracer::Entity::IEntityPtr cam_ptr = std::make_unique<RayTracer::Camera>(cam);
-        _scene.addEntity("camera", cam_ptr);
+        CameraParser::getCameraResolution(camera, cameraData);
+        CameraParser::getCameraPosition(camera, cameraData);
+        CameraParser::getCameraRotation(camera, cameraData);
+        CameraParser::getCameraFieldOfView(camera, cameraData);
+
+        auto camEntity = _pluginManager.createEntity("camera", cameraData);
+        _scene.addEntity("camera", camEntity);
     }
 
     void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene)
     {
+        std::unordered_map<std::string, double> primitiveData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("primitives") || !root["primitives"].isGroup())
             throw ParserException("No 'primitives' setting in configuration file.");
         const libconfig::Setting &primitives = root["primitives"];
-        if (!primitives.exists("spheres") || !primitives.exists("planes"))
+        if (!primitives.exists("spheres") || !primitives.exists("planes") || !primitives.exists("cylinders") || !primitives.exists("cones"))
             throw ParserException("Primitives is missing parameters (spheres, planes, cylinders, cones).");
 
-        if (primitives.exists("spheres") && primitives["spheres"].isList())
-            SphereParser::createSphere(primitives["spheres"], scene);
         if (primitives.exists("planes") && primitives["planes"].isList())
-            PlaneParser::createPlane(primitives["planes"], scene);
+            PrimitivesParser::createPlane(primitives["planes"], primitiveData, _pluginManager,scene);
+        else {
+            for (int i = 0; i < primitives.getLength(); i++)
+                PrimitivesParser::createPrimitive(primitives[i], primitiveData, _pluginManager, scene);
+        }
     }
 
     void Parser::CreateLight(RayTracer::Scene::Scene &scene)

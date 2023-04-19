@@ -17,4 +17,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} config++)
 
 add_subdirectory(src)
-add_subdirectory(plugins)
+add_subdirectory(lib)

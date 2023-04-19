@@ -25,6 +25,12 @@ namespace RayTracer::Entity
         COLOR
     };
 
+    typedef enum Axis: double {
+        X = 0,
+        Y = 1,
+        Z = 2
+    } Axis;
+
     /**
      * @brief The IEntity Interface
      */

@@ -7,7 +7,5 @@ target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} config++)
 target_sources(raytracer PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/CameraParser.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/Parser.cpp"
-		"${CMAKE_CURRENT_SOURCE_DIR}/PlaneParser.cpp"
-		"${CMAKE_CURRENT_SOURCE_DIR}/PointLightParser.cpp"
-		"${CMAKE_CURRENT_SOURCE_DIR}/SphereParser.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/PrimitivesParser.cpp"
 		)

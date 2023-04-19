@@ -18,10 +18,10 @@
                 explicit CameraParser() = default;
                 ~CameraParser() = default;
 
-                static std::pair<int, int> getCameraResolution(const libconfig::Setting &camera);
-                static float getCameraFieldOfView(const libconfig::Setting &camera);
-                static RayTracer::Point &getCameraPosition(const libconfig::Setting &camera);
-                static RayTracer::Vector getCameraRotation(const libconfig::Setting &camera);
+                static void getCameraResolution(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
+                static void getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
+                static void getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
+                static void getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
             protected:
             private:
         };

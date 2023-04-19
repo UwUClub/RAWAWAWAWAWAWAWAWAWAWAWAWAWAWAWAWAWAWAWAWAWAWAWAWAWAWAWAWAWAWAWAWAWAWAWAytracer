@@ -6,18 +6,19 @@
 #define RAYTRACER_PARSER_HPP
 
 #include <fstream>
+#include <libconfig.h++>
+#include <utility>
 #include "Scene.hpp"
 #include "Camera.hpp"
 #include "Sphere.hpp"
 #include "Plane.hpp"
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
-#include "SphereParser.hpp"
-#include "PlaneParser.hpp"
-#include "PointLightParser.hpp"
+#include "Parser/tmp/SphereParser.hpp"
+#include "Parser/tmp/PlaneParser.hpp"
+#include "Parser/tmp/PointLightParser.hpp"
 #include "CameraParser.hpp"
-#include <libconfig.h++>
-#include <utility>
+#include "PluginManager.hpp"
 
 namespace RayTracer::Parser
 {
@@ -37,7 +38,7 @@ namespace RayTracer::Parser
                     std::string _message;
             };
             ~Parser() = default;
-            explicit Parser(char **av, RayTracer::Scene::Scene &scene);
+            explicit Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager);
             void CreateCamera();
             void CreatePrimitive(RayTracer::Scene::Scene &scene);
             void CreateLight(RayTracer::Scene::Scene &scene);
@@ -45,6 +46,7 @@ namespace RayTracer::Parser
         private:
             libconfig::Config _cfg;
             RayTracer::Scene::Scene &_scene;
+            RayTracer::Plugin::PluginManager &_pluginManager;
     };
 } // RayTracer
 
