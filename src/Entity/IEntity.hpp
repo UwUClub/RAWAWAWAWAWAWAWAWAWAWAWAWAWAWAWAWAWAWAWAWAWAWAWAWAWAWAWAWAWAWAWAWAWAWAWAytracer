@@ -7,6 +7,7 @@
 
 #include "Utils/Vector.hpp"
 #include "Utils/Point.hpp"
+#include "Utils/Euler.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -52,15 +53,26 @@ namespace RayTracer::Entity
             virtual void setPosition(Point &point) = 0;
 
             /**
+             * @brief Get the angle of the entity
+             */
+            virtual Euler const &getAngle() = 0;
+
+            /**
+             * @brief Set the angle of the entity
+             * @param angle The angle of the entity
+             */
+            virtual void setAngle(Euler &angle) = 0;
+
+            /**
              * @brief Translate the entity
              * @param vector The vector to translate the entity
              */
             virtual void translate(Vector &vector) = 0;
             /**
              * @brief Rotate the entity
-             * @param vector The vector to rotate the entity
+             * @param angle The angle to rotate the entity
              */
-            virtual void rotate(Vector &vector) = 0;
+            virtual void rotate(Euler &angle) = 0;
     };
 
     using IEntityPtr = std::unique_ptr<IEntity>;
