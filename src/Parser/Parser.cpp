@@ -7,11 +7,8 @@
 
 #include "Parser.hpp"
 #include "CameraParser.hpp"
-#include "Parser/tmp/SphereParser.hpp"
-#include "Parser/tmp/PlaneParser.hpp"
-#include "Parser/tmp/PointLightParser.hpp"
-#include "DataStructure.hpp"
 #include "PrimitivesParser.hpp"
+#include "LightParser.hpp"
 
 namespace RayTracer::Parser {
     Parser::Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager) : _cfg(), _scene(scene), _pluginManager(pluginManager)
@@ -78,6 +75,7 @@ namespace RayTracer::Parser {
 
     void Parser::CreateLight(RayTracer::Scene::Scene &scene)
     {
+        std::unordered_map<std::string, double> lightData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("lights") || !root["lights"].isGroup())
             throw ParserException("No 'lights' setting in configuration file.");
@@ -86,6 +84,6 @@ namespace RayTracer::Parser {
             throw ParserException("Lights is missing parameters (point, directional).");
 
         if (lights.exists("point") && lights["point"].isList())
-            Light::PointLightParser::createPointLight(lights["point"], scene);
+            Light::LightParser::createLight(lights["point"], lightData,_pluginManager, scene);
     }
 } // RayTracer

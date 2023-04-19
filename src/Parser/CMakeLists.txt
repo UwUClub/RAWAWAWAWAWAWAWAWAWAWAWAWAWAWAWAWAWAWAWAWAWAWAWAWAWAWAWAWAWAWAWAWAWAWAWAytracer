@@ -8,4 +8,5 @@ target_sources(raytracer PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/CameraParser.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/Parser.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/PrimitivesParser.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/LightParser.cpp"
 		)
