@@ -14,6 +14,10 @@
     #include "Color.hpp"
 
     namespace RayTracer::Entity {
+        /**
+         * @brief The DataEntity struct
+         * @details This struct is used to store the data of the entities
+         */
         struct DataEntity {
             int planePos;
             double height;
