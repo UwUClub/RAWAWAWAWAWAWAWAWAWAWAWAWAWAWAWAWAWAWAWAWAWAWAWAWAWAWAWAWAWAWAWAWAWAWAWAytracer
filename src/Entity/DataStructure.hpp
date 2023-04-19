@@ -15,11 +15,13 @@
 
     namespace RayTracer::Entity {
         struct DataEntity {
+            int planePos;
+            double height;
+            double radius;
+            std::string axis;
             RayTracer::Point position;
             RayTracer::Entity::Color color;
-            double radius;
-            double height;
-        };
+        } typedef DataEntity;
     } // RayTracer
 
 #endif //RAYTRACER_DATASTRUCTURE_HPP
