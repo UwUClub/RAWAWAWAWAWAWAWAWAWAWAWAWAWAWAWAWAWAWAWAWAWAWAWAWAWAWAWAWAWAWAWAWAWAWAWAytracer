@@ -8,6 +8,7 @@
 #include <fstream>
 #include <libconfig.h++>
 #include <utility>
+#include <iostream>
 #include "Scene.hpp"
 #include "Camera.hpp"
 #include "Sphere.hpp"

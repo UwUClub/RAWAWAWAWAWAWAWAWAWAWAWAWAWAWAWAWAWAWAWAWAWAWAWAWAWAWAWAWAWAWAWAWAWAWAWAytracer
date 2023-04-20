@@ -10,7 +10,7 @@
 namespace RayTracer::Primitives {
     Sphere::Sphere() : _position(0, 0, 0), _radius(0), _color(0, 0, 0) {}
 
-    void Sphere::setPosition(RayTracer::Point &position)
+    void Sphere::setPosition(const RayTracer::Point &position)
     {
         _position = position;
     }
@@ -30,17 +30,17 @@ namespace RayTracer::Primitives {
         return Entity::EntityType::PRIMITIVE;
     }
 
-    void Sphere::rotate(Vector &vector)
+    void Sphere::rotate(const Vector &vector)
     {
-        _position.x += vector._x;
-        _position.y += vector._y;
-        _position.z += vector._z;
+        _position._x += vector._x;
+        _position._y += vector._y;
+        _position._z += vector._z;
     }
 
-    void Sphere::translate(Vector &vector)
+    void Sphere::translate(const Vector &vector)
     {
-        _position.x += vector._x;
-        _position.y += vector._y;
-        _position.z += vector._z;
+        _position._x += vector._x;
+        _position._y += vector._y;
+        _position._z += vector._z;
     }
 }

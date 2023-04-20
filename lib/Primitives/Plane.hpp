@@ -17,13 +17,13 @@
             explicit Plane();
             ~Plane() override = default;
 
-            void setPosition(Point &position) override;
+            void setPosition(const Point &position) override;
             void setAxis(const std::string &axis);
             void setColor(const RayTracer::Vector &color);
 
             [[nodiscard]] Entity::EntityType getType() const override;
-            void rotate(Vector &vector) override;
-            void translate(Vector &vector) override;
+            void rotate(const Vector &vector) override;
+            void translate(const Vector &vector) override;
             const Point &getPosition() override { return _position; };
         private:
             char _axis;

@@ -12,7 +12,7 @@ namespace RayTracer::Primitives {
     {
     }
 
-    void Plane::setPosition(Point &position)
+    void Plane::setPosition(const Point &position)
     {
         _position = position;
     }
@@ -32,7 +32,7 @@ namespace RayTracer::Primitives {
         return Entity::EntityType::PRIMITIVE;
     }
 
-    void Plane::rotate(Vector &vector)
+    void Plane::rotate(const Vector &vector)
     {
         (void)(vector);
         if (_axis == 'X')
@@ -45,10 +45,10 @@ namespace RayTracer::Primitives {
             _axis = 'Z';
     }
 
-    void Plane::translate(Vector &vector)
+    void Plane::translate(const Vector &vector)
     {
-        _position.x += vector._x;
-        _position.y += vector._y;
-        _position.z += vector._z;
+        _position._x += vector._x;
+        _position._y += vector._y;
+        _position._z += vector._z;
     }
 }

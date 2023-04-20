@@ -12,7 +12,7 @@ namespace RayTracer {
     {
     }
 
-    void Camera::setPosition(Point &position)
+    void Camera::setPosition(const Point &position)
     {
         _position = position;
     }
@@ -32,14 +32,14 @@ namespace RayTracer {
         fieldOfView = fov;
     }
 
-    void Camera::translate(Vector &vector)
+    void Camera::translate(const Vector &vector)
     {
-        _position.x += vector._x;
-        _position.y += vector._y;
-        _position.z += vector._z;
+        _position._x += vector._x;
+        _position._y += vector._y;
+        _position._z += vector._z;
     }
 
-    void Camera::rotate(Vector &vector)
+    void Camera::rotate(const Vector &vector)
     {
         _rotation._x += vector._x;
         _rotation._y += vector._y;

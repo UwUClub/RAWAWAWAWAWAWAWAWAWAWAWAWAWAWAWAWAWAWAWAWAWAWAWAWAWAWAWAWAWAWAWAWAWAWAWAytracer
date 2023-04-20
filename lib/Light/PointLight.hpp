@@ -18,10 +18,10 @@
             explicit PointLight();
             ~PointLight() override = default;
 
-            void setPosition(Point &point) override;
+            void setPosition(const Point &point) override;
             [[nodiscard]] Entity::EntityType getType() const override;
-            void rotate(Vector &vector) override;
-            void translate(Vector &vector) override;
+            void rotate(const Vector &vector) override;
+            void translate(const Vector &vector) override;
             const RayTracer::Point &getPosition() override { return _position; };
         private:
             Point _position;
