@@ -45,7 +45,7 @@ namespace RayTracer::Plugin
              * @throw PluginException if the plugin doesn't exist
              * @return The entity created as a unique_ptr
              */
-            Entity::IEntityPtr createEntity(const std::string &name);
+            Entity::IEntityPtr createEntity(const std::string &name, Entity::DataEntityMap &data);
 
             /**
              * @brief Event called when the observer notify the subscriber

@@ -25,7 +25,7 @@ extern "C" {
  * @return A pointer to the new entity
  * @note The pointer must be deleted by the plugin
  */
-EXPORT RayTracer::Entity::IEntity *createEntity();
+EXPORT RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &data);
 
 /*
  * @brief Get the name of the plugin

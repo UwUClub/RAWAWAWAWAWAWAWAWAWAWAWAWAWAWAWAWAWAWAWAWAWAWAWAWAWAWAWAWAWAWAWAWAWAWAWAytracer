@@ -33,7 +33,7 @@ namespace RayTracer::Plugin
              * @return The entity of the plugin
              * @throw PluginException if the plugin doesn't have the createEntity function
              */
-            Entity::IEntity *createEntity();
+            Entity::IEntity *createEntity(Entity::DataEntityMap &data);
             /**
              * @brief Get the name of the plugin
              * @return The name of the plugin which is the name of all the entities created by the
