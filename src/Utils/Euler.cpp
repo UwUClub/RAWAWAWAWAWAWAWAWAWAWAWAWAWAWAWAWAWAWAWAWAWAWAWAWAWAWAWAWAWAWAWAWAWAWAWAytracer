@@ -17,7 +17,12 @@ namespace RayTracer
     {
         _dist = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
     }
-    
+
+    Euler Euler::rad() const
+    {
+        return { _x * M_PI / 180, _y * M_PI / 180, _z * M_PI / 180 };
+    }
+
     auto Euler::operator<=>(const Euler &other) const
     {
         return (_x == other._x && _y == other._y && _z == other._z);

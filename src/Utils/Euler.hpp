@@ -16,7 +16,9 @@ namespace RayTracer
         public:
             Euler(double x, double y, double z);
             ~Euler() = default;
-            
+
+            Euler rad() const;
+
             auto operator<=>(const Euler &other) const;
             Euler operator+(const Euler &other) const;
             Euler operator-(const Euler &other) const;
