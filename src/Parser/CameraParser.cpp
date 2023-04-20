@@ -8,7 +8,8 @@
 #include "CameraParser.hpp"
 
 namespace RayTracer::Parser {
-    void CameraParser::getCameraResolution(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+    void CameraParser::getCameraResolution(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    {
         float width;
         float height;
         const libconfig::Setting &resolution = camera["resolution"];
@@ -21,7 +22,8 @@ namespace RayTracer::Parser {
         data.insert(std::make_pair("height", height));
     }
 
-    void CameraParser::getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+    void CameraParser::getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    {
         float fov;
 
         if (!camera.exists("fieldOfView"))
@@ -30,7 +32,8 @@ namespace RayTracer::Parser {
         data.insert(std::make_pair("fov", fov));
     }
 
-    void CameraParser::getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+    void CameraParser::getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    {
         float x;
         float y;
         float z;
@@ -46,7 +49,8 @@ namespace RayTracer::Parser {
         data.insert(std::make_pair("z", z));
     }
 
-    void CameraParser::getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data) {
+    void CameraParser::getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    {
         float x;
         float y;
         float z;
@@ -61,5 +65,15 @@ namespace RayTracer::Parser {
         data.insert(std::make_pair("r", x));
         data.insert(std::make_pair("g", y));
         data.insert(std::make_pair("b", z));
+    }
+
+    void CameraParser::createCamera(const libconfig::Setting &camera, std::unordered_map<std::string, double> &cameraData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
+    {
+        getCameraPosition(camera, cameraData);
+        getCameraRotation(camera, cameraData);
+        getCameraResolution(camera, cameraData);
+        getCameraFieldOfView(camera, cameraData);
+        auto cameraEntity = pluginManager.createEntity("Camera", cameraData);
+        scene.addEntity("Camera", cameraEntity);
     }
 } // RayTracer

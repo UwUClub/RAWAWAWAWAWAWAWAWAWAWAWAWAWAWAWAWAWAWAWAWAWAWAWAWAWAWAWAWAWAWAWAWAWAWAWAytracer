@@ -9,6 +9,7 @@
     #define RAYTRACER_CAMERAPARSER_HPP
 
     #include "Parser.hpp"
+    #include "PluginManager.hpp"
     #include <libconfig.h++>
 
     namespace RayTracer::Parser {
@@ -21,6 +22,7 @@
                 static void getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
                 static void getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
                 static void getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data);
+                static void createCamera(const libconfig::Setting &camera, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene);
             protected:
             private:
         };

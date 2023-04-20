@@ -30,10 +30,9 @@ int main(int argc, char *argv[])
         std::cerr << e.what() << std::endl;
         return 84;
     }
-    //    auto myColor = pluginManager.createEntity("Color", dataEntityMap);
-    //    scene.addEntity("Color", myColor);
-    //    auto &list = scene.getEntities();
-    //
-    //    pluginManager.deleteEntities(list);
+    //auto myColor = pluginManager.createEntity("Color", dataEntityMap);
+    //scene.addEntity("Color", myColor);
+    auto &list = scene.getEntities();
+    pluginManager.deleteEntities(list);
     return 0;
 }

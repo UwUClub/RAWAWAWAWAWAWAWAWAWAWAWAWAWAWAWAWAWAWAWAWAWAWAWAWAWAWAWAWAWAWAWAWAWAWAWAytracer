@@ -7,7 +7,6 @@
 
 #include "LightParser.hpp"
 #include "Parser.hpp"
-#include <cctype>
 #include <cstring>
 
 namespace RayTracer::Light {
@@ -34,12 +33,12 @@ namespace RayTracer::Light {
                 throw Parser::Parser::ParserException("PointLight is missing parameters (x, y ,z).");
             getLightPosition(light[i], lightData);
             std::string lightName;
-            if (std::strcmp(light.getName(), "point") == 0) {
+            if (std::strcmp(light.getName(), "point") == 0)
                 lightName = "PointLight";
-            }
-            std::cout << lightName << std::endl;
+            else if (std::strcmp(light.getName(), "directional") == 0)
+                lightName = "DirectionalLight";
             auto lightEntity = pluginManager.createEntity(lightName, lightData);
-            scene.addEntity(lightName + std::to_string(i), lightEntity);
+            scene.addEntity(lightName, lightEntity);
         }
 
     }

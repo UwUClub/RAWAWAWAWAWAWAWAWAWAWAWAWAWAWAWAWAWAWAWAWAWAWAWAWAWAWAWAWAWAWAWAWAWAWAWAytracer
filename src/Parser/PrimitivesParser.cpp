@@ -94,8 +94,6 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPrimitive(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
-        std::cout << "Creating primitives" << std::endl;
-        std::cout << "Primitive length: " << primitive.getLength() << std::endl;
         for (int i = 0; i < primitive.getLength(); i++) {
             getPrimitivePosition(primitive[i], primitiveData);
             getPrimitiveRadius(primitive[i], primitiveData);
