@@ -3,20 +3,21 @@
 //
 
 #include "Color.hpp"
+#include <iostream>
 
 extern "C" {
-    RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
-    {
-        return new RayTracer::Entity::Color(255, 255, 255, 255);
-    }
+RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
+{
+    return new RayTracer::Entity::Color(255, 255, 255, 255);
+}
 
-    void destroyEntity(RayTracer::Entity::IEntity *aEntity)
-    {
-        delete aEntity;
-    }
+void destroyEntity(RayTracer::Entity::IEntity *aEntity)
+{
+    delete aEntity;
+}
 
-    const char *getName()
-    {
-        return "Color";
-    }
+const char *getName()
+{
+    return "Color";
+}
 }

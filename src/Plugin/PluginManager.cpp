@@ -71,17 +71,12 @@ namespace RayTracer::Plugin
     {
         for (auto &myEntity : aEntities[aName])
             deleteEntity(aName, myEntity);
-
-        aEntities[aName].clear();
-        aEntities.erase(aName);
     }
 
     void PluginManager::deleteEntities(Entity::IEntityMap &aEntities)
     {
         for (auto &myEntity : aEntities)
             deleteEntities(myEntity.first, aEntities);
-
-        aEntities.clear();
     }
 
     Entity::IEntityPtr PluginManager::createEntity(const std::string &aName,
@@ -91,7 +86,7 @@ namespace RayTracer::Plugin
             throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
 
         auto myEntity = _pluginsMap[aName]->createEntity(aData);
-        
+
         return std::unique_ptr<Entity::IEntity>(myEntity);
     }
 

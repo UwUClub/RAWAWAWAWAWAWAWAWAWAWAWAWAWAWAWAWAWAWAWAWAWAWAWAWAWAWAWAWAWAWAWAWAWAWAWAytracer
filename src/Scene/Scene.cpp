@@ -3,9 +3,17 @@
 //
 
 #include "Scene.hpp"
+#include <iostream>
 
 namespace RayTracer::Scene
 {
+    Scene::~Scene()
+    {
+        for (auto &entity : _entities) {
+            entity.second.clear();
+        }
+    }
+
     void Scene::addEntity(const std::string &aName, Entity::IEntityPtr &aEntity)
     {
         _entities[aName].push_back(std::move(aEntity));
