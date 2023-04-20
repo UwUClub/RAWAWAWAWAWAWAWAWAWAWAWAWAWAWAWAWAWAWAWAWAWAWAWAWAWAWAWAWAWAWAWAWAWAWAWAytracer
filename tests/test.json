@@ -31,6 +31,4 @@ lights :
   point = (
     { x = 400; y = 100; z = 500; }
   ) ;
-  # List of directional lights
-  directional = () ;
 };

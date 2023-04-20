@@ -8,27 +8,24 @@
 #ifndef RAYTRACER_CAMERA_HPP
     #define RAYTRACER_CAMERA_HPP
 
-    #include "IEntity.hpp"
+    #include <utility>
+    #include "Entity.hpp"
     #include "Vector.hpp"
+    #include "Point.hpp"
+    #include <cstdint>
 
-    namespace RayTracer {
-        class Camera : public Entity::IEntity {
+namespace RayTracer::Entity {
+        class Camera : public Entity::Entity {
         public:
             explicit Camera();
-            ~Camera() override = default;
+            ~Camera() = default;
 
-            void setPosition(const Point &position) override;
-            void setRotation(const RayTracer::Vector &rotation);
+            void setRotation(const Vector &rotation);
             void setResolution(const std::pair<int, int> &resolution);
             void setFieldOfView(float fov);
-            [[nodiscard]] Entity::EntityType getType() const override { return Entity::EntityType::CAMERA; };
-            void translate(const Vector &vector) override;
-            void rotate(const Vector &vector) override;
-            const RayTracer::Point &getPosition() override { return _position; };
 
         private:
             std::pair<int, int> _resolution;
-            RayTracer::Point _position;
             RayTracer::Vector _rotation;
             float fieldOfView;
         };

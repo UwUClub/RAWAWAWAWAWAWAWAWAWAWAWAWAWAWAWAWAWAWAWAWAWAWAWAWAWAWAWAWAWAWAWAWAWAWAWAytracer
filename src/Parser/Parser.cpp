@@ -51,19 +51,18 @@ namespace RayTracer::Parser {
         CameraParser::getCameraRotation(camera, cameraData);
         CameraParser::getCameraFieldOfView(camera, cameraData);
 
-        auto camEntity = _pluginManager.createEntity("camera", cameraData);
-        _scene.addEntity("camera", camEntity);
+        auto camEntity = _pluginManager.createEntity("Camera", cameraData);
+        _scene.addEntity("Camera", camEntity);
     }
 
     void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene)
     {
+        std::cout << "CreatePrimitive" << std::endl;
         std::unordered_map<std::string, double> primitiveData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("primitives") || !root["primitives"].isGroup())
             throw ParserException("No 'primitives' setting in configuration file.");
         const libconfig::Setting &primitives = root["primitives"];
-        if (!primitives.exists("spheres") || !primitives.exists("planes") || !primitives.exists("cylinders") || !primitives.exists("cones"))
-            throw ParserException("Primitives is missing parameters (spheres, planes, cylinders, cones).");
 
         if (primitives.exists("planes") && primitives["planes"].isList())
             PrimitivesParser::createPlane(primitives["planes"], primitiveData, _pluginManager,scene);
@@ -75,13 +74,12 @@ namespace RayTracer::Parser {
 
     void Parser::CreateLight(RayTracer::Scene::Scene &scene)
     {
+        std::cout << "CreateLight" << std::endl;
         std::unordered_map<std::string, double> lightData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("lights") || !root["lights"].isGroup())
             throw ParserException("No 'lights' setting in configuration file.");
         const libconfig::Setting &lights = root["lights"];
-        if (!lights.exists("point") || !lights.exists("directional"))
-            throw ParserException("Lights is missing parameters (point, directional).");
 
         if (lights.exists("point") && lights["point"].isList())
             Light::LightParser::createLight(lights["point"], lightData,_pluginManager, scene);

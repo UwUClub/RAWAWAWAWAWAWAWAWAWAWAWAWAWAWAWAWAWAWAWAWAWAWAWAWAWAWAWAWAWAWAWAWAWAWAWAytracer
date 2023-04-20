@@ -8,23 +8,17 @@
 #ifndef RAYTRACER_SPHERE_HPP
     #define RAYTRACER_SPHERE_HPP
 
-    #include "IEntity.hpp"
+    #include "Entity.hpp"
     #include "Vector.hpp"
 
     namespace RayTracer::Primitives {
-        class Sphere : public Entity::IEntity {
+        class Sphere : public Entity::Entity {
         public:
             explicit Sphere();
             ~Sphere() override = default;
 
-            void setPosition(const RayTracer::Point &position) override;
             void setRadius(int radius);
             void setColor(const RayTracer::Vector &color);
-
-            [[nodiscard]] Entity::EntityType getType() const override;
-            void rotate(const Vector &vector) override;
-            void translate(const Vector &vector) override;
-            const Point &getPosition() override { return _position; };
         private:
             RayTracer::Point _position;
             int _radius;

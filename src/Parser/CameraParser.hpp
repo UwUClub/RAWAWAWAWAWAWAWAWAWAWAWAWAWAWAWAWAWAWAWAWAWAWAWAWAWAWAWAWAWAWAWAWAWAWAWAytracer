@@ -9,7 +9,6 @@
     #define RAYTRACER_CAMERAPARSER_HPP
 
     #include "Parser.hpp"
-    #include "Camera.hpp"
     #include <libconfig.h++>
 
     namespace RayTracer::Parser {

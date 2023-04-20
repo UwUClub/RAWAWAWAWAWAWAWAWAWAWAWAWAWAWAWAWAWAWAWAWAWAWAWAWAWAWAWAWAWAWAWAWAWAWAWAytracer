@@ -15,7 +15,7 @@ namespace RayTracer::Parser {
         float z;
 
         if (!primitive.exists("x") || !primitive.exists("y") || !primitive.exists("z"))
-            throw Parser::ParserException("Sphere is missing parameters (x, y, z).");
+            throw Parser::ParserException("Primitive is missing parameters (x, y, z).");
         primitive.lookupValue("x", x);
         primitive.lookupValue("y", y);
         primitive.lookupValue("z", z);
@@ -30,8 +30,9 @@ namespace RayTracer::Parser {
         float g;
         float b;
 
-        if (!primitive.exists("r") || !primitive.exists("g") || !primitive.exists("b"))
-            throw Parser::ParserException("Sphere is missing parameters (r, g, b).");
+        const libconfig::Setting &color = primitive["color"];
+        if (!color.exists("r") || !color.exists("g") || !color.exists("b"))
+            throw Parser::ParserException("Color is missing parameters (r, g, b).");
         primitive.lookupValue("r", r);
         primitive.lookupValue("g", g);
         primitive.lookupValue("b", b);
@@ -45,7 +46,7 @@ namespace RayTracer::Parser {
         double radius;
 
         if (!primitive.exists("radius"))
-            throw Parser::ParserException("Sphere is missing parameters (radius).");
+            throw Parser::ParserException("Primitive is missing parameters (radius).");
         primitive.lookupValue("radius", radius);
         data.insert(std::make_pair("radius", radius));
     }
@@ -55,9 +56,9 @@ namespace RayTracer::Parser {
         std::string axisString;
         double axis;
 
-        if (!plane.exists("position"))
-            throw Parser::ParserException("Plane is missing parameters (position, normal).");
-        plane.lookupValue("position", axisString);
+        if (!plane.exists("axis"))
+            throw Parser::ParserException("Plane is missing parameters (axis).");
+        plane.lookupValue("axis", axisString);
         if (axisString == "X")
             axis = 0;
         else if (axisString == "Y")
@@ -81,23 +82,26 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPlane(const libconfig::Setting &plane, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
+        std::cout << "Creating planes" << std::endl;
         for (int i = 0; i < plane.getLength(); i++) {
-            getPlaneAxis(plane, primitiveData);
-            getPlanePosition(plane, primitiveData);
-            getPrimitiveColor(plane, primitiveData);
-            auto primitiveEntity = pluginManager.createEntity("planes", primitiveData);
-            scene.addEntity("planes", primitiveEntity);
+            getPlaneAxis(plane[i], primitiveData);
+            getPlanePosition(plane[i], primitiveData);
+            getPrimitiveColor(plane[i], primitiveData);
+            auto primitiveEntity = pluginManager.createEntity("Plane", primitiveData);
+            scene.addEntity("Plane", primitiveEntity);
         }
     }
 
     void PrimitivesParser::createPrimitive(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
+        std::cout << "Creating primitives" << std::endl;
+        std::cout << "Primitive length: " << primitive.getLength() << std::endl;
         for (int i = 0; i < primitive.getLength(); i++) {
             getPrimitivePosition(primitive[i], primitiveData);
             getPrimitiveRadius(primitive[i], primitiveData);
             getPrimitiveColor(primitive[i], primitiveData);
             auto primitiveEntity = pluginManager.createEntity(primitive[i], primitiveData);
-            scene.addEntity(&"primitive" [i], primitiveEntity);
+            scene.addEntity(&"Primitive" [i], primitiveEntity);
         }
     }
 }

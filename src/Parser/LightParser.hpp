@@ -9,7 +9,6 @@
     #define RAYTRACER_POINTLIGHTPARSER_HPP
 
     #include "Parser.hpp"
-    #include "PointLight.hpp"
     #include <libconfig.h++>
 
 

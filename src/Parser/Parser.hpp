@@ -10,11 +10,6 @@
 #include <utility>
 #include <iostream>
 #include "Scene.hpp"
-#include "Camera.hpp"
-#include "Sphere.hpp"
-#include "Plane.hpp"
-#include "DirectionalLight.hpp"
-#include "PointLight.hpp"
 #include "CameraParser.hpp"
 #include "PluginManager.hpp"
 

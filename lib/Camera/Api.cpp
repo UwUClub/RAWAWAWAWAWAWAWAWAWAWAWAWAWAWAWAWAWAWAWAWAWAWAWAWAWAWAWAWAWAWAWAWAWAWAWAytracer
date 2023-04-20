@@ -2,12 +2,12 @@
 // Created by patatofour on 17/04/23.
 //
 
-#include "Color.hpp"
+#include "Camera.hpp"
 
 extern "C" {
-    RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
+    RayTracer::Entity::Entity *createEntity(RayTracer::Entity::DataEntityMap &aData)
     {
-        return new RayTracer::Entity::Color(255, 255, 255, 255);
+        return new RayTracer::Entity::Camera();
     }
 
     void destroyEntity(RayTracer::Entity::IEntity *aEntity)
@@ -17,6 +17,6 @@ extern "C" {
 
     const char *getName()
     {
-        return "Color";
+        return "Camera";
     }
 }

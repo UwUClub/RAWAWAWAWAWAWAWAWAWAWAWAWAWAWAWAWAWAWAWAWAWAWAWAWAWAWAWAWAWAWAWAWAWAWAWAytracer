@@ -7,6 +7,8 @@
 
 #include "LightParser.hpp"
 #include "Parser.hpp"
+#include <cctype>
+#include <cstring>
 
 namespace RayTracer::Light {
     void LightParser::getLightPosition(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data)
@@ -16,7 +18,7 @@ namespace RayTracer::Light {
         float z;
 
         if (!primitive.exists("x") || !primitive.exists("y") || !primitive.exists("z"))
-            throw RayTracer::Parser::Parser::ParserException("Sphere is missing parameters (x, y, z).");
+            throw RayTracer::Parser::Parser::ParserException("Light is missing parameters (x, y, z).");
         primitive.lookupValue("x", x);
         primitive.lookupValue("y", y);
         primitive.lookupValue("z", z);
@@ -31,9 +33,13 @@ namespace RayTracer::Light {
             if (!light[i].exists("x") && !light[i].exists("y") && !light[i].exists("z"))
                 throw Parser::Parser::ParserException("PointLight is missing parameters (x, y ,z).");
             getLightPosition(light[i], lightData);
-
-            auto lightEntity = pluginManager.createEntity("planes", lightData);
-            scene.addEntity("planes", lightEntity);
+            std::string lightName;
+            if (std::strcmp(light.getName(), "point") == 0) {
+                lightName = "PointLight";
+            }
+            std::cout << lightName << std::endl;
+            auto lightEntity = pluginManager.createEntity(lightName, lightData);
+            scene.addEntity(lightName + std::to_string(i), lightEntity);
         }
 
     }

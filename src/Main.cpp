@@ -22,5 +22,8 @@ int main(int argc, char *argv[])
     //        pluginObserver.checkPlugins(entityMap);
     //        pluginManager->createEntity("Color", dataEntityMap);
     //    }
+    RayTracer::Scene::Scene scene;
+    RayTracer::Plugin::PluginManager pluginManager;
+    RayTracer::Parser::Parser parser(argv, scene, pluginManager);
     return 0;
 }
