@@ -3,16 +3,15 @@
 //
 
 #include "Color.hpp"
-#include "Entity/Entity.hpp"
 
 namespace RayTracer::Entity
 {
-    Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+    Color::Color(uint8_t aR, uint8_t aG, uint8_t aB, uint8_t aA)
         : Entity(EntityType::COLOR)
-        , _r(r)
-        , _g(g)
-        , _b(b)
-        , _a(a)
+        , _r(aR)
+        , _g(aG)
+        , _b(aB)
+        , _a(aA)
     {
     }
 
