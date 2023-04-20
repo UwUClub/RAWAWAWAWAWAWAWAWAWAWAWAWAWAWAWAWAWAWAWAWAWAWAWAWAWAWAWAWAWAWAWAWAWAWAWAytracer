@@ -6,11 +6,11 @@
 
 namespace RayTracer::Scene
 {
-    void Scene::addEntity(const std::string &name, Entity::IEntityPtr &entity)
+    void Scene::addEntity(const std::string &aName, Entity::IEntityPtr &aEntity)
     {
-        _entities[name].push_back(std::move(entity));
+        _entities[aName].push_back(std::move(aEntity));
     }
-    
+
     Entity::IEntityMap &Scene::getEntities()
     {
         return _entities;

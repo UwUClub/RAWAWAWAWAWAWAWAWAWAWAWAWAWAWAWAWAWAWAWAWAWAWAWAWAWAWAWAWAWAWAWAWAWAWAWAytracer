@@ -5,11 +5,11 @@
 #ifndef RAYTRACER_PLUGINOBSERVER_HPP
 #define RAYTRACER_PLUGINOBSERVER_HPP
 
-#include "Subscriber.hpp"
 #include "IEntity.hpp"
-#include <vector>
-#include <memory>
+#include "Subscriber.hpp"
 #include <filesystem>
+#include <memory>
+#include <vector>
 
 namespace RayTracer::Plugin
 {
@@ -30,26 +30,26 @@ namespace RayTracer::Plugin
             virtual ~PluginObserver() = default;
 
             /**
-             * @brief Subscribe a subscriber to the observer
-             * @param subscriber The subscriber to subscribe
+             * @brief Subscribe a aSubscriber to the observer
+             * @param aSubscriber The aSubscriber to subscribe
              */
-            void subscribe(const std::shared_ptr<Subscriber>& subscriber);
+            void subscribe(const std::shared_ptr<Subscriber> &aSubscriber);
             /**
              * @brief Check if a plugin has been added or removed
-             * @param entityMap The entity map
+             * @param aEntityMap The entity map
              * @details If a plugin has been added, the observer will notify all the subscribers
              * @details If a plugin has been removed, the observer will notify all the subscribers
              * @details format of message: "APPEARING:plugin_path" or "DISAPPEARING:plugin_path"
              */
-            void checkPlugins(Entity::IEntityMap &entityMap);
+            void checkPlugins(Entity::IEntityMap &aEntityMap);
 
         private:
             /**
              * @brief Notify all the subscribers
-             * @param event The event to notify
-             * @param entityMap The entity map
+             * @param aEvent The aEvent to notify
+             * @param aEntityMap The entity map
              */
-            void notifySubscriber(const std::string &event, Entity::IEntityMap &entityMap);
+            void notifySubscriber(const std::string &aEvent, Entity::IEntityMap &aEntityMap);
 
         private:
             std::vector<std::shared_ptr<Subscriber>> _subscribers;

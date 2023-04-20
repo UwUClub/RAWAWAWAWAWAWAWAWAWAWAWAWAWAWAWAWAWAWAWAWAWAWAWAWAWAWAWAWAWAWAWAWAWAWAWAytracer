@@ -25,7 +25,7 @@ extern "C" {
  * @return A pointer to the new entity
  * @note The pointer must be deleted by the plugin
  */
-EXPORT RayTracer::Entity::IEntity *createEntity();
+EXPORT RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData);
 
 /*
  * @brief Get the name of the plugin
@@ -35,11 +35,11 @@ EXPORT RayTracer::Entity::IEntity *createEntity();
 EXPORT const char *getName();
 
 /*
- * @brief Destroy an entity
- * @param entity The entity to destroy
- * @return The entity
+ * @brief Destroy an aEntity
+ * @param aEntity The aEntity to destroy
+ * @return The aEntity
  */
-EXPORT void destroyEntity(RayTracer::Entity::IEntity *entity);
+EXPORT void destroyEntity(RayTracer::Entity::IEntity *aEntity);
 };
 
 #endif /*API_HPP_*/

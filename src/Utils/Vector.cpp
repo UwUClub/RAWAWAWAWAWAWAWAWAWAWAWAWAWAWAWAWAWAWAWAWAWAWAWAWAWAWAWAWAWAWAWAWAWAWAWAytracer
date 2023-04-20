@@ -5,51 +5,52 @@
 ** Vector
 */
 
-#include <cmath>
 #include "Vector.hpp"
+#include <cmath>
 
-namespace RayTracer {
-    Vector::Vector(double x, double y, double z) : _x(x), _y(y), _z(z)
+namespace RayTracer
+{
+    Vector::Vector(double aX, double aY, double aZ)
+        : _x(aX)
+        , _y(aY)
+        , _z(aZ)
+        , _dist((sqrt(pow(aX, 2) + pow(aY, 2) + pow(aZ, 2))))
     {
-        _dist = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
     }
 
-    Vector::~Vector()
+    auto Vector::operator<=>(const Vector &aOther) const
     {
+        return (_x == aOther._x && _y == aOther._y && _z == aOther._z);
     }
 
-    auto Vector::operator<=>(const Vector &other) const
+    Vector Vector::operator+(const Vector &aOther) const
     {
-        return (_x == other._x && _y == other._y && _z == other._z);
+        return { _x + aOther._x, _y + aOther._y, _z + aOther._z };
     }
 
-    Vector Vector::operator+(const Vector &other) const
+    Vector Vector::operator-(const Vector &aOther) const
     {
-        return {_x + other._x, _y + other._y, _z + other._z};
+        return { _x - aOther._x, _y - aOther._y, _z - aOther._z };
     }
 
-    Vector Vector::operator-(const Vector &other) const
+    double Vector::operator|(const Vector &aOther) const
     {
-        return {_x - other._x, _y - other._y, _z - other._z};
+        return (_x * aOther._x + _y * aOther._y + _z * aOther._z);
     }
 
-    double Vector::operator|(const Vector &other) const
+    Vector Vector::operator*(const Vector &aOther) const
     {
-        return (_x * other._x + _y * other._y + _z * other._z);
+        return { _y * aOther._z - _z * aOther._y, _z * aOther._x - _x * aOther._z,
+            _x * aOther._y - _y * aOther._x };
     }
 
-    Vector Vector::operator*(const Vector &other) const
+    Vector Vector::operator*(const double aOther) const
     {
-        return {_y * other._z - _z * other._y, _z * other._x - _x * other._z, _x * other._y - _y * other._x};
+        return { _x * aOther, _y * aOther, _z * aOther };
     }
 
-    Vector Vector::operator*(const double other) const
+    Vector Vector::operator/(const double aOther) const
     {
-        return {_x * other, _y * other, _z * other};
-    }
-
-    Vector Vector::operator/(const double other) const
-    {
-        return {_x / other, _y / other, _z / other};
+        return { _x / aOther, _y / aOther, _z / aOther };
     }
 } // namespace RayTracer
