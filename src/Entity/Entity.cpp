@@ -2,13 +2,13 @@
 // Created by patatofour on 17/04/23.
 //
 
-#include "Utils/Point.hpp"
 #include "Entity.hpp"
 
 namespace RayTracer::Entity
 {
-    Entity::Entity(EntityType type)
-        : _type(type), _position(Point(0, 0, 0))
+    Entity::Entity(EntityType aType)
+        : _type(aType)
+        , _position(Point(0, 0, 0))
     {
     }
 
@@ -24,13 +24,13 @@ namespace RayTracer::Entity
         return _position;
     }
 
-    void Entity::setPosition(Point &point)
+    void Entity::setPosition(const Point &aPoint)
     {
-        _position = point;
+        _position = aPoint;
     }
 
-    void Entity::translate(Vector &vector)
+    void Entity::translate(const Vector &aVector)
     {
-        _position = _position + vector;
+        _position = _position + aVector;
     }
 } // namespace RayTracer::Entity

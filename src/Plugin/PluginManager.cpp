@@ -10,101 +10,103 @@ namespace RayTracer::Plugin
 {
     PluginManager::PluginManager()
     {
-        for (const auto &entry : std::filesystem::recursive_directory_iterator("./plugins")) {
-            if (entry.path().string().find(".so") != std::string::npos)
-                loadPlugin(entry.path());
+        for (const auto &myEntry : std::filesystem::recursive_directory_iterator("./plugins")) {
+            if (myEntry.path().string().find(".so") != std::string::npos)
+                loadPlugin(myEntry.path());
         }
     }
 
     PluginManager::~PluginManager()
     {
-        auto entities = Entity::IEntityMap();
+        auto myEntities = Entity::IEntityMap();
 
-        for (auto &plugin : _pluginsMap)
-            unloadPlugin(plugin.first, entities);
+        for (auto &myPlugin : _pluginsMap)
+            unloadPlugin(myPlugin.first, myEntities);
     }
 
-    void PluginManager::loadPlugin(const std::string &path)
+    void PluginManager::loadPlugin(const std::string &aPath)
     {
         try {
-            auto plugin = std::make_unique<Plugin>(path);
-            auto &name = plugin->getName();
+            auto myPlugin = std::make_unique<Plugin>(aPath);
+            auto &aName = myPlugin->getName();
 
-            if (_pluginsMap.find(name) != _pluginsMap.end() && _pluginsMap[name] != nullptr)
-                throw Plugin::Plugin::PluginException("Plugin " + name + " already loaded");
+            if (_pluginsMap.find(aName) != _pluginsMap.end() && _pluginsMap[aName] != nullptr)
+                throw Plugin::Plugin::PluginException("Plugin " + aName + " already loaded");
 
-            _pluginsMap[plugin->getName()] = std::move(plugin);
-            std::cout << "Plugin " << name << " loaded" << std::endl;
+            _pluginsMap[myPlugin->getName()] = std::move(myPlugin);
+            std::cout << "Plugin " << aName << " loaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void PluginManager::unloadPlugin(const std::string &name, Entity::IEntityMap &entities)
+    void PluginManager::unloadPlugin(const std::string &aName, Entity::IEntityMap &aEntities)
     {
         try {
-            if (_pluginsMap.find(name) == _pluginsMap.end())
-                throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
+            if (_pluginsMap.find(aName) == _pluginsMap.end())
+                throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
 
-            deleteEntities(name, entities);
+            deleteEntities(aName, aEntities);
 
-            _pluginsMap[name].reset();
-            std::cout << "Plugin " << name << " unloaded" << std::endl;
+            _pluginsMap[aName].reset();
+            std::cout << "Plugin " << aName << " unloaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void PluginManager::deleteEntity(const std::string &name, Entity::IEntityPtr &entity)
+    void PluginManager::deleteEntity(const std::string &aName, Entity::IEntityPtr &aEntity)
     {
         try {
-            if (_pluginsMap.find(name) == _pluginsMap.end())
-                throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
+            if (_pluginsMap.find(aName) == _pluginsMap.end())
+                throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
 
-            _pluginsMap[name]->destroyEntity(entity);
+            _pluginsMap[aName]->destroyEntity(aEntity);
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void PluginManager::deleteEntities(const std::string &name, Entity::IEntityMap &entities)
+    void PluginManager::deleteEntities(const std::string &aName, Entity::IEntityMap &aEntities)
     {
-        for (auto &entity : entities[name])
-            deleteEntity(name, entity);
+        for (auto &myEntity : aEntities[aName])
+            deleteEntity(aName, myEntity);
 
-        entities[name].clear();
-        entities.erase(name);
+        aEntities[aName].clear();
+        aEntities.erase(aName);
     }
 
-    void PluginManager::deleteEntities(Entity::IEntityMap &entities)
+    void PluginManager::deleteEntities(Entity::IEntityMap &aEntities)
     {
-        for (auto &entity : entities)
-            deleteEntities(entity.first, entities);
+        for (auto &myEntity : aEntities)
+            deleteEntities(myEntity.first, aEntities);
 
-        entities.clear();
+        aEntities.clear();
     }
 
-    Entity::IEntityPtr PluginManager::createEntity(const std::string &name,
-        Entity::DataEntityMap &data)
+    Entity::IEntityPtr PluginManager::createEntity(const std::string &aName,
+        Entity::DataEntityMap &aData)
     {
-        if (_pluginsMap.find(name) == _pluginsMap.end())
-            throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
+        if (_pluginsMap.find(aName) == _pluginsMap.end())
+            throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
 
-        auto entity = _pluginsMap[name]->createEntity(data);
-        return std::unique_ptr<Entity::IEntity>(entity);
+        auto myEntity = _pluginsMap[aName]->createEntity(aData);
+        
+        return std::unique_ptr<Entity::IEntity>(myEntity);
     }
 
-    void PluginManager::getNotified(const std::string &message, Entity::IEntityMap &entities)
+    void PluginManager::getNotified(const std::string &aMessage, Entity::IEntityMap &aEntityMap)
     {
-        std::string path;
-        if (message.starts_with("APPEARING")) {
-            path = message.substr(message.find("APPEARING") + 10);
-            loadPlugin(path);
+        std::string myPath;
+
+        if (aMessage.starts_with("APPEARING")) {
+            myPath = aMessage.substr(aMessage.find("APPEARING") + 10);
+            loadPlugin(myPath);
             return;
         }
-        if (message.starts_with("DISAPPEARING")) {
-            path = message.substr(message.find("DISAPPEARING") + 13);
-            unloadPlugin(path, entities);
+        if (aMessage.starts_with("DISAPPEARING")) {
+            myPath = aMessage.substr(aMessage.find("DISAPPEARING") + 13);
+            unloadPlugin(myPath, aEntityMap);
         }
     }
 } // namespace RayTracer::Plugin
