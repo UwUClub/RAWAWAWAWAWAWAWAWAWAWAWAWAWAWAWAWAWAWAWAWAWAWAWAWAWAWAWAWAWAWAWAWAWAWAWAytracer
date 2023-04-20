@@ -21,51 +21,51 @@ namespace RayTracer::Plugin
             ~PluginManager() override;
 
             /**
-             * @brief Delete an entity
-             * @param name The name of the entity
-             * @param entity The entity to delete
+             * @brief Delete an aEntity
+             * @param aName The aName of the aEntity
+             * @param aEntity The aEntity to delete
              * @throw PluginException if the plugin doesn't exist
              */
-            void deleteEntity(const std::string &name, Entity::IEntityPtr &entity);
+            void deleteEntity(const std::string &aName, Entity::IEntityPtr &aEntity);
             /**
-             * @brief Delete all the entities in the vector at key "name"
-             * @param name the key of the map which contains the entities to delete
-             * @param entities The entities to delete
+             * @brief Delete all the aEntities in the vector at key "aName"
+             * @param aName the key of the map which contains the aEntities to delete
+             * @param aEntities The aEntities to delete
              */
-            void deleteEntities(const std::string &name, Entity::IEntityMap &entities);
+            void deleteEntities(const std::string &aName, Entity::IEntityMap &aEntities);
             /**
-             * @brief Delete all the entities in the map
-             * @param entities The entities to delete
+             * @brief Delete all the aEntities in the map
+             * @param aEntities The aEntities to delete
              */
-            void deleteEntities(Entity::IEntityMap &entities);
+            void deleteEntities(Entity::IEntityMap &aEntities);
 
             /**
              * @brief Create an entity
-             * @param name The name of the entity
+             * @param aName The aName of the entity
              * @throw PluginException if the plugin doesn't exist
              * @return The entity created as a unique_ptr
              */
-            Entity::IEntityPtr createEntity(const std::string &name);
+            Entity::IEntityPtr createEntity(const std::string &aName, Entity::DataEntityMap &aData);
 
             /**
              * @brief Event called when the observer notify the subscriber
-             * @param message The message to notify
-             * @param entityMap The entity map
+             * @param aMessage The aMessage to notify
+             * @param aEntityMap The entity map
              */
-            void getNotified(const std::string &message, Entity::IEntityMap &entityMap) override;
+            void getNotified(const std::string &aMessage, Entity::IEntityMap &aEntityMap) override;
 
         private:
             /**
              * @brief Load a plugin
-             * @param path The path of the plugin
+             * @param aPath The aPath of the plugin
              */
-            void loadPlugin(const std::string &path);
+            void loadPlugin(const std::string &aPath);
             /**
              * @brief Unload a plugin
-             * @param name The name of the plugin
-             * @param entities The entity map
+             * @param aName The aName of the plugin
+             * @param aEntities The entity map
              */
-            void unloadPlugin(const std::string &name, Entity::IEntityMap &entities);
+            void unloadPlugin(const std::string &aName, Entity::IEntityMap &aEntities);
 
         private:
             std::unordered_map<std::string, std::unique_ptr<Plugin>> _pluginsMap;

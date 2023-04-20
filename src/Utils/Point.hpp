@@ -14,15 +14,12 @@ namespace RayTracer
 {
     struct Point {
         public:
-            Point(double x, double y, double z)
-                : x(x)
-                , y(y)
-                , z(z) {};
+            Point(double aX, double aY, double aZ);
             ~Point() = default;
-            Point operator+(const Vector &other) const;
-            double x;
-            double y;
-            double z;
+            Point operator+(const Vector &aOther) const;
+            double _x;
+            double _y;
+            double _z;
     };
 } // namespace RayTracer
 

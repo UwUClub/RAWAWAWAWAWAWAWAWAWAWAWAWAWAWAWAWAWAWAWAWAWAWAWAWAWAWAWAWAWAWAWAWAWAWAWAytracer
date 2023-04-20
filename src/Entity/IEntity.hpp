@@ -5,8 +5,8 @@
 #ifndef RAYTRACER_IENTITY_HPP
 #define RAYTRACER_IENTITY_HPP
 
-#include "Utils/Vector.hpp"
-#include "Utils/Point.hpp"
+#include "Point.hpp"
+#include "Vector.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -21,8 +21,8 @@ namespace RayTracer::Entity
         LIGHT,
         CAMERA,
         SKYBOX,
-        UNDEFINED,
-        COLOR
+        COLOR,
+        UNDEFINED
     };
 
     /**
@@ -49,23 +49,24 @@ namespace RayTracer::Entity
              * @brief Set the position of the entity
              * @param point The position of the entity
              */
-            virtual void setPosition(Point &point) = 0;
+            virtual void setPosition(const Point &aPoint) = 0;
 
             /**
              * @brief Translate the entity
              * @param vector The vector to translate the entity
              */
-            virtual void translate(Vector &vector) = 0;
+            virtual void translate(const Vector &aVector) = 0;
             /**
              * @brief Rotate the entity
              * @param vector The vector to rotate the entity
              */
-            virtual void rotate(Vector &vector) = 0;
+            virtual void rotate(const Vector &aVector) = 0;
     };
 
     using IEntityPtr = std::unique_ptr<IEntity>;
     using IEntityVector = std::vector<IEntityPtr>;
     using IEntityMap = std::unordered_map<std::string, IEntityVector>;
+    using DataEntityMap = std::unordered_map<std::string, double>;
 } // namespace RayTracer::Entity
 
 #endif // RAYTRACER_IENTITY_HPP

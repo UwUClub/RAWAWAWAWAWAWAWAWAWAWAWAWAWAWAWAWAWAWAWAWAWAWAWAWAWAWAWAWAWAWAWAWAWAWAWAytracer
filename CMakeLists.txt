@@ -4,9 +4,6 @@ project(${PROJECT_NAME})            # Create project "simple_example"
 set(CMAKE_CXX_STANDARD 20)            # Enable c++14 standard
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
 
-include_directories(src)
-include_directories(plugins)
-
 add_executable(${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -15,6 +12,13 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} config++)
+
+add_library(color SHARED)
+set_target_properties(color PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+		)
 
 add_subdirectory(src)
 add_subdirectory(lib)

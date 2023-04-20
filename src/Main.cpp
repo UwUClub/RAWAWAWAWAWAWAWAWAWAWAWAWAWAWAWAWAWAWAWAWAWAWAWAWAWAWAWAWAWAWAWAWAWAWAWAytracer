@@ -9,17 +9,18 @@
 
 int main(int argc, char *argv[])
 {
-//    std::shared_ptr<RayTracer::Plugin::PluginManager> pluginManager = std::make_shared<RayTracer::Plugin::PluginManager>();
-//    RayTracer::Plugin::PluginObserver pluginObserver;
-//    RayTracer::Entity::IEntityMap entityMap;
-//
-//
-//    pluginObserver.subscribe(pluginManager);
-//    while (true) {
-//        pluginObserver.checkPlugins(entityMap);
-//    }
-    RayTracer::Scene::Scene scene;
-    RayTracer::Plugin::PluginManager pluginManager;
-    RayTracer::Parser::Parser parser(argv, scene, pluginManager);
+    //    std::shared_ptr<RayTracer::Plugin::PluginManager> pluginManager
+    //        = std::make_shared<RayTracer::Plugin::PluginManager>();
+    //    RayTracer::Plugin::PluginObserver pluginObserver;
+    //    RayTracer::Entity::IEntityMap entityMap;
+    //    RayTracer::Entity::DataEntityMap dataEntityMap;
+    //
+    //    dataEntityMap["r"] = 255;
+    //
+    //    pluginObserver.subscribe(pluginManager);
+    //    while (true) {
+    //        pluginObserver.checkPlugins(entityMap);
+    //        pluginManager->createEntity("Color", dataEntityMap);
+    //    }
     return 0;
 }

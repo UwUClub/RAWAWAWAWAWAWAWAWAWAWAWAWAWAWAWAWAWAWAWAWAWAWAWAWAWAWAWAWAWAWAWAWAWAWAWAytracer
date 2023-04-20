@@ -5,8 +5,8 @@
 #ifndef RAYTRACER_SUBSCRIBER_HPP
 #define RAYTRACER_SUBSCRIBER_HPP
 
-#include <string>
 #include "IEntity.hpp"
+#include <string>
 
 namespace RayTracer::Plugin
 {
@@ -19,11 +19,12 @@ namespace RayTracer::Plugin
             virtual ~Subscriber() = default;
 
             /**
-            * @brief Get notified by the observer
-            * @param message The message to notify
-            * @param entityMap The entity map
-            */
-            virtual void getNotified(const std::string &message, Entity::IEntityMap &entityMap) = 0;
+             * @brief Get notified by the observer
+             * @param aMessage The aMessage to notify
+             * @param aEntityMap The entity map
+             */
+            virtual void getNotified(const std::string &aMessage, Entity::IEntityMap &aEntityMap)
+                = 0;
     };
 } // namespace RayTracer::Plugin
 
