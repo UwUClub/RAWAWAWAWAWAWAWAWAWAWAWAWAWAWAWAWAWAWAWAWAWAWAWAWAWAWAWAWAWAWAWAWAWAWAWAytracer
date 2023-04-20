@@ -5,8 +5,8 @@
 #ifndef RAYTRACER_IENTITY_HPP
 #define RAYTRACER_IENTITY_HPP
 
-#include "Utils/Vector.hpp"
 #include "Utils/Point.hpp"
+#include "Utils/Vector.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -66,6 +66,7 @@ namespace RayTracer::Entity
     using IEntityPtr = std::unique_ptr<IEntity>;
     using IEntityVector = std::vector<IEntityPtr>;
     using IEntityMap = std::unordered_map<std::string, IEntityVector>;
+    using DataEntityMap = std::unordered_map<std::string, double>;
 } // namespace RayTracer::Entity
 
 #endif // RAYTRACER_IENTITY_HPP

@@ -84,12 +84,13 @@ namespace RayTracer::Plugin
         entities.clear();
     }
 
-    Entity::IEntityPtr PluginManager::createEntity(const std::string &name)
+    Entity::IEntityPtr PluginManager::createEntity(const std::string &name,
+        Entity::DataEntityMap &data)
     {
         if (_pluginsMap.find(name) == _pluginsMap.end())
             throw Plugin::Plugin::PluginException("Plugin " + name + " not loaded");
 
-        auto entity = _pluginsMap[name]->createEntity();
+        auto entity = _pluginsMap[name]->createEntity(data);
         return std::unique_ptr<Entity::IEntity>(entity);
     }
 
