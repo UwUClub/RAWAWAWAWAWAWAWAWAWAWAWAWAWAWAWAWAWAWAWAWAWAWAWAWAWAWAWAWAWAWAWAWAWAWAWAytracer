@@ -32,7 +32,7 @@ namespace RayTracer::Parser
             };
             ~Parser() = default;
             explicit Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager);
-            void CreateCamera();
+            void CreateCamera(RayTracer::Scene::Scene &scene);
             void CreatePrimitive(RayTracer::Scene::Scene &scene);
             void CreateLight(RayTracer::Scene::Scene &scene);
 

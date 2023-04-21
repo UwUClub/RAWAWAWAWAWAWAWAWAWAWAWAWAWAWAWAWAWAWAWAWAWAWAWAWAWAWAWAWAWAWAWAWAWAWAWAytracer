@@ -28,15 +28,15 @@ namespace RayTracer::Parser {
             error += pex.getError();
             throw ParserException(error);
         } try {
-            CreateCamera();
-            CreatePrimitive(scene);
-            CreateLight(scene);
+            CreateCamera(_scene);
+            CreatePrimitive(_scene);
+            CreateLight(_scene);
         } catch (const ParserException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void Parser::CreateCamera()
+    void Parser::CreateCamera(RayTracer::Scene::Scene &scene)
     {
         std::unordered_map<std::string, double> cameraData;
         const libconfig::Setting &root = _cfg.getRoot();
@@ -46,18 +46,11 @@ namespace RayTracer::Parser {
         if (!camera.exists("resolution") || !camera.exists("position") || !camera.exists("rotation") || !camera.exists("fieldOfView"))
             throw ParserException("Camera is missing parameters (resolution, position, rotation, fieldOfView).");
 
-        CameraParser::getCameraResolution(camera, cameraData);
-        CameraParser::getCameraPosition(camera, cameraData);
-        CameraParser::getCameraRotation(camera, cameraData);
-        CameraParser::getCameraFieldOfView(camera, cameraData);
-
-        auto camEntity = _pluginManager.createEntity("Camera", cameraData);
-        _scene.addEntity("Camera", camEntity);
+        CameraParser::createCamera(camera, cameraData, _pluginManager, scene);
     }
 
     void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene)
     {
-        std::cout << "CreatePrimitive" << std::endl;
         std::unordered_map<std::string, double> primitiveData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("primitives") || !root["primitives"].isGroup())
@@ -74,7 +67,6 @@ namespace RayTracer::Parser {
 
     void Parser::CreateLight(RayTracer::Scene::Scene &scene)
     {
-        std::cout << "CreateLight" << std::endl;
         std::unordered_map<std::string, double> lightData;
         const libconfig::Setting &root = _cfg.getRoot();
         if (!root.exists("lights") || !root["lights"].isGroup())
