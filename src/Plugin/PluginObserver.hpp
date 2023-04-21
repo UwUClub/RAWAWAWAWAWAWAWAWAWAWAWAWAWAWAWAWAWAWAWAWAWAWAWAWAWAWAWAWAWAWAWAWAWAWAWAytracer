@@ -33,7 +33,7 @@ namespace RayTracer::Plugin
              * @brief Subscribe a aSubscriber to the observer
              * @param aSubscriber The aSubscriber to subscribe
              */
-            void subscribe(const std::shared_ptr<Subscriber> &aSubscriber);
+            void subscribe(Subscriber &aSubscriber);
             /**
              * @brief Check if a plugin has been added or removed
              * @param aEntityMap The entity map
@@ -52,7 +52,8 @@ namespace RayTracer::Plugin
             void notifySubscriber(const std::string &aEvent, Entity::IEntityMap &aEntityMap);
 
         private:
-            std::vector<std::shared_ptr<Subscriber>> _subscribers;
+            // store a vector of reference to the subscribers
+            std::vector<std::reference_wrapper<Subscriber>> _subscribers;
             std::vector<std::filesystem::path> _pluginsPath;
     };
 } // namespace RayTracer::Plugin

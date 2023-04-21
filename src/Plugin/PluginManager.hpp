@@ -71,6 +71,7 @@ namespace RayTracer::Plugin
 
         private:
             std::unordered_map<std::string, std::unique_ptr<Plugin>> _pluginsMap;
+            std::unordered_map<std::string, std::string> _pluginsPathMap;
     };
 } // namespace RayTracer::Plugin
 
