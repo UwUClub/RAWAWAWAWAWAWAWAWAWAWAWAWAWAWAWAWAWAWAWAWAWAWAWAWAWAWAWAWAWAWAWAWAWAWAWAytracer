@@ -14,15 +14,15 @@ namespace RayTracer::Plugin
         }
     }
 
-    void PluginObserver::subscribe(const std::shared_ptr<Subscriber> &aSubscriber)
+    void PluginObserver::subscribe(Subscriber &aSubscriber)
     {
-        _subscribers.push_back(aSubscriber);
+        _subscribers.emplace_back(aSubscriber);
     }
 
     void PluginObserver::notifySubscriber(const std::string &aEvent, Entity::IEntityMap &aEntityMap)
     {
         for (auto &mySubscriber : _subscribers) {
-            mySubscriber->getNotified(aEvent, aEntityMap);
+            mySubscriber.get().getNotified(aEvent, aEntityMap);
         }
     }
 
