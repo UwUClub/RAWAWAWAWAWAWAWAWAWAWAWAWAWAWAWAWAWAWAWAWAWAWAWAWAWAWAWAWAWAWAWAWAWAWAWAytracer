@@ -21,22 +21,23 @@ namespace RayTracer::Plugin
     {
         auto myEntities = Entity::IEntityMap();
 
-        for (auto &myPlugin : _pluginsMap)
+        for (auto &myPlugin : _pluginsMap) {
             unloadPlugin(myPlugin.first, myEntities);
+        }
     }
 
     void PluginManager::loadPlugin(const std::string &aPath)
     {
         try {
             auto myPlugin = std::make_unique<Plugin>(aPath);
-            auto &aName = myPlugin->getName();
+            auto &myName = myPlugin->getName();
 
-            if (_pluginsMap.find(aName) != _pluginsMap.end() && _pluginsMap[aName] != nullptr)
-                throw Plugin::Plugin::PluginException("Plugin " + aName + " already loaded");
+            if (_pluginsMap.find(myName) != _pluginsMap.end() && _pluginsMap[myName] != nullptr)
+                throw Plugin::Plugin::PluginException("Plugin " + myName + " already loaded");
 
-            _pluginsMap[myPlugin->getName()] = std::move(myPlugin);
-            _pluginsPathMap[aPath] = aName;
-            std::cout << "Plugin " << aName << " loaded" << std::endl;
+            _pluginsMap[myName] = std::move(myPlugin);
+            _pluginsPathMap[aPath] = myName;
+            std::cout << "Plugin " << myName << " loaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -45,13 +46,13 @@ namespace RayTracer::Plugin
     void PluginManager::unloadPlugin(const std::string &aName, Entity::IEntityMap &aEntities)
     {
         try {
-            auto myIt = _pluginsPathMap.find(aName);
-            if (myIt == _pluginsPathMap.end())
+            if (_pluginsMap.find(aName) == _pluginsMap.end()
+                && _pluginsPathMap.find(aName) == _pluginsPathMap.end())
                 throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
-
+            
             deleteEntities(aName, aEntities);
 
-            _pluginsMap[myIt->second].reset();
+            _pluginsMap[aName].reset();
             std::cout << "Plugin " << aName << " unloaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
