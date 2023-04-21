@@ -6,6 +6,7 @@
 #define RAYTRACER_SCENE_HPP
 
 #include "IEntity.hpp"
+#include "PluginManager.hpp"
 
 namespace RayTracer::Scene
 {
@@ -16,7 +17,7 @@ namespace RayTracer::Scene
     class Scene final
     {
         public:
-            Scene() = default;
+            Scene(Plugin::PluginManager &aPluginManager);
             ~Scene();
 
             /**
@@ -67,6 +68,7 @@ namespace RayTracer::Scene
 
         private:
             Entity::IEntityMap _entities;
+            Plugin::PluginManager &_pluginManager;
     };
 } // namespace RayTracer::Scene
 

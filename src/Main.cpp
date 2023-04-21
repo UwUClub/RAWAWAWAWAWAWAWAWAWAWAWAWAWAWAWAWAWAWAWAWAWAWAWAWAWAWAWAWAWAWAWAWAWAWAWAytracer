@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
     //        pluginObserver.checkPlugins(entityMap);
     //        pluginManager.createEntity("Color", dataEntityMap);
     //    }
-<<<<<<< HEAD
     //    RayTracer::Scene::Scene scene;
     //    RayTracer::Plugin::PluginManager pluginManager;
     //    try {
@@ -35,19 +34,5 @@ int main(int argc, char *argv[])
     //    //    auto &list = scene.getEntities();
     //    //
     //    //    pluginManager.deleteEntities(list);
-=======
-    RayTracer::Scene::Scene scene;
-    RayTracer::Plugin::PluginManager pluginManager;
-    try {
-        RayTracer::Parser::Parser parser(argv, scene, pluginManager);
-    } catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
-        return 84;
-    }
-    //auto myColor = pluginManager.createEntity("Color", dataEntityMap);
-    //scene.addEntity("Color", myColor);
-    auto &list = scene.getEntities();
-    pluginManager.deleteEntities(list);
->>>>>>> 161780da3770127ab9dad9414a8bc8039273aed3
     return 0;
 }
