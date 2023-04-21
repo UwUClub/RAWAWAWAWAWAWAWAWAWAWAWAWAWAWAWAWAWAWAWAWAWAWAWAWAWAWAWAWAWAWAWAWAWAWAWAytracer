@@ -57,7 +57,6 @@ namespace RayTracer::Parser {
         const libconfig::Setting &primitives = root["primitives"];
 
         for (int i = 0; i < primitives.getLength(); i++) {
-            std::cout << "primitive name " << primitives[i].getName() << std::endl;
             if (std::strcmp(primitives[i].getName(), "Planes") == 0) {
                 PrimitivesParser::createPlane(primitives["Planes"], primitiveData, pluginManager, scene);
             } else {

@@ -37,7 +37,6 @@ namespace RayTracer::Plugin
 
             _pluginsMap[myName] = std::move(myPlugin);
             _pluginsPathMap[aPath] = myName;
-            std::cout << "Plugin " << myName << " loaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -53,7 +52,6 @@ namespace RayTracer::Plugin
             deleteEntities(aName, aEntities);
 
             _pluginsMap[aName].reset();
-            std::cout << "Plugin " << aName << " unloaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -98,7 +96,6 @@ namespace RayTracer::Plugin
     {
         std::string myPath;
 
-        std::cout << "PluginManager: " << aMessage << std::endl;
         if (aMessage.starts_with("APPEARING")) {
             myPath = aMessage.substr(aMessage.find("APPEARING") + 10);
             loadPlugin(myPath);

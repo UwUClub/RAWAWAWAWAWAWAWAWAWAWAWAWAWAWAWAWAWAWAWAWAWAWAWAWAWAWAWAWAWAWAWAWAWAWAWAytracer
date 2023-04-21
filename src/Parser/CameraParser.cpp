@@ -56,7 +56,6 @@ namespace RayTracer::Parser {
         float z;
         const libconfig::Setting &rotation = camera["rotation"];
 
-        std::cout << "Create camera" << std::endl;
         if (!rotation.exists("x") || !rotation.exists("y") || !rotation.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
         rotation.lookupValue("x", x);

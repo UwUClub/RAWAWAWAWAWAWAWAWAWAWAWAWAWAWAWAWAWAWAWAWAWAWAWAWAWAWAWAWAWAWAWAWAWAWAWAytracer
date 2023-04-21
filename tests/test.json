@@ -28,7 +28,7 @@ lights :
   diffuse = 0.6; # Multiplier of diffuse light
 
   # List of point lights
-  point = (
+  PointLight = (
     { x = 400; y = 100; z = 500; }
   ) ;
 };

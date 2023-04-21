@@ -32,14 +32,8 @@ namespace RayTracer::Light {
             if (!light[i].exists("x") && !light[i].exists("y") && !light[i].exists("z"))
                 throw Parser::Parser::ParserException("PointLight is missing parameters (x, y ,z).");
             getLightPosition(light[i], lightData);
-            std::string lightName;
-            if (std::strcmp(light.getName(), "point") == 0)
-                lightName = "PointLight";
-            else if (std::strcmp(light.getName(), "directional") == 0)
-                lightName = "DirectionalLight";
-            auto lightEntity = pluginManager.createEntity(lightName, lightData);
-            scene.addEntity(lightName, lightEntity);
+            auto lightEntity = pluginManager.createEntity(light.getName(), lightData);
+            scene.addEntity(light.getName(), lightEntity);
         }
-
     }
 } // RayTracer

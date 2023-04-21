@@ -83,7 +83,6 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPlane(const libconfig::Setting &plane, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
-        std::cout << "Create plane" << std::endl;
         for (int i = 0; i < plane.getLength(); i++) {
             getPlaneAxis(plane[i], primitiveData);
             getPlanePosition(plane[i], primitiveData);
@@ -95,9 +94,6 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPrimitive(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
-        std::cout << "Create primitive" << std::endl;
-        std::cout << primitive[0].getLength() << std::endl;
-        std::cout << primitive[1].getLength() << std::endl;
         for (int i = 0; i < primitive.getLength(); i++) {
             getPrimitivePosition(primitive[i], primitiveData);
             getPrimitiveRadius(primitive[i], primitiveData);
@@ -105,6 +101,5 @@ namespace RayTracer::Parser {
             auto primitiveEntity = pluginManager.createEntity(primitive.getName(), primitiveData);
             scene.addEntity(primitive.getName(), primitiveEntity);
         }
-        std::cout << "Sphere created" << std::endl;
     }
 }
