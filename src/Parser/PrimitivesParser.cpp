@@ -5,6 +5,7 @@
 ** PrimitivesParser.cpp
 */
 
+#include <cstring>
 #include "PrimitivesParser.hpp"
 
 namespace RayTracer::Parser {
@@ -45,9 +46,9 @@ namespace RayTracer::Parser {
     {
         double radius;
 
-        if (!primitive.exists("radius"))
+        if (!primitive.exists("r"))
             throw Parser::ParserException("Primitive is missing parameters (radius).");
-        primitive.lookupValue("radius", radius);
+        primitive.lookupValue("r", radius);
         data.insert(std::make_pair("radius", radius));
     }
 
@@ -82,7 +83,7 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPlane(const libconfig::Setting &plane, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
-        std::cout << "Creating planes" << std::endl;
+        std::cout << "Create plane" << std::endl;
         for (int i = 0; i < plane.getLength(); i++) {
             getPlaneAxis(plane[i], primitiveData);
             getPlanePosition(plane[i], primitiveData);
@@ -94,12 +95,16 @@ namespace RayTracer::Parser {
 
     void PrimitivesParser::createPrimitive(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
     {
+        std::cout << "Create primitive" << std::endl;
+        std::cout << primitive[0].getLength() << std::endl;
+        std::cout << primitive[1].getLength() << std::endl;
         for (int i = 0; i < primitive.getLength(); i++) {
             getPrimitivePosition(primitive[i], primitiveData);
             getPrimitiveRadius(primitive[i], primitiveData);
             getPrimitiveColor(primitive[i], primitiveData);
-            auto primitiveEntity = pluginManager.createEntity(primitive[i], primitiveData);
-            scene.addEntity(&"Primitive" [i], primitiveEntity);
+            auto primitiveEntity = pluginManager.createEntity(primitive.getName(), primitiveData);
+            scene.addEntity(primitive.getName(), primitiveEntity);
         }
+        std::cout << "Sphere created" << std::endl;
     }
 }

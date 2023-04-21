@@ -5,6 +5,7 @@
 ** Parser.cpp
 */
 
+#include <cstring>
 #include "Parser.hpp"
 #include "CameraParser.hpp"
 #include "PrimitivesParser.hpp"
@@ -55,11 +56,14 @@ namespace RayTracer::Parser {
             throw ParserException("No 'primitives' setting in configuration file.");
         const libconfig::Setting &primitives = root["primitives"];
 
-        if (primitives.exists("planes") && primitives["planes"].isList())
-            PrimitivesParser::createPlane(primitives["planes"], primitiveData, pluginManager,scene);
-        else {
-            for (int i = 0; i < primitives.getLength(); i++)
-                PrimitivesParser::createPrimitive(primitives[i], primitiveData, pluginManager, scene);
+        for (int i = 0; i < primitives.getLength(); i++) {
+            std::cout << "primitive name " << primitives[i].getName() << std::endl;
+            if (std::strcmp(primitives[i].getName(), "Planes") == 0) {
+                PrimitivesParser::createPlane(primitives["Planes"], primitiveData, pluginManager, scene);
+            } else {
+                for (int y = 0; y < primitives[i].getLength() && std::strcmp(primitives[i].getName(), "Planes") == 0; y++)
+                    PrimitivesParser::createPrimitive(primitives[y], primitiveData, pluginManager, scene);
+            }
         }
     }
 
