@@ -11,15 +11,13 @@
 #include "LightParser.hpp"
 
 namespace RayTracer::Parser {
-    Parser::Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager) : _cfg(), _scene(scene), _pluginManager(pluginManager)
+    Parser::Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager) : _cfg()
     {
         try {
             _cfg.readFile(av[1]);
-        }
-        catch (const libconfig::FileIOException &fioex) {
+        } catch (const libconfig::FileIOException &fioex) {
             throw ParserException("I/O error while reading file.");
-        }
-        catch (const libconfig::ParseException &pex) {
+        } catch (const libconfig::ParseException &pex) {
             std::string error = "Parse error at ";
             error += pex.getFile();
             error += ":";
@@ -28,15 +26,15 @@ namespace RayTracer::Parser {
             error += pex.getError();
             throw ParserException(error);
         } try {
-            CreateCamera(_scene);
-            CreatePrimitive(_scene);
-            CreateLight(_scene);
+            CreateCamera(scene, pluginManager);
+            CreatePrimitive(scene, pluginManager);
+            CreateLight(scene, pluginManager);
         } catch (const ParserException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void Parser::CreateCamera(RayTracer::Scene::Scene &scene)
+    void Parser::CreateCamera(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
     {
         std::unordered_map<std::string, double> cameraData;
         const libconfig::Setting &root = _cfg.getRoot();
@@ -46,10 +44,10 @@ namespace RayTracer::Parser {
         if (!camera.exists("resolution") || !camera.exists("position") || !camera.exists("rotation") || !camera.exists("fieldOfView"))
             throw ParserException("Camera is missing parameters (resolution, position, rotation, fieldOfView).");
 
-        CameraParser::createCamera(camera, cameraData, _pluginManager, scene);
+        CameraParser::createCamera(camera, cameraData, pluginManager, scene);
     }
 
-    void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene)
+    void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
     {
         std::unordered_map<std::string, double> primitiveData;
         const libconfig::Setting &root = _cfg.getRoot();
@@ -58,14 +56,14 @@ namespace RayTracer::Parser {
         const libconfig::Setting &primitives = root["primitives"];
 
         if (primitives.exists("planes") && primitives["planes"].isList())
-            PrimitivesParser::createPlane(primitives["planes"], primitiveData, _pluginManager,scene);
+            PrimitivesParser::createPlane(primitives["planes"], primitiveData, pluginManager,scene);
         else {
             for (int i = 0; i < primitives.getLength(); i++)
-                PrimitivesParser::createPrimitive(primitives[i], primitiveData, _pluginManager, scene);
+                PrimitivesParser::createPrimitive(primitives[i], primitiveData, pluginManager, scene);
         }
     }
 
-    void Parser::CreateLight(RayTracer::Scene::Scene &scene)
+    void Parser::CreateLight(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
     {
         std::unordered_map<std::string, double> lightData;
         const libconfig::Setting &root = _cfg.getRoot();
@@ -74,6 +72,6 @@ namespace RayTracer::Parser {
         const libconfig::Setting &lights = root["lights"];
 
         if (lights.exists("point") && lights["point"].isList())
-            Light::LightParser::createLight(lights["point"], lightData,_pluginManager, scene);
+            Light::LightParser::createLight(lights["point"], lightData,pluginManager, scene);
     }
 } // RayTracer
