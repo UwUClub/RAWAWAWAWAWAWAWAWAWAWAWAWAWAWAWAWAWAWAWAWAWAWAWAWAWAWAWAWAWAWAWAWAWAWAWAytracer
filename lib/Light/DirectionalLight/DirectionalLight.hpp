@@ -17,7 +17,7 @@
                 DirectionalLight();
                 ~DirectionalLight() override = default;
 
-                void setDirection(const Vector &direction);
+                void setDirection(const Vector &aDirection);
             private:
                 RayTracer::Vector _direction;
         };

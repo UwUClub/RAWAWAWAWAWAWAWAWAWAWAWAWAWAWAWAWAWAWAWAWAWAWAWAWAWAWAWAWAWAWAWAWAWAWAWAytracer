@@ -10,8 +10,8 @@
 namespace RayTracer::Entity {
     DirectionalLight::DirectionalLight() : Entity(EntityType::LIGHT), _direction(0, 0, 0) {}
 
-    void DirectionalLight::setDirection(const Vector &direction)
+    void DirectionalLight::setDirection(const Vector &aDirection)
     {
-        _direction = direction;
+        _direction = aDirection;
     }
 }

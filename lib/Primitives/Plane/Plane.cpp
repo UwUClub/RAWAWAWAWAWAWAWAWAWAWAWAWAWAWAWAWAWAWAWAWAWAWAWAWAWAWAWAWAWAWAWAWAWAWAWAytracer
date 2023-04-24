@@ -12,14 +12,14 @@ namespace RayTracer::Primitives {
     {
     }
 
-    void Plane::setAxis(const std::string &axis)
+    void Plane::setAxis(const std::string &aAxis)
     {
-        _axis = axis[0];
+        _axis = aAxis[0];
     }
 
-    void Plane::setColor(const RayTracer::Vector &color)
+    void Plane::setColor(const RayTracer::Vector &aColor)
     {
-        _color = color;
+        _color = aColor;
     }
 
 }

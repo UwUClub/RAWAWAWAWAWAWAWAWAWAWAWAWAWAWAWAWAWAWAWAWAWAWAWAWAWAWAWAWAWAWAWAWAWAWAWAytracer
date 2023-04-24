@@ -17,8 +17,8 @@
             explicit Sphere();
             ~Sphere() override = default;
 
-            void setRadius(int radius);
-            void setColor(const RayTracer::Vector &color);
+            void setRadius(int aRadius);
+            void setColor(const RayTracer::Vector &aColor);
         private:
             RayTracer::Point _position;
             int _radius;

@@ -12,18 +12,18 @@ namespace RayTracer::Entity {
     {
     }
 
-    void Camera::setRotation(const RayTracer::Vector &rotation)
+    void Camera::setRotation(const RayTracer::Vector &aRotation)
     {
-        _rotation = rotation;
+        _rotation = aRotation;
     }
 
-    void Camera::setResolution(const std::pair<int, int> &resolution)
+    void Camera::setResolution(const std::pair<int, int> &aResolution)
     {
-        _resolution = resolution;
+        _resolution = aResolution;
     }
 
-    void Camera::setFieldOfView(float fov)
+    void Camera::setFieldOfView(float aFov)
     {
-        fieldOfView = fov;
+        fieldOfView = aFov;
     }
 } // RayTracer
