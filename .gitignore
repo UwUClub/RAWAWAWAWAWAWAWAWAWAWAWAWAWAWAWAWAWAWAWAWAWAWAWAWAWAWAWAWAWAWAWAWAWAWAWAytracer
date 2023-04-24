@@ -26,6 +26,7 @@ cmake-build-release-clang
 cmake_install.cmake
 CMakeCache.txt
 CMakeConfigureLog.yaml
+CMakeFiles
 *.ninja*
 Makefile
 .cmake*

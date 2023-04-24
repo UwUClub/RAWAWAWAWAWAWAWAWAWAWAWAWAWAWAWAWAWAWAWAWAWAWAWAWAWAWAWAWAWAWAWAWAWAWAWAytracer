@@ -12,6 +12,7 @@ namespace RayTracer
 {
     struct Vector {
         public:
+            Vector() = default;
             Vector(double aX, double aY, double aZ);
             ~Vector() = default;
 

@@ -14,6 +14,7 @@ namespace RayTracer
 {
     struct Point {
         public:
+            Point() = default;
             Point(double aX, double aY, double aZ);
             ~Point() = default;
             Point operator+(const Vector &aOther) const;

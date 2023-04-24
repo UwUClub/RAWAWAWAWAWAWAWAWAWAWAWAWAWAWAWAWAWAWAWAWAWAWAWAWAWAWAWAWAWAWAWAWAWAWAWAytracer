@@ -8,7 +8,7 @@
 #include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
-#include "Color.hpp"
+#include "../../lib/Color/Color.hpp"
 
 #ifndef RAY_HPP_
 #define RAY_HPP_
@@ -20,7 +20,7 @@ namespace RayTracer {
             ~Ray();
             Point _origin;
             Vector _direction;
-            Entity::Color getClosestHit(Entity::IEntityVector entities);
+            Entity::Color getClosestHit(Entity::IEntityMap entities);
     };
 } // namespace RayTracer
 
