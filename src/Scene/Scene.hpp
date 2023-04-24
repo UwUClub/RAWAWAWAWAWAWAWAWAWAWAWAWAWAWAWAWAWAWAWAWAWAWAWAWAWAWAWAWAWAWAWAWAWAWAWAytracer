@@ -19,11 +19,11 @@ namespace RayTracer::Scene
             ~Scene() = default;
 
             /**
-             * @brief Add an entity to the scene
-             * @param name The name of the entity which is the key of the map
-             * @param entity The entity to add
+             * @brief Add an aEntity to the scene
+             * @param aName The aName of the aEntity which is the key of the map
+             * @param aEntity The aEntity to add
              */
-            void addEntity(const std::string &name, Entity::IEntityPtr &entity);
+            void addEntity(const std::string &aName, Entity::IEntityPtr &aEntity);
 
             /**
              * @brief Get the entities of the scene
@@ -47,8 +47,8 @@ namespace RayTracer::Scene
             class SceneException : public std::exception
             {
                 public:
-                    explicit SceneException(const std::string &message)
-                        : _message(message)
+                    explicit SceneException(const std::string &aMessage)
+                        : _message(aMessage)
                     {
                     }
 

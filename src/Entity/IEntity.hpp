@@ -22,8 +22,8 @@ namespace RayTracer::Entity
         LIGHT,
         CAMERA,
         SKYBOX,
-        UNDEFINED,
-        COLOR
+        COLOR,
+        UNDEFINED
     };
 
     /**
@@ -50,7 +50,7 @@ namespace RayTracer::Entity
              * @brief Set the position of the entity
              * @param point The position of the entity
              */
-            virtual void setPosition(Point &point) = 0;
+            virtual void setPosition(const Point &aPoint) = 0;
 
             /**
              * @brief Get the angle of the entity
@@ -67,7 +67,7 @@ namespace RayTracer::Entity
              * @brief Translate the entity
              * @param vector The vector to translate the entity
              */
-            virtual void translate(Vector &vector) = 0;
+            virtual void translate(const Vector &aVector) = 0;
             /**
              * @brief Rotate the entity
              * @param angle The angle to rotate the entity

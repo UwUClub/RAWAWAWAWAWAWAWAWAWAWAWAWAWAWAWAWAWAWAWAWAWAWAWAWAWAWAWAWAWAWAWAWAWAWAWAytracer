@@ -9,40 +9,40 @@ namespace RayTracer::Plugin
 {
     PluginObserver::PluginObserver()
     {
-        for (auto &p : std::filesystem::directory_iterator("./plugins")) {
-            _pluginsPath.push_back(p.path());
+        for (auto &myPath : std::filesystem::directory_iterator("./plugins")) {
+            _pluginsPath.push_back(myPath.path());
         }
     }
 
-    void PluginObserver::subscribe(const std::shared_ptr<Subscriber>& subscriber)
+    void PluginObserver::subscribe(const std::shared_ptr<Subscriber> &aSubscriber)
     {
-        _subscribers.push_back(subscriber);
+        _subscribers.push_back(aSubscriber);
     }
 
-    void PluginObserver::notifySubscriber(const std::string& event, Entity::IEntityMap &entityMap)
+    void PluginObserver::notifySubscriber(const std::string &aEvent, Entity::IEntityMap &aEntityMap)
     {
-        for (auto &subscriber : _subscribers) {
-            subscriber->getNotified(event, entityMap);
+        for (auto &mySubscriber : _subscribers) {
+            mySubscriber->getNotified(aEvent, aEntityMap);
         }
     }
 
-    void PluginObserver::checkPlugins(Entity::IEntityMap &entityMap)
+    void PluginObserver::checkPlugins(Entity::IEntityMap &aEntityMap)
     {
-        for (auto &p : std::filesystem::directory_iterator("./plugins")) {
-            auto it = std::find(_pluginsPath.begin(), _pluginsPath.end(), p.path());
+        for (auto &myPath : std::filesystem::directory_iterator("./plugins")) {
+            auto myIt = std::find(_pluginsPath.begin(), _pluginsPath.end(), myPath.path());
 
-            if (it == _pluginsPath.end()) {
-                _pluginsPath.push_back(p.path());
-                notifySubscriber("APPEARING:" + p.path().string(), entityMap);
+            if (myIt == _pluginsPath.end()) {
+                _pluginsPath.push_back(myPath.path());
+                notifySubscriber("APPEARING:" + myPath.path().string(), aEntityMap);
             }
         }
 
-        for (auto it = _pluginsPath.begin(); it != _pluginsPath.end();) {
-            if (!std::filesystem::exists(*it)) {
-                notifySubscriber("DISAPPEARING:" + it->string(), entityMap);
-                it = _pluginsPath.erase(it);
+        for (auto myIt = _pluginsPath.begin(); myIt != _pluginsPath.end();) {
+            if (!std::filesystem::exists(*myIt)) {
+                notifySubscriber("DISAPPEARING:" + myIt->string(), aEntityMap);
+                myIt = _pluginsPath.erase(myIt);
             } else {
-                ++it;
+                ++myIt;
             }
         }
     }

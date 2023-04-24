@@ -25,9 +25,9 @@ namespace RayTracer::Entity
         return _position;
     }
 
-    void Entity::setPosition(Point &point)
+    void Entity::setPosition(const Point &aPoint)
     {
-        _position = point;
+        _position = aPoint;
     }
 
     Euler const &Entity::getAngle()
@@ -42,7 +42,7 @@ namespace RayTracer::Entity
 
     void Entity::translate(Vector &vector)
     {
-        _position = _position + vector;
+        _position = _position + aVector;
     }
 
     void Entity::rotate(Euler &angle)
