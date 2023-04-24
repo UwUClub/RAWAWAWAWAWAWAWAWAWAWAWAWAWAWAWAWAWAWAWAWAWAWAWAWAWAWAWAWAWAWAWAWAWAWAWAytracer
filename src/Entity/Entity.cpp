@@ -2,14 +2,14 @@
 // Created by patatofour on 17/04/23.
 //
 
-#include "Utils/Point.hpp"
-#include "Utils/Euler.hpp"
 #include "Entity.hpp"
 
 namespace RayTracer::Entity
 {
-    Entity::Entity(EntityType type)
-        : _type(type), _position(Point(0, 0, 0)), _angle(Euler(0, 0, 0))
+    Entity::Entity(EntityType aType)
+        : _type(aType)
+        , _position(Point(0, 0, 0))
+        , _angle(Euler(0, 0, 0))
     {
     }
 
@@ -35,19 +35,19 @@ namespace RayTracer::Entity
         return _angle;
     }
 
-    void Entity::setAngle(Euler &angle)
+    void Entity::setAngle(const Euler &aAngle)
     {
-        _angle = angle;
+        _angle = aAngle;
     }
 
-    void Entity::translate(Vector &vector)
+    void Entity::translate(const Vector &aVector)
     {
         _position = _position + aVector;
     }
 
-    void Entity::rotate(Euler &angle)
+    void Entity::rotate(const Euler &aAngle)
     {
-        _angle = _angle + angle;
+        _angle = _angle + aAngle;
     }
 
 } // namespace RayTracer::Entity

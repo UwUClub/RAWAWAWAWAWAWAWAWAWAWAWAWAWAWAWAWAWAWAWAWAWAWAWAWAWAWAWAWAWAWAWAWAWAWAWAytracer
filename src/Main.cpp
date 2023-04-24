@@ -2,9 +2,9 @@
 // Created by patatofour on 14/04/23.
 //*
 
-#include "Entity/IEntity.hpp"
-#include "Plugin/PluginManager.hpp"
-#include "Plugin/PluginObserver.hpp"
+#include "IEntity.hpp"
+#include "PluginManager.hpp"
+#include "PluginObserver.hpp"
 
 int main(int argc, char *argv[])
 {
