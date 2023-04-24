@@ -17,17 +17,17 @@
 namespace RayTracer::Entity {
         class Camera : public Entity::Entity {
         public:
-            explicit Camera();
-            ~Camera() = default;
+            explicit Camera(const std::unordered_map<std::string, double> &dataMap);
+            ~Camera() override = default;
 
             void setRotation(const Vector &rotation);
             void setResolution(const std::pair<int, int> &resolution);
             void setFieldOfView(float fov);
 
         private:
-            std::pair<int, int> _resolution;
+            std::pair<double, double> _resolution;
             RayTracer::Vector _rotation;
-            float fieldOfView;
+            double _fieldOfView;
         };
     } // RayTracer
 

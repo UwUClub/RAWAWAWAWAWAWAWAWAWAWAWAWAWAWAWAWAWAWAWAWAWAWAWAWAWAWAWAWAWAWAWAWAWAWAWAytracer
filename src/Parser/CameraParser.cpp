@@ -61,9 +61,9 @@ namespace RayTracer::Parser {
         rotation.lookupValue("x", x);
         rotation.lookupValue("y", y);
         rotation.lookupValue("z", z);
-        data.insert(std::make_pair("r", x));
-        data.insert(std::make_pair("g", y));
-        data.insert(std::make_pair("b", z));
+        data.insert(std::make_pair("rotate_x", x));
+        data.insert(std::make_pair("rotate_y", y));
+        data.insert(std::make_pair("rotate_z", z));
     }
 
     void CameraParser::createCamera(const libconfig::Setting &camera, std::unordered_map<std::string, double> &cameraData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)

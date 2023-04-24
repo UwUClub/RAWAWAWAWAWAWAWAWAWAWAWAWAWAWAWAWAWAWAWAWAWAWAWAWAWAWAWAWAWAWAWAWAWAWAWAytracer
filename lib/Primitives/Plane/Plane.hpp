@@ -14,7 +14,7 @@
     namespace RayTracer::Primitives {
         class Plane : public Entity::Entity {
         public:
-            explicit Plane();
+            explicit Plane(const std::unordered_map<std::string, double> &dataMap);
             ~Plane() override = default;
 
             void setAxis(const std::string &axis);

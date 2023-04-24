@@ -14,14 +14,14 @@
     namespace RayTracer::Primitives {
         class Sphere : public Entity::Entity {
         public:
-            explicit Sphere();
+            explicit Sphere(const std::unordered_map<std::string, double> &dataMap);
             ~Sphere() override = default;
 
             void setRadius(int radius);
             void setColor(const RayTracer::Vector &color);
         private:
             RayTracer::Point _position;
-            int _radius;
+            double _radius;
             RayTracer::Vector _color;
         };
     }

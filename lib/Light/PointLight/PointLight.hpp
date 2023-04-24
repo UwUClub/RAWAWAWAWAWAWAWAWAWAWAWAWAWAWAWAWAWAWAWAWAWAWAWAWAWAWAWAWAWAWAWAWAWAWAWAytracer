@@ -14,7 +14,7 @@
     namespace RayTracer::Entity {
         class PointLight : public Entity {
         public:
-            explicit PointLight();
+            explicit PointLight(const std::unordered_map<std::string, double> &dataMap);
             ~PointLight() override = default;
 
         private:

@@ -14,7 +14,7 @@
     namespace RayTracer::Entity {
         class DirectionalLight : public Entity {
             public:
-                DirectionalLight();
+                explicit DirectionalLight(const std::unordered_map<std::string, double> &dataMap);
                 ~DirectionalLight() override = default;
 
                 void setDirection(const Vector &direction);

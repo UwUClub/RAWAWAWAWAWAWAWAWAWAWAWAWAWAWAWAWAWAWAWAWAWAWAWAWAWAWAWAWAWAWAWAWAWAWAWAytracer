@@ -7,7 +7,7 @@
 extern "C" {
     RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
     {
-        return new RayTracer::Entity::DirectionalLight();
+        return new RayTracer::Entity::DirectionalLight(aData);
     }
 
     void destroyEntity(RayTracer::Entity::IEntity *aEntity)
