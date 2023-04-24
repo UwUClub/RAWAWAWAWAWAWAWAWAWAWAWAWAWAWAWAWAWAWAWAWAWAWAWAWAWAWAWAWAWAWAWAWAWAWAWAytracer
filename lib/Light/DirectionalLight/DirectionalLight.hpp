@@ -17,7 +17,7 @@
                 explicit DirectionalLight(const std::unordered_map<std::string, double> &dataMap);
                 ~DirectionalLight() override = default;
 
-                void setDirection(const Vector &direction);
+                void setDirection(const Vector &aDirection);
             private:
                 RayTracer::Vector _direction;
         };

@@ -17,13 +17,13 @@ namespace RayTracer::Primitives {
 
     }
 
-    void Sphere::setRadius(int radius)
+    void Sphere::setRadius(int aRadius)
     {
-        _radius = radius;
+        _radius = aRadius;
     }
 
-    void Sphere::setColor(const RayTracer::Vector &color)
+    void Sphere::setColor(const RayTracer::Vector &aColor)
     {
-        _color = color;
+        _color = aColor;
     }
 }

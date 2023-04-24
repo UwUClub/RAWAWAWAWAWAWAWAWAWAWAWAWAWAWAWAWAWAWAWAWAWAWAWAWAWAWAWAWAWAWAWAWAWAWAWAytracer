@@ -17,8 +17,8 @@
             explicit Sphere(const std::unordered_map<std::string, double> &dataMap);
             ~Sphere() override = default;
 
-            void setRadius(int radius);
-            void setColor(const RayTracer::Vector &color);
+            void setRadius(int aRadius);
+            void setColor(const RayTracer::Vector &aColor);
         private:
             RayTracer::Point _position;
             double _radius;

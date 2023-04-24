@@ -18,8 +18,8 @@ namespace RayTracer::Entity {
             _direction._z = dataMap.at("z");
     }
 
-    void DirectionalLight::setDirection(const Vector &direction)
+    void DirectionalLight::setDirection(const Vector &aDirection)
     {
-        _direction = direction;
+        _direction = aDirection;
     }
 }

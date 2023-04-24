@@ -20,9 +20,9 @@ namespace RayTracer::Entity {
             explicit Camera(const std::unordered_map<std::string, double> &dataMap);
             ~Camera() override = default;
 
-            void setRotation(const Vector &rotation);
-            void setResolution(const std::pair<int, int> &resolution);
-            void setFieldOfView(float fov);
+            void setRotation(const Vector &aRotation);
+            void setResolution(const std::pair<int, int> &aResolution);
+            void setFieldOfView(float aFov);
 
         private:
             std::pair<double, double> _resolution;

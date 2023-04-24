@@ -17,8 +17,8 @@
             explicit Plane(const std::unordered_map<std::string, double> &dataMap);
             ~Plane() override = default;
 
-            void setAxis(const std::string &axis);
-            void setColor(const RayTracer::Vector &color);
+            void setAxis(const std::string &aAxis);
+            void setColor(const RayTracer::Vector &aColor);
 
         private:
             char _axis;
