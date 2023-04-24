@@ -33,15 +33,5 @@ int main(int argc, char *argv[])
     //    //    auto &list = scene.getEntities();
     //    //
     //    //    pluginManager.deleteEntities(list);
-    RayTracer::Plugin::PluginManager pluginManager;
-    RayTracer::Scene::Scene scene(pluginManager);
-    try {
-        RayTracer::Parser::Parser parser(argv, scene, pluginManager);
-    } catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
-        return 84;
-    }
-    //auto myColor = pluginManager.createEntity("Color", dataEntityMap);
-    //scene.addEntity("Color", myColor);
     return 0;
 }

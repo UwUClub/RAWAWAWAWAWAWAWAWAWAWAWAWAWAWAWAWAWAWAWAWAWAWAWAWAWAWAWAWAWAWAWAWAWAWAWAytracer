@@ -8,7 +8,7 @@
 #include "Camera.hpp"
 
 namespace RayTracer::Entity {
-    Camera::Camera() : Entity(EntityType::CAMERA), _rotation(0, 0, 0), _resolution(0, 0), fieldOfView(0)
+    Camera::Camera() : Entity(EntityType::CAMERA), _resolution(0, 0), _rotation(0, 0, 0), fieldOfView(0)
     {
     }
 
