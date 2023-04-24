@@ -5,6 +5,8 @@
 #include "IEntity.hpp"
 #include "PluginManager.hpp"
 #include "PluginObserver.hpp"
+#include "Scene.hpp"
+#include "Parser.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +19,7 @@ int main(int argc, char *argv[])
     //
     RayTracer::Plugin::PluginManager pluginManager;
     RayTracer::Scene::Scene scene(pluginManager);
+    (void) argc;
     try {
         RayTracer::Parser::Parser parser(argv, scene, pluginManager);
         pluginObserver.subscribe(pluginManager);
