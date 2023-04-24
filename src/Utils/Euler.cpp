@@ -49,12 +49,12 @@ namespace RayTracer
             _x * other._y - _y * other._x };
     }
 
-    Euler Euler::operator*(const double other) const
+    Euler Euler::operator*(double other) const
     {
         return { _x * other, _y * other, _z * other };
     }
 
-    Euler Euler::operator/(const double other) const
+    Euler Euler::operator/(double other) const
     {
         return { _x / other, _y / other, _z / other };
     }
