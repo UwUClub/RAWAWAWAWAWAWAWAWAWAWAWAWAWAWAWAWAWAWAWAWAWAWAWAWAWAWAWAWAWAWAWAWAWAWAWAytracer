@@ -6,7 +6,6 @@
 #define RAYTRACER_ENTITY_HPP
 
 #include "IEntity.hpp"
-#include "Point.hpp"
 
 namespace RayTracer::Entity
 {
@@ -42,19 +41,32 @@ namespace RayTracer::Entity
             void setPosition(const Point &aPoint) override;
 
             /**
+             * @brief Get the angle of the entity
+             * @return The angle of the entity
+             */
+            Euler const &getAngle() override;
+
+            /**
+             * @brief Set the aAngle of the entity
+             * @param aAngle The aAngle of the entity
+             */
+            void setAngle(const Euler &aAngle) override;
+
+            /**
              * @brief Translate the entity
              * @param vector The vector to translate the entity
              */
             void translate(const Vector &aVector) override;
             /**
              * @brief Rotate the entity
-             * @param vector The vector to rotate the entity
+             * @param aAngle The vector to rotate the entity
              */
-            void rotate(const Vector &aVector) override {};
+            void rotate(const Euler &aAngle) override;
 
         private:
             EntityType _type;
             Point _position;
+            Euler _angle;
     };
 } // namespace RayTracer::Entity
 
