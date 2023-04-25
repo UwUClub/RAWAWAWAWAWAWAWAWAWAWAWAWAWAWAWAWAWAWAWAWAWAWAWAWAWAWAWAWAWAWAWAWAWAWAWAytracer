@@ -21,7 +21,7 @@ namespace RayTracer::Renderer
              * @param type The type of the Renderer
              */
             Renderer(std::vector<Pixel> aPixels);
-            ~Renderer() override;
+            ~Renderer() = default;
 
             /**
              * @brief Get pixels

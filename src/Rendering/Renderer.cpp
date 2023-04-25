@@ -6,21 +6,17 @@
 
 namespace RayTracer::Renderer
 {
-    Renderer::Renderer(RendererType aType)
-        : _type(aType)
-        , _position(Point(0, 0, 0))
-        , _angle(Euler(0, 0, 0))
+    Renderer::Renderer(const std::vector<Pixel> aPixels)
+        : _pixels(aPixels)
     {
     }
 
-    Renderer::~Renderer() = default;
-
-    std::vector<Pixel> const Renderer::getPixels()
+    std::vector<Pixel> const &Renderer::getPixels()
     {
         return _pixels;
     }
 
-    void enderer::setPixels(const std::vector<Pixel> aPixels)
+    void Renderer::setPixels(const std::vector<Pixel> &aPixels)
     {
         _pixels = aPixels;
     }
