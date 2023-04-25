@@ -11,8 +11,9 @@ namespace RayTracer::Plugin
     PluginManager::PluginManager()
     {
         for (const auto &myEntry : std::filesystem::recursive_directory_iterator("./plugins")) {
-            if (myEntry.path().string().find(".so") != std::string::npos)
+            if (myEntry.path().string().find(".so") != std::string::npos) {
                 loadPlugin(myEntry.path());
+            }
         }
     }
 
@@ -20,21 +21,22 @@ namespace RayTracer::Plugin
     {
         auto myEntities = Entity::IEntityMap();
 
-        for (auto &myPlugin : _pluginsMap)
+        for (auto &myPlugin : _pluginsMap) {
             unloadPlugin(myPlugin.first, myEntities);
+        }
     }
 
     void PluginManager::loadPlugin(const std::string &aPath)
     {
         try {
             auto myPlugin = std::make_unique<Plugin>(aPath);
-            auto &aName = myPlugin->getName();
+            auto &myName = myPlugin->getName();
 
-            if (_pluginsMap.find(aName) != _pluginsMap.end() && _pluginsMap[aName] != nullptr)
-                throw Plugin::Plugin::PluginException("Plugin " + aName + " already loaded");
+            if (_pluginsMap.find(myName) != _pluginsMap.end() && _pluginsMap[myName] != nullptr)
+                throw Plugin::Plugin::PluginException("Plugin " + myName + " already loaded");
 
-            _pluginsMap[myPlugin->getName()] = std::move(myPlugin);
-            std::cout << "Plugin " << aName << " loaded" << std::endl;
+            _pluginsMap[myName] = std::move(myPlugin);
+            _pluginsPathMap[aPath] = myName;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -43,13 +45,13 @@ namespace RayTracer::Plugin
     void PluginManager::unloadPlugin(const std::string &aName, Entity::IEntityMap &aEntities)
     {
         try {
-            if (_pluginsMap.find(aName) == _pluginsMap.end())
+            if (_pluginsMap.find(aName) == _pluginsMap.end()
+                && _pluginsPathMap.find(aName) == _pluginsPathMap.end())
                 throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
-
+            
             deleteEntities(aName, aEntities);
 
             _pluginsMap[aName].reset();
-            std::cout << "Plugin " << aName << " unloaded" << std::endl;
         } catch (const Plugin::Plugin::PluginException &e) {
             std::cerr << e.what() << std::endl;
         }
@@ -71,17 +73,12 @@ namespace RayTracer::Plugin
     {
         for (auto &myEntity : aEntities[aName])
             deleteEntity(aName, myEntity);
-
-        aEntities[aName].clear();
-        aEntities.erase(aName);
     }
 
     void PluginManager::deleteEntities(Entity::IEntityMap &aEntities)
     {
         for (auto &myEntity : aEntities)
             deleteEntities(myEntity.first, aEntities);
-
-        aEntities.clear();
     }
 
     Entity::IEntityPtr PluginManager::createEntity(const std::string &aName,
@@ -91,7 +88,7 @@ namespace RayTracer::Plugin
             throw Plugin::Plugin::PluginException("Plugin " + aName + " not loaded");
 
         auto myEntity = _pluginsMap[aName]->createEntity(aData);
-        
+
         return std::unique_ptr<Entity::IEntity>(myEntity);
     }
 

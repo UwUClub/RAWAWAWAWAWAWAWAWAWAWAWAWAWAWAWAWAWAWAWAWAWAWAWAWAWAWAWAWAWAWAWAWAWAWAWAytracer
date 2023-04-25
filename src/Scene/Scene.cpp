@@ -3,9 +3,20 @@
 //
 
 #include "Scene.hpp"
+#include <iostream>
 
 namespace RayTracer::Scene
 {
+    Scene::Scene(Plugin::PluginManager &aPluginManager)
+        : _pluginManager(aPluginManager)
+    {
+    }
+
+    Scene::~Scene()
+    {
+        _pluginManager.deleteEntities(_entities);
+    }
+
     void Scene::addEntity(const std::string &aName, Entity::IEntityPtr &aEntity)
     {
         _entities[aName].push_back(std::move(aEntity));
@@ -29,5 +40,4 @@ namespace RayTracer::Scene
             throw SceneException("No light in the scene");
         return _entities["Light"];
     }
-
 } // namespace RayTracer::Scene

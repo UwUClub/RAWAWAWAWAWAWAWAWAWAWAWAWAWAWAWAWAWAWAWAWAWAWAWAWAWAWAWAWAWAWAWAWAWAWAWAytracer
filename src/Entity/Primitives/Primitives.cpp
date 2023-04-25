@@ -20,4 +20,9 @@ namespace RayTracer::Entity {
     {
         return _color;
     }
+
+    void Primitives::setColor(Color color)
+    {
+        _color = color;
+    }
 }

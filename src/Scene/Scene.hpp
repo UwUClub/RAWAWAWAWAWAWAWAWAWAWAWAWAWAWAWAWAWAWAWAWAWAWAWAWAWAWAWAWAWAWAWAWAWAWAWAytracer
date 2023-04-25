@@ -6,17 +6,19 @@
 #define RAYTRACER_SCENE_HPP
 
 #include "IEntity.hpp"
+#include "PluginManager.hpp"
 
 namespace RayTracer::Scene
 {
     /**
      * @brief The Scene class
+     * @details The scene is the container of all the entities
      */
     class Scene final
     {
         public:
-            Scene() = default;
-            ~Scene() = default;
+            Scene(Plugin::PluginManager &aPluginManager);
+            ~Scene();
 
             /**
              * @brief Add an aEntity to the scene
@@ -27,6 +29,7 @@ namespace RayTracer::Scene
 
             /**
              * @brief Get the entities of the scene
+             * @details The entities are stored in a map with the Name of the Entity as key
              * @return The entities of the scene
              */
             Entity::IEntityMap &getEntities();
@@ -65,6 +68,7 @@ namespace RayTracer::Scene
 
         private:
             Entity::IEntityMap _entities;
+            Plugin::PluginManager &_pluginManager;
     };
 } // namespace RayTracer::Scene
 

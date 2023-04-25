@@ -58,17 +58,20 @@ namespace RayTracer::Plugin
             /**
              * @brief Load a plugin
              * @param aPath The aPath of the plugin
+             * @throw PluginException if the plugin already exist
              */
             void loadPlugin(const std::string &aPath);
             /**
              * @brief Unload a plugin
              * @param aName The aName of the plugin
              * @param aEntities The entity map
+             * @throw PluginException if the plugin doesn't exist
              */
             void unloadPlugin(const std::string &aName, Entity::IEntityMap &aEntities);
 
         private:
             std::unordered_map<std::string, std::unique_ptr<Plugin>> _pluginsMap;
+            std::unordered_map<std::string, std::string> _pluginsPathMap;
     };
 } // namespace RayTracer::Plugin
 

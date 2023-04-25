@@ -4,6 +4,7 @@
 
 #include "Plugin.hpp"
 #include <dlfcn.h>
+#include <iostream>
 
 namespace RayTracer::Plugin
 {
@@ -35,18 +36,22 @@ namespace RayTracer::Plugin
             dlsym(_handle, "createEntity"));
 
         if (!myGetEntity)
-            throw PluginException("Cannot load symbol 'myGetEntity': " + std::string(dlerror()));
-        return myGetEntity(aData);
+            throw PluginException("Cannot load symbol 'getEntity': " + std::string(dlerror()));
+        try {
+            auto myEntity = myGetEntity(aData);
+            return myEntity;
+        } catch (std::exception &e) {
+            throw PluginException("Cannot create entity: " + std::string(e.what()));
+        }
     }
 
-    void Plugin::destroyEntity(std::unique_ptr<Entity::IEntity> &aEntity)
+    void Plugin::destroyEntity(Entity::IEntityPtr &aEntity)
     {
         auto myDestroyEntity
-            = reinterpret_cast<void (*)(Entity::IEntity *)>(dlsym(_handle, "myDestroyEntity"));
+            = reinterpret_cast<void (*)(Entity::IEntity *)>(dlsym(_handle, "destroyEntity"));
 
         if (!myDestroyEntity)
-            throw PluginException(
-                "Cannot load symbol 'myDestroyEntity': " + std::string(dlerror()));
+            throw PluginException("Cannot load symbol 'destroyEntity': " + std::string(dlerror()));
         myDestroyEntity(aEntity.release());
     }
 

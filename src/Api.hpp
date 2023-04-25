@@ -22,8 +22,11 @@ extern "C" {
 
 /*
  * @brief Create a new entity
+ * @param aData The data to create the entity, a key is the name of the data and the value is the
+ * data
  * @return A pointer to the new entity
  * @note The pointer must be deleted by the plugin
+ * @throw An exception if the entity cannot be created
  */
 EXPORT RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData);
 
