@@ -18,7 +18,7 @@ namespace RayTracer {
             public:
                 Primitives(Color color);
                 ~Primitives();
-                virtual std::optional<double> isTouched(Ray ray);
+                virtual std::optional<double> isTouched(Ray ray) = 0;
                 Color getColor();
                 void setColor(Color color);
             protected:

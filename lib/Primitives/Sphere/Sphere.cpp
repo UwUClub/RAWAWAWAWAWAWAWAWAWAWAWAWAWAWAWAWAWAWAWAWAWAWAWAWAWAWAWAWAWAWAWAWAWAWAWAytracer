@@ -16,7 +16,7 @@ namespace RayTracer::Entity {
         _center._y = dataMap.at("y");
         _center._z = dataMap.at("z");
         _radius = dataMap.at("radius");
-        setColor({dataMap.at("r"), dataMap.at("g"), dataMap.at("b")});
+        setColor({int(dataMap.at("r")), int(dataMap.at("g")), int(dataMap.at("b"))});
     }
 
     Sphere::~Sphere()

@@ -10,5 +10,5 @@ target_include_directories(cylinder PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(cone PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 target_sources(raytracer PRIVATE
-		"${CMAKE_CURRENT_SOURCE_DIR}/Entity.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Primitives.cpp"
 		)

@@ -6,7 +6,7 @@
 */
 
 #include "Ray.hpp"
-#include "../Entity/Primitives/Primitives.hpp"
+#include "Primitives.hpp"
 
 namespace RayTracer {
     Ray::Ray(Point origin, Vector direction) : _origin(origin), _direction(direction)
@@ -17,9 +17,9 @@ namespace RayTracer {
     {
     }
 
-    Entity::Color Ray::getClosestHit(Entity::IEntityMap entities)
+    Color Ray::getClosestHit(Entity::IEntityMap entities)
     {
-        Entity::Color color = {0, 0, 0, 255};
+        Color color = {0, 0, 0};
         double closest = 0;
         std::optional<double> newDist;
     

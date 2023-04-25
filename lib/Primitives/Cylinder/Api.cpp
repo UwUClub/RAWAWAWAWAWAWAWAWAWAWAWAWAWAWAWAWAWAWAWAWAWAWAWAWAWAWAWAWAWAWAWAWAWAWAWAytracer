@@ -5,7 +5,6 @@
 ** Api
 */
 
-#include "Api.hpp"
 #include "Cylinder.hpp"
 
 extern "C" {

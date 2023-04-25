@@ -21,6 +21,7 @@ namespace RayTracer::Entity {
             _center = Point (0, 0, dataMap.at("pos"));
         } else
             throw std::invalid_argument("Invalid axis");
+        setColor({int(dataMap.at("r")), int(dataMap.at("g")), int(dataMap.at("b"))});
     }
 
     Plane::~Plane()

@@ -6,7 +6,8 @@
 */
 
 #include "Point.hpp"
-#include "../../lib/Color/Color.hpp"
+#include "Color.hpp"
+#include "IEntity.hpp"
 
 #ifndef HITPOINT_HPP_
 #define HITPOINT_HPP_
@@ -14,12 +15,12 @@
 namespace RayTracer {
     class HitPoint : public Point {
         public:
-            HitPoint(double aX, double aY, double aZ, Entity::Color &aColor);
+            HitPoint(double aX, double aY, double aZ, Color &aColor);
             ~HitPoint();
-            Entity::Color calcColor(Entity::IEntityMap aEntities);
+            Color calcColor(Entity::IEntityMap aEntities);
         protected:
         private:
-            Entity::Color _color;
+            Color _color;
     };
 } // namespace RayTracer
 

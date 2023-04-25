@@ -13,13 +13,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} config++)
 
-add_library(color SHARED)
-set_target_properties(color PROPERTIES
-		CXX_STANDARD 20
-		COMPILE_FLAGS "-fno-gnu-unique"
-		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
-		)
-
 add_library(plane SHARED)
 set_target_properties(plane PROPERTIES
 		CXX_STANDARD 20
@@ -29,6 +22,20 @@ set_target_properties(plane PROPERTIES
 
 add_library(sphere SHARED)
 set_target_properties(sphere PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+		)
+
+add_library(cone SHARED)
+set_target_properties(cone PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+		)
+
+add_library(cylinder SHARED)
+set_target_properties(cylinder PROPERTIES
 		CXX_STANDARD 20
 		COMPILE_FLAGS "-fno-gnu-unique"
 		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"

@@ -5,7 +5,6 @@
 ** Api
 */
 
-#include "Api.hpp"
 #include "Sphere.hpp"
 
 extern "C" {

@@ -17,7 +17,7 @@ namespace RayTracer::Entity {
         _center._z = dataMap.at("z");
         _radius = dataMap.at("radius");
         _height = dataMap.at("height");
-        setColor({dataMap.at("r"), dataMap.at("g"), dataMap.at("b")});
+        setColor({int(dataMap.at("r")), int(dataMap.at("g")), int(dataMap.at("b"))});
     }
 
     Cylinder::~Cylinder()

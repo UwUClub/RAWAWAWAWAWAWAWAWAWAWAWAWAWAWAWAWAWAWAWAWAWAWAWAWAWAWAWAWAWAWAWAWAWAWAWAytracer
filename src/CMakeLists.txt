@@ -7,6 +7,7 @@ target_sources(raytracer PRIVATE
 		)
 
 add_subdirectory(Entity)
+add_subdirectory(Entity/Primitives)
 add_subdirectory(Parser)
 add_subdirectory(Plugin)
 add_subdirectory(Scene)

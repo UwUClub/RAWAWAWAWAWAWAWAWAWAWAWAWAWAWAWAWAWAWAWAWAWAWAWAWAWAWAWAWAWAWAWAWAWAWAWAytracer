@@ -5,7 +5,6 @@
 ** Api
 */
 
-#include "Api.hpp"
 #include "Cone.hpp"
 
 extern "C" {
