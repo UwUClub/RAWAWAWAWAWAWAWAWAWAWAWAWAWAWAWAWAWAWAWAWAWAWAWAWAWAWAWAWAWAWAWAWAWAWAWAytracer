@@ -6,7 +6,7 @@
 #include <iostream>
 
 extern "C" {
-RayTracer::Entity::IEntity *createEntity()
+RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
 {
     return new RayTracer::Entity::Color(255, 255, 255, 255);
 }
