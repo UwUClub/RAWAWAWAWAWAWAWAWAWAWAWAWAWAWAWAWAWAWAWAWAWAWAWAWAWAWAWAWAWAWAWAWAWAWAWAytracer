@@ -4,11 +4,6 @@ target_include_directories(raytracer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(color PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 target_sources(raytracer PRIVATE
-		"${CMAKE_CURRENT_SOURCE_DIR}/Main.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Pixel.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Renderer.cpp"
 		)
-
-add_subdirectory(Plugin)
-add_subdirectory(Entity)
-add_subdirectory(Utils)
-add_subdirectory(Scene)
-add_subdirectory(Rendering)
