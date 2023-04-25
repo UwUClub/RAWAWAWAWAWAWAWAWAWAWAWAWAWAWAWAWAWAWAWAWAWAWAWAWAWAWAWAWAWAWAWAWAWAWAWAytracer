@@ -2,8 +2,8 @@
 // Created by patatofour on 17/04/23.
 //
 
-#include "Api.hpp"
 #include "Color.hpp"
+#include <iostream>
 
 extern "C" {
 RayTracer::Entity::IEntity *createEntity(RayTracer::Entity::DataEntityMap &aData)
