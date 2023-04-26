@@ -7,6 +7,7 @@
 
 #include "IEntity.hpp"
 #include "PluginManager.hpp"
+#include "Pixel.hpp"
 
 namespace RayTracer::Scene
 {
@@ -46,6 +47,8 @@ namespace RayTracer::Scene
              * @return The lights of the scene
              */
             Entity::IEntityVector &getLights();
+
+            void createPPM(const std::string &aFileName, const std::vector<Pixel> &aPixels);
 
             class SceneException : public std::exception
             {
