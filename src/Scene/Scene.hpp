@@ -7,6 +7,7 @@
 
 #include "IEntity.hpp"
 #include "PluginManager.hpp"
+#include "Color.hpp"
 
 namespace RayTracer::Scene
 {
@@ -46,6 +47,17 @@ namespace RayTracer::Scene
              * @return The lights of the scene
              */
             Entity::IEntityVector &getLights();
+            /**
+             * @brief Create a PPM file
+             * @param aFileName The name of the file
+             * @param aPixels The pixels of the image (ordered colors)
+             * @param aWidth The width of the image
+             * @param aHeight The height of the image
+             * @throw SceneException if the file cannot be opened
+             * @details The PPM file is a file format to store images
+             * @see https://en.wikipedia.org/wiki/Netpbm_format
+            */
+            void createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int &aWidth, const int &aHeight);
 
             class SceneException : public std::exception
             {

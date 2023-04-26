@@ -35,5 +35,19 @@ int main(int argc, char *argv[])
     //    //    auto &list = scene.getEntities();
     //    //
     //    //    pluginManager.deleteEntities(list);
+
+    // Example of how to use ppm creation method:
+    // scene.createPPM("MyScene.ppm", std::vector<RayTracer::Color>(
+    //     {
+    //         RayTracer::Color(255, 0, 0),
+    //         RayTracer::Color(0, 255, 0),
+    //         RayTracer::Color(0, 0, 255),
+    //         RayTracer::Color(255, 255, 0),
+    //         RayTracer::Color(255, 128, 128),
+    //         RayTracer::Color(128, 255, 128),
+    //         RayTracer::Color(128, 128, 255),
+    //         RayTracer::Color(255, 128, 128),
+    //     }), 4, 2
+    // );
     return 0;
 }

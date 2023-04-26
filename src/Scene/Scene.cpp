@@ -4,6 +4,10 @@
 
 #include "Scene.hpp"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <string>
 
 namespace RayTracer::Scene
 {
@@ -39,5 +43,28 @@ namespace RayTracer::Scene
         if (_entities["Light"].empty())
             throw SceneException("No light in the scene");
         return _entities["Light"];
+    }
+
+    void Scene::createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int &aWidth, const int &aHeight)
+    {
+        std::ofstream myFile(aFileName);
+        if (!myFile.is_open())
+            throw SceneException("Cannot open file " + aFileName);
+        myFile << "P3\n" << aWidth << " " << aHeight << "\n255\n";
+
+        int myCol = 1;
+        for (const auto &myPixel : aPixels) {
+            myFile << std::setw(3) << myPixel._r << " ";
+            myFile << std::setw(3) << myPixel._g << " ";
+            myFile << std::setw(3) << myPixel._b;
+            if (myCol == aWidth) {
+                myFile << "\n";
+                myCol = 0;
+            } else {
+                myFile << " ";
+            }
+            myCol++;
+        }
+        myFile.close();
     }
 } // namespace RayTracer::Scene
