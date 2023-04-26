@@ -57,7 +57,7 @@ namespace RayTracer::Scene
              * @details The PPM file is a file format to store images
              * @see https://en.wikipedia.org/wiki/Netpbm_format
             */
-            void createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int aWidth, const int aHeight);
+            void createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int &aWidth, const int &aHeight);
 
             class SceneException : public std::exception
             {

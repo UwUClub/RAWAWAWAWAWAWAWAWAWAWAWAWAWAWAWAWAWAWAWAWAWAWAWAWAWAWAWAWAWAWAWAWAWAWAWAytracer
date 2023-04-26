@@ -45,26 +45,26 @@ namespace RayTracer::Scene
         return _entities["Light"];
     }
 
-    void Scene::createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int aWidth, const int aHeight)
+    void Scene::createPPM(const std::string &aFileName, const std::vector<Color> &aPixels, const int &aWidth, const int &aHeight)
     {
-        std::ofstream file(aFileName);
-        if (!file.is_open())
+        std::ofstream myFile(aFileName);
+        if (!myFile.is_open())
             throw SceneException("Cannot open file " + aFileName);
-        file << "P3\n" << aWidth << " " << aHeight << "\n255\n";
+        myFile << "P3\n" << aWidth << " " << aHeight << "\n255\n";
 
-        int col = 1;
-        for (const auto &pixel : aPixels) {
-            file << std::setw(3) << pixel._r << " ";
-            file << std::setw(3) << pixel._g << " ";
-            file << std::setw(3) << pixel._b;
-            if (col == aWidth) {
-                file << "\n";
-                col = 0;
+        int myCol = 1;
+        for (const auto &myPixel : aPixels) {
+            myFile << std::setw(3) << myPixel._r << " ";
+            myFile << std::setw(3) << myPixel._g << " ";
+            myFile << std::setw(3) << myPixel._b;
+            if (myCol == aWidth) {
+                myFile << "\n";
+                myCol = 0;
             } else {
-                file << " ";
+                myFile << " ";
             }
-            col++;
+            myCol++;
         }
-        file.close();
+        myFile.close();
     }
 } // namespace RayTracer::Scene
