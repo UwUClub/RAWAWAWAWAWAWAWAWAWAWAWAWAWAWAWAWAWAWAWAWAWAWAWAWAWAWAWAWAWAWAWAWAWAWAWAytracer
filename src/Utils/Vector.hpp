@@ -15,6 +15,7 @@ namespace RayTracer
      */
     struct Vector {
         public:
+            Vector() = default;
             /**
              * @brief Construct a new Vector object
              * @param aX The x value

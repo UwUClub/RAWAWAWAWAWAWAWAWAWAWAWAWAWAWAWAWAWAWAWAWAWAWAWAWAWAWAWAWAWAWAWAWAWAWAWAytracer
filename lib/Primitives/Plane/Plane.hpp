@@ -1,30 +1,29 @@
 /*
 ** EPITECH PROJECT, 2023
-** raytracer
+** RAWAWAWAytracer
 ** File description:
-** Plane.hpp
+** Plane
 */
 
-#ifndef RAYTRACER_PLANE_HPP
-    #define RAYTRACER_PLANE_HPP
+#include "../src/Entity/Primitives/Primitives.hpp"
 
-    #include "Entity.hpp"
-    #include "Vector.hpp"
+#ifndef PLANE_HPP_
+#define PLANE_HPP_
 
-    namespace RayTracer::Primitives {
-        class Plane : public Entity::Entity {
-        public:
-            explicit Plane(const std::unordered_map<std::string, double> &dataMap);
-            ~Plane() override = default;
-
-            void setAxis(const std::string &aAxis);
-            void setColor(const RayTracer::Vector &aColor);
-
-        private:
-            char _axis;
-            RayTracer::Point _position;
-            RayTracer::Vector _color;
-        };
+namespace RayTracer {
+    namespace Entity {
+        class Plane : public Primitives {
+            public:
+                Plane(const std::unordered_map<std::string, double> &dataMap);
+                ~Plane();
+                std::optional<double> isTouched(Ray ray) override;
+            protected:
+            private:
+                Point _center;
+                Vector _normal;
+            };
     }
+};
 
-#endif //RAYTRACER_PLANE_HPP
+
+#endif /* !PLANE_HPP_ */

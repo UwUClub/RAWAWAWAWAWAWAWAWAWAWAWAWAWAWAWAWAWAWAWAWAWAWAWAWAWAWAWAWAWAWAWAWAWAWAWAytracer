@@ -27,6 +27,20 @@ set_target_properties(sphere PROPERTIES
 		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
 		)
 
+add_library(cone SHARED)
+set_target_properties(cone PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+		)
+
+add_library(cylinder SHARED)
+set_target_properties(cylinder PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/plugins"
+		)
+
 add_library(camera SHARED)
 set_target_properties(camera PROPERTIES
 		CXX_STANDARD 20

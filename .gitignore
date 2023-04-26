@@ -29,6 +29,7 @@ CMakeCache.txt
 CMakeFiles
 Testing
 CMakeConfigureLog.yaml
+CMakeFiles
 *.ninja*
 Makefile
 .cmake*

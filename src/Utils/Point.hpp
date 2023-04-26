@@ -17,6 +17,7 @@ namespace RayTracer
      */
     struct Point {
         public:
+            Point() = default;
             /**
              * @brief Construct a new Point object
              * @param aX The x value

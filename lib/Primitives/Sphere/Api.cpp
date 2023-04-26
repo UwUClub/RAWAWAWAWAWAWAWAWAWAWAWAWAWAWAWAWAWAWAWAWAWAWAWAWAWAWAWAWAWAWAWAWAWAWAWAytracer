@@ -1,13 +1,16 @@
-//
-// Created by beafowl on 20/04/23.
-//
+/*
+** EPITECH PROJECT, 2023
+** RAWAWAWAytracer
+** File description:
+** Api
+*/
 
 #include "Sphere.hpp"
 
 extern "C" {
-    RayTracer::Entity::Entity *createEntity(RayTracer::Entity::DataEntityMap &aData)
+    RayTracer::Entity::IEntity *createEntity(const std::unordered_map<std::string, double> &dataMap)
     {
-        return new RayTracer::Primitives::Sphere(aData);
+        return new RayTracer::Entity::Sphere(dataMap);
     }
 
     void destroyEntity(RayTracer::Entity::IEntity *aEntity)
@@ -19,5 +22,5 @@ extern "C" {
     {
         return "Sphere";
     }
-
 }
+

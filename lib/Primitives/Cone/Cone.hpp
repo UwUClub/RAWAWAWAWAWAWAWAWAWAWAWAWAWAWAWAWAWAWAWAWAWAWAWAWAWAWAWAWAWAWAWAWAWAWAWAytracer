@@ -2,27 +2,28 @@
 ** EPITECH PROJECT, 2023
 ** RAWAWAWAytracer
 ** File description:
-** Sphere
+** Cone
 */
 
 #include "../src/Entity/Primitives/Primitives.hpp"
 
-#ifndef SPHERE_HPP_
-#define SPHERE_HPP_
+#ifndef CONE_HPP_
+#define CONE_HPP_
 
 namespace RayTracer {
     namespace Entity {
-        class Sphere : public Primitives {
+        class Cone : public Primitives {
             public:
-                Sphere(const std::unordered_map<std::string, double> &dataMap);
-                ~Sphere();
+                Cone(const std::unordered_map<std::string, double> &dataMap);
+                ~Cone();
                 std::optional<double> isTouched(Ray ray) override;
             protected:
             private:
                 Point _center;
                 double _radius;
+                double _height;
         };
-    } // namespace Entity
-} // namespace RayTracer
+    }
+};
 
-#endif /* !SPHERE_HPP_ */
+#endif /* !CONE_HPP_ */

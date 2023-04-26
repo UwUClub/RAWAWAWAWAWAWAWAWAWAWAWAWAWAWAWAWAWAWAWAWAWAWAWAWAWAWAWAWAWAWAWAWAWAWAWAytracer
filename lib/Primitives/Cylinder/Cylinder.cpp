@@ -2,32 +2,33 @@
 ** EPITECH PROJECT, 2023
 ** RAWAWAWAytracer
 ** File description:
-** Sphere
+** Cylinder
 */
 
 #include <cmath>
-#include "Sphere.hpp"
+#include "Cylinder.hpp"
 
 namespace RayTracer::Entity {
-    Sphere::Sphere(const std::unordered_map<std::string, double> &dataMap) : Primitives({0, 0, 0}),
+    Cylinder::Cylinder(const std::unordered_map<std::string, double> &dataMap) : Primitives({0, 0, 0}),
         _center(0, 0, 0)
     {
         _center._x = dataMap.at("x");
         _center._y = dataMap.at("y");
         _center._z = dataMap.at("z");
         _radius = dataMap.at("radius");
+        _height = dataMap.at("height");
         setColor({int(dataMap.at("r")), int(dataMap.at("g")), int(dataMap.at("b"))});
     }
 
-    Sphere::~Sphere()
+    Cylinder::~Cylinder()
     {
     }
 
-    std::optional<double> Sphere::isTouched(Ray aRay)
+    std::optional<double> Cylinder::isTouched(Ray aRay)
     {
-        double a = pow(aRay._direction._x, 2) + pow(aRay._direction._y, 2) + pow(aRay._direction._z, 2);
-        double b = 2 * (aRay._direction._x * (aRay._origin._x - _center._x) + aRay._direction._y * (aRay._origin._y - _center._y) + aRay._direction._z * (aRay._origin._z - _center._z));
-        double c = pow(aRay._origin._x - _center._x, 2) + pow(aRay._origin._y - _center._y, 2) + pow(aRay._origin._z - _center._z, 2) - pow(_radius, 2);
+        double a = pow(aRay._direction._x, 2) + pow(aRay._direction._y, 2);
+        double b = 2 * (aRay._direction._x * (aRay._origin._x - _center._x) + aRay._direction._y * (aRay._origin._y - _center._y));
+        double c = pow(aRay._origin._x - _center._x, 2) + pow(aRay._origin._y - _center._y, 2) - pow(_radius, 2);
         double myDelta = pow(b, 2) - 4 * a * c;
         double t = 0;
 
@@ -45,4 +46,4 @@ namespace RayTracer::Entity {
             return std::nullopt;
         return t;
     }
-} // namespace aRayTracer
+}
