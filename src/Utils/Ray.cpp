@@ -26,6 +26,7 @@ namespace RayTracer {
         for (auto &entity : entities) {
             if (entity.first == "Camera" || entity.first == "DirectionalLight" || entity.first == "PointLight") {
                 continue;
+            }
             for (auto &entity2 : entity.second) {
                 Entity::Primitives *prim = static_cast<Entity::Primitives *>(entity2.get());
                 newDist = prim->isTouched(*this);
