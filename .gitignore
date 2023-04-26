@@ -12,6 +12,7 @@
 *.so
 *.internal
 *.bin
+*.ppm
 CMakeCCompilerId.c
 CMakeCXXCompilerId.cpp
 *.ts
