@@ -24,14 +24,14 @@ namespace RayTracer {
         std::optional<double> newDist;
     
         for (auto &entity : entities) {
-            if (entity.first == "Sphere" || entity.first == "Plane" || entity.first == "Cylinder" || entity.first == "Cone") {
-                for (auto &entity2 : entity.second) {
-                    Entity::Primitives *prim = static_cast<Entity::Primitives *>(entity2.get());
-                    newDist = prim->isTouched(*this);
-                    if (closest == 0 || (newDist != std::nullopt && newDist.value() < closest)) {
-                        closest = newDist.value();
-                        color = prim->getColor();
-                    }
+            if (entity.first == "Camera" || entity.first == "DirectionalLight" || entity.first == "PointLight") {
+                continue;
+            for (auto &entity2 : entity.second) {
+                Entity::Primitives *prim = static_cast<Entity::Primitives *>(entity2.get());
+                newDist = prim->isTouched(*this);
+                if (closest == 0 || (newDist != std::nullopt && newDist.value() < closest)) {
+                    closest = newDist.value();
+                    color = prim->getColor();
                 }
             }
         }
