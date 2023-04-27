@@ -7,7 +7,8 @@
 
 #include "HitPoint.hpp"
 
-namespace RayTracer {
+namespace RayTracer
+{
     HitPoint::HitPoint(double aX, double aY, double aZ, Color &aColor)
         : Point(aX, aY, aZ)
         , _color(aColor)
@@ -18,7 +19,7 @@ namespace RayTracer {
     {
     }
 
-    Color calcColor(Entity::IEntityMap aEntities)
+    Color calcColor(const Entity::IEntityMap &aEntities)
     {
     }
-}
+} // namespace RayTracer

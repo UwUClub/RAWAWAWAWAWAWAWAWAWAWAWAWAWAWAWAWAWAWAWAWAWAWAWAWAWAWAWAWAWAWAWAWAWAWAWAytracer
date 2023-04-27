@@ -10,12 +10,12 @@
 
 namespace RayTracer
 {
-    Euler::Euler(double x, double y, double z)
-        : _x(x)
-        , _y(y)
-        , _z(z)
+    Euler::Euler(double aX, double aY, double aZ)
+        : _x(aX)
+        , _y(aY)
+        , _z(aZ)
     {
-        _dist = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+        _dist = sqrt(pow(aX, 2) + pow(aY, 2) + pow(aZ, 2));
     }
 
     Euler Euler::rad() const
@@ -23,39 +23,39 @@ namespace RayTracer
         return { _x * M_PI / 180, _y * M_PI / 180, _z * M_PI / 180 };
     }
 
-    auto Euler::operator<=>(const Euler &other) const
+    auto Euler::operator<=>(const Euler &aOther) const
     {
-        return (_x == other._x && _y == other._y && _z == other._z);
+        return (_x == aOther._x && _y == aOther._y && _z == aOther._z);
     }
 
-    Euler Euler::operator+(const Euler &other) const
+    Euler Euler::operator+(const Euler &aOther) const
     {
-        return { _x + other._x, _y + other._y, _z + other._z };
+        return { _x + aOther._x, _y + aOther._y, _z + aOther._z };
     }
 
-    Euler Euler::operator-(const Euler &other) const
+    Euler Euler::operator-(const Euler &aOther) const
     {
-        return { _x - other._x, _y - other._y, _z - other._z };
+        return { _x - aOther._x, _y - aOther._y, _z - aOther._z };
     }
 
-    double Euler::operator|(const Euler &other) const
+    double Euler::operator|(const Euler &aOther) const
     {
-        return (_x * other._x + _y * other._y + _z * other._z);
+        return (_x * aOther._x + _y * aOther._y + _z * aOther._z);
     }
 
-    Euler Euler::operator*(const Euler &other) const
+    Euler Euler::operator*(const Euler &aOther) const
     {
-        return { _y * other._z - _z * other._y, _z * other._x - _x * other._z,
-            _x * other._y - _y * other._x };
+        return { _y * aOther._z - _z * aOther._y, _z * aOther._x - _x * aOther._z,
+            _x * aOther._y - _y * aOther._x };
     }
 
-    Euler Euler::operator*(double other) const
+    Euler Euler::operator*(double aOther) const
     {
-        return { _x * other, _y * other, _z * other };
+        return { _x * aOther, _y * aOther, _z * aOther };
     }
 
-    Euler Euler::operator/(double other) const
+    Euler Euler::operator/(double aOther) const
     {
-        return { _x / other, _y / other, _z / other };
+        return { _x / aOther, _y / aOther, _z / aOther };
     }
 } // namespace RayTracer

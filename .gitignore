@@ -39,3 +39,5 @@ raytracer
 *.log
 Testing/
 raytracer.cbp
+.cache/
+build/

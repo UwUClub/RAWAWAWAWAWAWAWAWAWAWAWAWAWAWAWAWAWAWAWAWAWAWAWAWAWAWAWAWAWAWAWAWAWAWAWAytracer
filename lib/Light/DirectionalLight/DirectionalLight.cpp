@@ -6,20 +6,24 @@
 */
 
 #include "DirectionalLight.hpp"
+#include "IEntity.hpp"
 
-namespace RayTracer::Entity {
-    DirectionalLight::DirectionalLight(const std::unordered_map<std::string, double> &dataMap) : Entity(EntityType::LIGHT), _direction(0, 0, 0)
+namespace RayTracer::Entity
+{
+    DirectionalLight::DirectionalLight(const DataEntityMap &aDataMap)
+        : Entity(EntityType::LIGHT)
+        , _direction(0, 0, 0)
     {
-        if (dataMap.find("x") != dataMap.end())
-            _direction._x = dataMap.at("x");
-        if (dataMap.find("y") != dataMap.end())
-            _direction._y = dataMap.at("y");
-        if (dataMap.find("z") != dataMap.end())
-            _direction._z = dataMap.at("z");
+        if (aDataMap.find("x") != aDataMap.end())
+            _direction._x = aDataMap.at("x");
+        if (aDataMap.find("y") != aDataMap.end())
+            _direction._y = aDataMap.at("y");
+        if (aDataMap.find("z") != aDataMap.end())
+            _direction._z = aDataMap.at("z");
     }
 
     void DirectionalLight::setDirection(const Vector &aDirection)
     {
         _direction = aDirection;
     }
-}
+} // namespace RayTracer::Entity

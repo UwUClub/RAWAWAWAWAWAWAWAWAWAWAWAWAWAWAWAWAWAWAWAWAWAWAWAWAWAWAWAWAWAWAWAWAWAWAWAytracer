@@ -5,22 +5,46 @@
 ** Ray
 */
 
+#include "Color.hpp"
 #include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
-#include "Color.hpp"
 
 #ifndef RAY_HPP_
 #define RAY_HPP_
 
-namespace RayTracer {
+namespace RayTracer
+{
     struct Ray {
         public:
-            Ray(Point origin, Vector direction);
+            /**
+             * @brief Construct a new Ray object
+             *
+             * @param origin The origin of the ray
+             * @param direction The direction of the ray
+             */
+            Ray(const Point aOrigin, const Vector aDirection);
+            /**
+             * @brief Destroy the Ray object
+             *
+             */
             ~Ray();
+            /**
+             * @brief Get the closest hit of the ray
+             *
+             * @param entities The entities to check
+             * @return Color The color of the closest hit
+             */
+            Color getClosestHit(const Entity::IEntityMap &aEntities);
+
+            /**
+             * @brief The origin of the ray
+             */
             Point _origin;
+            /**
+             * @brief The direction of the ray
+             */
             Vector _direction;
-            Color getClosestHit(Entity::IEntityMap entities);
     };
 } // namespace RayTracer
 

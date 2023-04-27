@@ -14,6 +14,13 @@ namespace RayTracer
 {
     struct Color {
         public:
+            /**
+             * @brief Construct a new Color object
+             *
+             * @param aR The red value of the color
+             * @param aG The green value of the color
+             * @param aB The blue value of the color
+             */
             Color(const int aR, const int aG, const int aB);
             ~Color() = default;
 
