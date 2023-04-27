@@ -6,9 +6,15 @@
 */
 
 #include "Camera.hpp"
+#include "IEntity.hpp"
 
-namespace RayTracer::Entity {
-    Camera::Camera(const std::unordered_map<std::string, double> &dataMap) : Entity(EntityType::CAMERA), _resolution(0, 0), _rotation(0, 0, 0), _fieldOfView(0)
+namespace RayTracer::Entity
+{
+    Camera::Camera(const DataEntityMap &dataMap)
+        : Entity(EntityType::CAMERA)
+        , _resolution(0, 0)
+        , _rotation(0, 0, 0)
+        , _fieldOfView(0)
     {
         if (dataMap.find("width") != dataMap.end())
             _resolution.first = dataMap.at("width");
@@ -38,4 +44,4 @@ namespace RayTracer::Entity {
     {
         _fieldOfView = aFov;
     }
-} // RayTracer
+} // namespace RayTracer::Entity

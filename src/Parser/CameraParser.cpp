@@ -6,73 +6,81 @@
 */
 
 #include "CameraParser.hpp"
+#include "IEntity.hpp"
 
-namespace RayTracer::Parser {
-    void CameraParser::getCameraResolution(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+namespace RayTracer::Parser
+{
+    void CameraParser::getCameraResolution(const libconfig::Setting &aCamera,
+        Entity::DataEntityMap &aData)
     {
-        float width;
-        float height;
-        const libconfig::Setting &resolution = camera["resolution"];
+        float myWdth = 0;
+        float myHeight = 0;
+        const libconfig::Setting &myResolution = aCamera["resolution"];
 
-        if (!resolution.exists("width") || !resolution.exists("height"))
+        if (!myResolution.exists("width") || !myResolution.exists("height"))
             throw Parser::ParserException("Camera is missing parameters (width, height).");
-        resolution.lookupValue("width", width);
-        resolution.lookupValue("height", height);
-        data.insert(std::make_pair("width", width));
-        data.insert(std::make_pair("height", height));
+        myResolution.lookupValue("width", myWdth);
+        myResolution.lookupValue("height", myHeight);
+        aData.insert(std::make_pair("width", myWdth));
+        aData.insert(std::make_pair("height", myHeight));
     }
 
-    void CameraParser::getCameraFieldOfView(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    void CameraParser::getCameraFieldOfView(const libconfig::Setting &aCamera,
+        Entity::DataEntityMap &aData)
     {
-        float fov;
+        float myFov = 0;
 
-        if (!camera.exists("fieldOfView"))
+        if (!aCamera.exists("fieldOfView"))
             throw Parser::ParserException("Camera is missing parameters (fieldOfView).");
-        camera.lookupValue("fieldOfView", fov);
-        data.insert(std::make_pair("fov", fov));
+        aCamera.lookupValue("fieldOfView", myFov);
+        aData.insert(std::make_pair("fov", myFov));
     }
 
-    void CameraParser::getCameraPosition(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    void CameraParser::getCameraPosition(const libconfig::Setting &aCamera,
+        Entity::DataEntityMap &aData)
     {
-        float x;
-        float y;
-        float z;
-        const libconfig::Setting &position = camera["position"];
+        float myX = 0;
+        float myY = 0;
+        float myZ = 0;
+        const libconfig::Setting &myPosition = aCamera["position"];
 
-        if (!position.exists("x") || !position.exists("y") || !position.exists("z"))
+        if (!myPosition.exists("x") || !myPosition.exists("y") || !myPosition.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
-        position.lookupValue("x", x);
-        position.lookupValue("y", y);
-        position.lookupValue("z", z);
-        data.insert(std::make_pair("x", x));
-        data.insert(std::make_pair("y", y));
-        data.insert(std::make_pair("z", z));
+        myPosition.lookupValue("x", myX);
+        myPosition.lookupValue("y", myY);
+        myPosition.lookupValue("z", myZ);
+        aData.insert(std::make_pair("x", myX));
+        aData.insert(std::make_pair("y", myY));
+        aData.insert(std::make_pair("z", myZ));
     }
 
-    void CameraParser::getCameraRotation(const libconfig::Setting &camera, std::unordered_map<std::string, double> &data)
+    void CameraParser::getCameraRotation(const libconfig::Setting &aCamera,
+        Entity::DataEntityMap &aData)
     {
-        float x;
-        float y;
-        float z;
-        const libconfig::Setting &rotation = camera["rotation"];
+        float myX;
+        float myY;
+        float myZ;
+        const libconfig::Setting &myRotation = aCamera["rotation"];
 
-        if (!rotation.exists("x") || !rotation.exists("y") || !rotation.exists("z"))
+        if (!myRotation.exists("x") || !myRotation.exists("y") || !myRotation.exists("z"))
             throw Parser::ParserException("Camera is missing parameters (x, y, z).");
-        rotation.lookupValue("x", x);
-        rotation.lookupValue("y", y);
-        rotation.lookupValue("z", z);
-        data.insert(std::make_pair("rotate_x", x));
-        data.insert(std::make_pair("rotate_y", y));
-        data.insert(std::make_pair("rotate_z", z));
+        myRotation.lookupValue("x", myX);
+        myRotation.lookupValue("y", myY);
+        myRotation.lookupValue("z", myZ);
+        aData.insert(std::make_pair("rotate_x", myX));
+        aData.insert(std::make_pair("rotate_y", myY));
+        aData.insert(std::make_pair("rotate_z", myZ));
     }
 
-    void CameraParser::createCamera(const libconfig::Setting &camera, std::unordered_map<std::string, double> &cameraData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
+    void CameraParser::createCamera(const libconfig::Setting &aCamera,
+        Entity::DataEntityMap &aCameraData, RayTracer::Plugin::PluginManager &aPluginManager,
+        RayTracer::Scene::Scene &aScene)
     {
-        getCameraPosition(camera, cameraData);
-        getCameraRotation(camera, cameraData);
-        getCameraResolution(camera, cameraData);
-        getCameraFieldOfView(camera, cameraData);
-        auto cameraEntity = pluginManager.createEntity("Camera", cameraData);
-        scene.addEntity("Camera", cameraEntity);
+        getCameraPosition(aCamera, aCameraData);
+        getCameraRotation(aCamera, aCameraData);
+        getCameraResolution(aCamera, aCameraData);
+        getCameraFieldOfView(aCamera, aCameraData);
+        auto myCameraEntity = aPluginManager.createEntity("Camera", aCameraData);
+        aScene.addEntity("Camera", myCameraEntity);
     }
-} // RayTracer
+} // namespace RayTracer::Parser

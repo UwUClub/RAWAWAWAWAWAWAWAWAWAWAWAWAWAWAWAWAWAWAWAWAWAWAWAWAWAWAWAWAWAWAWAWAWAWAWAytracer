@@ -8,8 +8,11 @@
 #include "Ray.hpp"
 #include "Primitives.hpp"
 
-namespace RayTracer {
-    Ray::Ray(Point origin, Vector direction) : _origin(origin), _direction(direction)
+namespace RayTracer
+{
+    Ray::Ray(const Point aOrigin, const Vector aDirection)
+        : _origin(aOrigin)
+        , _direction(aDirection)
     {
     }
 
@@ -17,25 +20,27 @@ namespace RayTracer {
     {
     }
 
-    Color Ray::getClosestHit(Entity::IEntityMap entities)
+    Color Ray::getClosestHit(const Entity::IEntityMap &aEntities)
     {
-        Color color = {0, 0, 0};
-        double closest = 0;
-        std::optional<double> newDist;
-    
-        for (auto &entity : entities) {
-            if (entity.first == "Camera" || entity.first == "DirectionalLight" || entity.first == "PointLight") {
+        Color myColor = { 0, 0, 0 };
+        double myClosest = 0;
+        std::optional<double> myNewDist;
+
+        for (auto &myEntity : aEntities) {
+            if (myEntity.first == "Camera" || myEntity.first == "DirectionalLight"
+                || myEntity.first == "PointLight") {
                 continue;
             }
-            for (auto &entity2 : entity.second) {
-                Entity::Primitives *prim = static_cast<Entity::Primitives *>(entity2.get());
-                newDist = prim->isTouched(*this);
-                if (closest == 0 || (newDist != std::nullopt && newDist.value() < closest)) {
-                    closest = newDist.value();
-                    color = prim->getColor();
+            for (auto &myPrimitive : myEntity.second) {
+                Entity::Primitives *prim = static_cast<Entity::Primitives *>(myPrimitive.get());
+                myNewDist = prim->isTouched(*this);
+                if (myClosest == 0
+                    || (myNewDist != std::nullopt && myNewDist.value() < myClosest)) {
+                    myClosest = myNewDist.value();
+                    myColor = prim->getColor();
                 }
             }
         }
-        return color;
+        return myColor;
     }
 } // namespace RayTracer

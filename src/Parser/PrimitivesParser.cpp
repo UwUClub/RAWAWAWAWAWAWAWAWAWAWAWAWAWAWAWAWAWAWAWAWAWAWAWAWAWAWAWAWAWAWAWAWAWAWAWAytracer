@@ -5,101 +5,112 @@
 ** PrimitivesParser.cpp
 */
 
-#include <cstring>
 #include "PrimitivesParser.hpp"
+#include "IEntity.hpp"
+#include <cstring>
 
-namespace RayTracer::Parser {
-    void PrimitivesParser::getPrimitivePosition(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data)
+namespace RayTracer::Parser
+{
+    void PrimitivesParser::getPrimitivePosition(const libconfig::Setting &aPrimitive,
+        Entity::DataEntityMap &aData)
     {
-        float x;
-        float y;
-        float z;
+        float myX = 0;
+        float myY = 0;
+        float myZ = 0;
 
-        if (!primitive.exists("x") || !primitive.exists("y") || !primitive.exists("z"))
+        if (!aPrimitive.exists("x") || !aPrimitive.exists("y") || !aPrimitive.exists("z"))
             throw Parser::ParserException("Primitive is missing parameters (x, y, z).");
-        primitive.lookupValue("x", x);
-        primitive.lookupValue("y", y);
-        primitive.lookupValue("z", z);
-        data.insert(std::make_pair("x", x));
-        data.insert(std::make_pair("y", y));
-        data.insert(std::make_pair("z", z));
+        aPrimitive.lookupValue("x", myX);
+        aPrimitive.lookupValue("y", myY);
+        aPrimitive.lookupValue("z", myZ);
+        aData.insert(std::make_pair("x", myX));
+        aData.insert(std::make_pair("y", myY));
+        aData.insert(std::make_pair("z", myZ));
     }
 
-    void PrimitivesParser::getPrimitiveColor(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data)
+    void PrimitivesParser::getPrimitiveColor(const libconfig::Setting &aPrimitive,
+        Entity::DataEntityMap &aData)
     {
-        float r;
-        float g;
-        float b;
+        float myR = 0;
+        float myG = 0;
+        float myB = 0;
+        const libconfig::Setting &myColor = aPrimitive["color"];
 
-        const libconfig::Setting &color = primitive["color"];
-        if (!color.exists("r") || !color.exists("g") || !color.exists("b"))
+        if (!myColor.exists("r") || !myColor.exists("g") || !myColor.exists("b"))
             throw Parser::ParserException("Color is missing parameters (r, g, b).");
-        primitive.lookupValue("r", r);
-        primitive.lookupValue("g", g);
-        primitive.lookupValue("b", b);
-        data.insert(std::make_pair("r", r));
-        data.insert(std::make_pair("g", g));
-        data.insert(std::make_pair("b", b));
+        aPrimitive.lookupValue("r", myR);
+        aPrimitive.lookupValue("g", myG);
+        aPrimitive.lookupValue("b", myB);
+        aData.insert(std::make_pair("r", myR));
+        aData.insert(std::make_pair("g", myG));
+        aData.insert(std::make_pair("b", myB));
     }
 
-    void PrimitivesParser::getPrimitiveRadius(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data)
+    void PrimitivesParser::getPrimitiveRadius(const libconfig::Setting &aPrimitive,
+        Entity::DataEntityMap &aData)
     {
-        double radius;
+        double myRadius = 0;
 
-        if (!primitive.exists("r"))
+        if (!aPrimitive.exists("r"))
             throw Parser::ParserException("Primitive is missing parameters (radius).");
-        primitive.lookupValue("r", radius);
-        data.insert(std::make_pair("radius", radius));
+        aPrimitive.lookupValue("r", myRadius);
+        aData.insert(std::make_pair("radius", myRadius));
     }
 
-    void PrimitivesParser::getPlaneAxis(const libconfig::Setting &plane, std::unordered_map<std::string, double> &data)
+    void PrimitivesParser::getPlaneAxis(const libconfig::Setting &aPlane,
+        Entity::DataEntityMap &aData)
     {
-        std::string axisString;
-        double axis;
+        std::string myAxisString;
+        double myAxis = 0;
 
-        if (!plane.exists("axis"))
+        if (!aPlane.exists("axis"))
             throw Parser::ParserException("Plane is missing parameters (axis).");
-        plane.lookupValue("axis", axisString);
-        if (axisString == "X")
-            axis = 0;
-        else if (axisString == "Y")
-            axis = 1;
-        else if (axisString == "Z")
-            axis = 2;
+        aPlane.lookupValue("axis", myAxisString);
+        if (myAxisString == "X")
+            myAxis = 0;
+        else if (myAxisString == "Y")
+            myAxis = 1;
+        else if (myAxisString == "Z")
+            myAxis = 2;
         else
             throw Parser::ParserException("Plane axis is invalid.");
-        data.insert(std::make_pair("axis", axis));
+        aData.insert(std::make_pair("axis", myAxis));
     }
 
-    void PrimitivesParser::getPlanePosition(const libconfig::Setting &plane, std::unordered_map<std::string, double> &data)
+    void PrimitivesParser::getPlanePosition(const libconfig::Setting &aPlane,
+        Entity::DataEntityMap &aData)
     {
-        float position;
+        float myPosition = 0;
 
-        if (!plane.exists("position"))
+        if (!aPlane.exists("position"))
             throw Parser::ParserException("Plane is missing parameters (position, normal).");
-        plane.lookupValue("position", position);
-        data.insert(std::make_pair("position", position));
+        aPlane.lookupValue("position", myPosition);
+        aData.insert(std::make_pair("position", myPosition));
     }
 
-    void PrimitivesParser::createPlane(const libconfig::Setting &plane, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
+    void PrimitivesParser::createPlane(const libconfig::Setting &aPlane,
+        Entity::DataEntityMap &aPrimitiveData, RayTracer::Plugin::PluginManager &aPluginManager,
+        RayTracer::Scene::Scene &aScene)
     {
-        for (int i = 0; i < plane.getLength(); i++) {
-            getPlaneAxis(plane[i], primitiveData);
-            getPlanePosition(plane[i], primitiveData);
-            getPrimitiveColor(plane[i], primitiveData);
-            auto primitiveEntity = pluginManager.createEntity("Plane", primitiveData);
-            scene.addEntity("Plane", primitiveEntity);
+        for (int i = 0; i < aPlane.getLength(); i++) {
+            getPlaneAxis(aPlane[i], aPrimitiveData);
+            getPlanePosition(aPlane[i], aPrimitiveData);
+            getPrimitiveColor(aPlane[i], aPrimitiveData);
+            auto myPrimitiveEntity = aPluginManager.createEntity("Plane", aPrimitiveData);
+            aScene.addEntity("Plane", myPrimitiveEntity);
         }
     }
 
-    void PrimitivesParser::createPrimitive(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene)
+    void PrimitivesParser::createPrimitive(const libconfig::Setting &aSphere,
+        std::unordered_map<std::string, double> &aPrimitiveData,
+        RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene)
     {
-        for (int i = 0; i < primitive.getLength(); i++) {
-            getPrimitivePosition(primitive[i], primitiveData);
-            getPrimitiveRadius(primitive[i], primitiveData);
-            getPrimitiveColor(primitive[i], primitiveData);
-            auto primitiveEntity = pluginManager.createEntity(primitive.getName(), primitiveData);
-            scene.addEntity(primitive.getName(), primitiveEntity);
+        for (int i = 0; i < aSphere.getLength(); i++) {
+            getPrimitivePosition(aSphere[i], aPrimitiveData);
+            getPrimitiveRadius(aSphere[i], aPrimitiveData);
+            getPrimitiveColor(aSphere[i], aPrimitiveData);
+            auto myPrimitiveEntity = aPluginManager.createEntity(aSphere.getName(), aPrimitiveData);
+            aScene.addEntity(aSphere.getName(), myPrimitiveEntity);
         }
     }
-}
+} // namespace RayTracer::Parser

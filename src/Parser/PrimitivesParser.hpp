@@ -6,70 +6,81 @@
 */
 
 #ifndef RAYTRACER_PRIMITIVESPARSER_HPP
-    #define RAYTRACER_PRIMITIVESPARSER_HPP
+#define RAYTRACER_PRIMITIVESPARSER_HPP
 
-    #include "Parser.hpp"
-    
-    namespace RayTracer::Parser {
-        class PrimitivesParser {
-            public:
-                explicit PrimitivesParser() = default;
-                ~PrimitivesParser() = default;
+#include "IEntity.hpp"
+#include "Parser.hpp"
 
-                /**
-                 * @brief Get the Primitive Position object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 */
-                static void getPrimitivePosition(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data);
+namespace RayTracer::Parser
+{
+    class PrimitivesParser
+    {
+        public:
+            explicit PrimitivesParser() = default;
+            ~PrimitivesParser() = default;
 
-                /**
-                 * @brief Get the Primitive Color object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 */
-                static void getPrimitiveColor(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data);
+            /**
+             * @brief Get the Primitive Position object
+             * @param aPrimitive the primitive to parse
+             * @param aData the data to fill
+             */
+            static void getPrimitivePosition(const libconfig::Setting &aPrimitive,
+                Entity::DataEntityMap &aData);
 
-                /**
-                 * @brief Get the Primitive Radius object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 */
-                static void getPrimitiveRadius(const libconfig::Setting &primitive, std::unordered_map<std::string, double> &data);
+            /**
+             * @brief Get the Primitive Color object
+             * @param aPrimitive the primitive to parse
+             * @param aData the aData to fill
+             */
+            static void getPrimitiveColor(const libconfig::Setting &aPrimitive,
+                Entity::DataEntityMap &aData);
 
-                /**
-                 * @brief Get the Plane Axis object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 */
-                static void getPlaneAxis(const libconfig::Setting &plane, std::unordered_map<std::string, double> &data);
+            /**
+             * @brief Get the Primitive Radius object
+             * @param aPrimitive the aPrimitive to parse
+             * @param aData the data to fill
+             */
+            static void getPrimitiveRadius(const libconfig::Setting &aPrimitive,
+                Entity::DataEntityMap &aData);
 
-                /**
-                 * @brief Get the Plane Position object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 */
-                static void getPlanePosition(const libconfig::Setting &plane, std::unordered_map<std::string, double> &data);
+            /**
+             * @brief Get the Plane Axis object
+             * @param aPlane the primitive to parse
+             * @param aData the data to fill
+             */
+            static void getPlaneAxis(const libconfig::Setting &aPlane,
+                Entity::DataEntityMap &aData);
 
-                /**
-                 * @brief Get the Plane Normal object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 * @param RayTracer::Plugin::PluginManager the plugin manager to create the primitive
-                 * @param RayTracer::Scene::Scene the scene to add the primitive
-                 */
-                static void createPlane(const libconfig::Setting &plane, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene);
+            /**
+             * @brief Get the Plane Position object
+             * @param aPlane the primitive to parse
+             * @param aData the data to fill
+             */
+            static void getPlanePosition(const libconfig::Setting &aPlane,
+                Entity::DataEntityMap &aData);
 
-                /**
-                 * @brief Get the Sphere Position object
-                 * @param libconfig::Setting the primitive to parse
-                 * @param std::unordered_map<std::string, float> the data to fill
-                 * @param RayTracer::Plugin::PluginManager the plugin manager to create the primitive
-                 * @param RayTracer::Scene::Scene the scene to add the primitive
-                 */
-                 static void createPrimitive(const libconfig::Setting &sphere, std::unordered_map<std::string, double> &primitiveData, RayTracer::Plugin::PluginManager &pluginManager, RayTracer::Scene::Scene &scene);
-        };
-    } // RayTracer
+            /**
+             * @brief Get the Plane Normal object
+             * @param aPlane the primitive to parse
+             * @param aData the data to fill
+             * @param aPluginManager the plugin manager to create the primitive
+             * @param aScene the aScene to add the primitive
+             */
+            static void createPlane(const libconfig::Setting &aPlane,
+                Entity::DataEntityMap &aPrimitiveData,
+                RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene);
 
+            /**
+             * @brief Get the Sphere Position object
+             * @param aSphere the primitive to parse
+             * @param aData the data to fill
+             * @param aPluginManager the plugin manager to create the primitive
+             * @param aScene the aScene to add the primitive
+             */
+            static void createPrimitive(const libconfig::Setting &aSphere,
+                Entity::DataEntityMap &aPrimitiveData,
+                RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene);
+    };
+} // namespace RayTracer::Parser
 
-#endif //RAYTRACER_PRIMITIVESPARSER_HPP
+#endif // RAYTRACER_PRIMITIVESPARSER_HPP

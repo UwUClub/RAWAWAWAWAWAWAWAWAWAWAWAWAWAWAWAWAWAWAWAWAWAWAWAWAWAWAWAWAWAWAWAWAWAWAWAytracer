@@ -7,22 +7,21 @@
 
 #include "Primitives.hpp"
 
-namespace RayTracer::Entity {
-    Primitives::Primitives(Color color) : Entity(EntityType::PRIMITIVE), _color(color)
+namespace RayTracer::Entity
+{
+    Primitives::Primitives(const Color &color)
+        : Entity(EntityType::PRIMITIVE)
+        , _color(color)
     {
     }
 
-    Primitives::~Primitives()
-    {
-    }
-
-    Color Primitives::getColor()
+    Color &Primitives::getColor()
     {
         return _color;
     }
 
-    void Primitives::setColor(Color color)
+    void Primitives::setColor(const Color &color)
     {
         _color = color;
     }
-}
+} // namespace RayTracer::Entity

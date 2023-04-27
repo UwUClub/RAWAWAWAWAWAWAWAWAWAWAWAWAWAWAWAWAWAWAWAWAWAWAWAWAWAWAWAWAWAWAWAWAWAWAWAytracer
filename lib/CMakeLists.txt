@@ -9,6 +9,6 @@ target_include_directories(cylinder PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(cone PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 add_subdirectory(Camera)
-add_subdirectory(Light) 
+add_subdirectory(Light)
 add_subdirectory(Primitives)
 

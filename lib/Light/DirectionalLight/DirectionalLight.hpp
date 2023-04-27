@@ -6,21 +6,25 @@
 */
 
 #ifndef RAYTRACER_DIRECTIONALLIGHT_HPP
-    #define RAYTRACER_DIRECTIONALLIGHT_HPP
+#define RAYTRACER_DIRECTIONALLIGHT_HPP
 
-    #include "Entity.hpp"
-    #include "Vector.hpp"
+#include "Entity.hpp"
+#include "IEntity.hpp"
+#include "Vector.hpp"
 
-    namespace RayTracer::Entity {
-        class DirectionalLight : public Entity {
-            public:
-                explicit DirectionalLight(const std::unordered_map<std::string, double> &dataMap);
-                ~DirectionalLight() override = default;
+namespace RayTracer::Entity
+{
+    class DirectionalLight : public Entity
+    {
+        public:
+            explicit DirectionalLight(const DataEntityMap &aDataMap);
+            ~DirectionalLight() override = default;
 
-                void setDirection(const Vector &aDirection);
-            private:
-                RayTracer::Vector _direction;
-        };
-    }
+            void setDirection(const Vector &aDirection);
 
-#endif //RAYTRACER_DIRECTIONALLIGHT_HPP
+        private:
+            RayTracer::Vector _direction;
+    };
+} // namespace RayTracer::Entity
+
+#endif // RAYTRACER_DIRECTIONALLIGHT_HPP

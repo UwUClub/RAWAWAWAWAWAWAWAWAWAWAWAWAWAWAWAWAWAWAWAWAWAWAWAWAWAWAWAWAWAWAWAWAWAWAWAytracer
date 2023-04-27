@@ -5,25 +5,29 @@
 ** Plane
 */
 
-#include "../src/Entity/Primitives/Primitives.hpp"
+#include "IEntity.hpp"
+#include "Primitives.hpp"
 
 #ifndef PLANE_HPP_
 #define PLANE_HPP_
 
-namespace RayTracer {
-    namespace Entity {
-        class Plane : public Primitives {
+namespace RayTracer
+{
+    namespace Entity
+    {
+        class Plane : public Primitives
+        {
             public:
-                Plane(const std::unordered_map<std::string, double> &dataMap);
-                ~Plane();
-                std::optional<double> isTouched(Ray ray) override;
+                Plane(const DataEntityMap &aDataMap);
+                ~Plane() override = default;
+                std::optional<double> isTouched(const Ray &aRay) override;
+
             protected:
             private:
                 Point _center;
                 Vector _normal;
-            };
-    }
-};
-
+        };
+    } // namespace Entity
+};    // namespace RayTracer
 
 #endif /* !PLANE_HPP_ */

@@ -5,76 +5,90 @@
 ** Parser.cpp
 */
 
-#include <cstring>
 #include "Parser.hpp"
 #include "CameraParser.hpp"
-#include "PrimitivesParser.hpp"
+#include "IEntity.hpp"
 #include "LightParser.hpp"
+#include "PrimitivesParser.hpp"
+#include <cstring>
 
-namespace RayTracer::Parser {
-    Parser::Parser(char **av, RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager) : _cfg()
+namespace RayTracer::Parser
+{
+    Parser::Parser(char **aAv, RayTracer::Scene::Scene &aScene,
+        RayTracer::Plugin::PluginManager &aPluginManager)
+        : _cfg()
     {
         try {
-            _cfg.readFile(av[1]);
+            _cfg.readFile(aAv[1]);
         } catch (const libconfig::FileIOException &fioex) {
             throw ParserException("I/O error while reading file.");
         } catch (const libconfig::ParseException &pex) {
-            std::string error = "Parse error at ";
-            error += pex.getFile();
-            error += ":";
-            error += std::to_string(pex.getLine());
-            error += " - ";
-            error += pex.getError();
-            throw ParserException(error);
-        } try {
-            CreateCamera(scene, pluginManager);
-            CreatePrimitive(scene, pluginManager);
-            CreateLight(scene, pluginManager);
+            std::string myError = "Parse error at ";
+            myError += pex.getFile();
+            myError += ":";
+            myError += std::to_string(pex.getLine());
+            myError += " - ";
+            myError += pex.getError();
+            throw ParserException(myError);
+        }
+        try {
+            CreateCamera(aScene, aPluginManager);
+            CreatePrimitive(aScene, aPluginManager);
+            CreateLight(aScene, aPluginManager);
         } catch (const ParserException &e) {
             std::cerr << e.what() << std::endl;
         }
     }
 
-    void Parser::CreateCamera(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
+    void Parser::CreateCamera(RayTracer::Scene::Scene &aScene,
+        RayTracer::Plugin::PluginManager &aPluginManager)
     {
-        std::unordered_map<std::string, double> cameraData;
-        const libconfig::Setting &root = _cfg.getRoot();
-        if (!root.exists("camera") || !root["camera"].isGroup())
+        Entity::DataEntityMap myCameraData;
+        const libconfig::Setting &myRoot = _cfg.getRoot();
+        if (!myRoot.exists("camera") || !myRoot["camera"].isGroup())
             throw ParserException("No 'camera' setting in configuration file.");
-        const libconfig::Setting &camera = root["camera"];
-        if (!camera.exists("resolution") || !camera.exists("position") || !camera.exists("rotation") || !camera.exists("fieldOfView"))
-            throw ParserException("Camera is missing parameters (resolution, position, rotation, fieldOfView).");
+        const libconfig::Setting &myCamera = myRoot["camera"];
+        if (!myCamera.exists("resolution") || !myCamera.exists("position")
+            || !myCamera.exists("rotation") || !myCamera.exists("fieldOfView"))
+            throw ParserException(
+                "Camera is missing parameters (resolution, position, rotation, fieldOfView).");
 
-        CameraParser::createCamera(camera, cameraData, pluginManager, scene);
+        CameraParser::createCamera(myCamera, myCameraData, aPluginManager, aScene);
     }
 
-    void Parser::CreatePrimitive(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
+    void Parser::CreatePrimitive(RayTracer::Scene::Scene &aScene,
+        RayTracer::Plugin::PluginManager &aPluginManager)
     {
-        std::unordered_map<std::string, double> primitiveData;
-        const libconfig::Setting &root = _cfg.getRoot();
-        if (!root.exists("primitives") || !root["primitives"].isGroup())
+        Entity::DataEntityMap myPrimitiveData;
+        const libconfig::Setting &myRoot = _cfg.getRoot();
+        if (!myRoot.exists("primitives") || !myRoot["primitives"].isGroup())
             throw ParserException("No 'primitives' setting in configuration file.");
-        const libconfig::Setting &primitives = root["primitives"];
+        const libconfig::Setting &myPrimitives = myRoot["primitives"];
 
-        for (int i = 0; i < primitives.getLength(); i++) {
-            if (std::strcmp(primitives[i].getName(), "Planes") == 0) {
-                PrimitivesParser::createPlane(primitives["Planes"], primitiveData, pluginManager, scene);
+        for (int i = 0; i < myPrimitives.getLength(); i++) {
+            if (std::strcmp(myPrimitives[i].getName(), "Planes") == 0) {
+                PrimitivesParser::createPlane(myPrimitives["Planes"], myPrimitiveData,
+                    aPluginManager, aScene);
             } else {
-                for (int y = 0; y < primitives[i].getLength() && std::strcmp(primitives[i].getName(), "Planes") == 0; y++)
-                    PrimitivesParser::createPrimitive(primitives[y], primitiveData, pluginManager, scene);
+                for (int y = 0; y < myPrimitives[i].getLength()
+                                && std::strcmp(myPrimitives[i].getName(), "Planes") == 0;
+                     y++)
+                    PrimitivesParser::createPrimitive(myPrimitives[y], myPrimitiveData,
+                        aPluginManager, aScene);
             }
         }
     }
 
-    void Parser::CreateLight(RayTracer::Scene::Scene &scene, RayTracer::Plugin::PluginManager &pluginManager)
+    void Parser::CreateLight(RayTracer::Scene::Scene &aScene,
+        RayTracer::Plugin::PluginManager &aPluginManager)
     {
-        std::unordered_map<std::string, double> lightData;
-        const libconfig::Setting &root = _cfg.getRoot();
-        if (!root.exists("lights") || !root["lights"].isGroup())
+        Entity::DataEntityMap myLightData;
+        const libconfig::Setting &myRoot = _cfg.getRoot();
+        if (!myRoot.exists("lights") || !myRoot["lights"].isGroup())
             throw ParserException("No 'lights' setting in configuration file.");
-        const libconfig::Setting &lights = root["lights"];
+        const libconfig::Setting &myLights = myRoot["lights"];
 
-        if (lights.exists("point") && lights["point"].isList())
-            Light::LightParser::createLight(lights["point"], lightData,pluginManager, scene);
+        if (myLights.exists("point") && myLights["point"].isList())
+            Light::LightParser::createLight(myLights["point"], myLightData, aPluginManager, aScene);
     }
-} // RayTracer
+} // namespace RayTracer::Parser

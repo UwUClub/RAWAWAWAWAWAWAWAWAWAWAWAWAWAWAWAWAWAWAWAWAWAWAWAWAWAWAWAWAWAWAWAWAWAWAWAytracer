@@ -6,20 +6,23 @@
 */
 
 #ifndef RAYTRACER_POINTLIGHT_HPP
-    #define RAYTRACER_POINTLIGHT_HPP
+#define RAYTRACER_POINTLIGHT_HPP
 
-    #include "Entity.hpp"
-    #include "Vector.hpp"
+#include "Entity.hpp"
+#include "IEntity.hpp"
+#include "Vector.hpp"
 
-    namespace RayTracer::Entity {
-        class PointLight : public Entity {
+namespace RayTracer::Entity
+{
+    class PointLight : public Entity
+    {
         public:
-            explicit PointLight(const std::unordered_map<std::string, double> &dataMap);
+            explicit PointLight(const DataEntityMap &aDataMap);
             ~PointLight() override = default;
 
         private:
             Point _position;
-        };
-    } // RayTracer
+    };
+} // namespace RayTracer::Entity
 
-#endif //RAYTRACER_POINTLIGHT_HPP
+#endif // RAYTRACER_POINTLIGHT_HPP
