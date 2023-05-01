@@ -5,7 +5,6 @@
 .gcda
 .vscode
 .gcov
-*.cmake
 *.make
 *.check_cache
 *.marks
@@ -32,7 +31,6 @@ CMakeConfigureLog.yaml
 CMakeFiles
 *.ninja*
 Makefile
-.cmake*
 raytracer
 *.cpb
 *.cbp
