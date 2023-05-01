@@ -29,6 +29,7 @@ CMakeFiles
 Testing
 CMakeConfigureLog.yaml
 CMakeFiles
+*.cmake
 *.ninja*
 Makefile
 raytracer

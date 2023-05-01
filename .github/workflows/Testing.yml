@@ -39,7 +39,8 @@ jobs:
         run: |
           sudo dnf install -y libconfig-devel
           cmake .
-          make
+          make -j 4
+          ./build/tests/unit_tests
         timeout-minutes: 5
 
       - name: Perform CodeQL Analysis
