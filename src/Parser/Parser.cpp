@@ -37,7 +37,7 @@ namespace RayTracer::Parser
             CreatePrimitive(aScene, aPluginManager);
             CreateLight(aScene, aPluginManager);
         } catch (const ParserException &e) {
-            std::cerr << e.what() << std::endl;
+            throw ParserException(e.what());
         }
     }
 
