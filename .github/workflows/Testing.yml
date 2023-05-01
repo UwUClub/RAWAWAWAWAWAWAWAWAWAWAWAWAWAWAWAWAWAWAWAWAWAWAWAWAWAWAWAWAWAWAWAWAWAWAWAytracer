@@ -38,8 +38,7 @@ jobs:
       - name: run tests
         run: |
           sudo dnf install -y libconfig-devel
-          cmake .
-          make -j 4
+          sh build.sh
           ./build/tests/unit_tests
         timeout-minutes: 5
 
