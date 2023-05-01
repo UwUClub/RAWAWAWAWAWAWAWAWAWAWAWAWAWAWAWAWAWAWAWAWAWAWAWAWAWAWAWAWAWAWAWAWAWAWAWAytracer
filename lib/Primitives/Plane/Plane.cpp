@@ -15,13 +15,13 @@ namespace RayTracer::Entity
     {
         if (aDataMap.at("axis") == 0) {
             _normal = Vector(1, 0, 0);
-            _center = Point(aDataMap.at("pos"), 0, 0);
+            _center = Point(aDataMap.at("position"), 0, 0);
         } else if (aDataMap.at("axis") == 1) {
             _normal = Vector(0, 1, 0);
-            _center = Point(0, aDataMap.at("pos"), 0);
+            _center = Point(0, aDataMap.at("position"), 0);
         } else if (aDataMap.at("axis") == 2) {
             _normal = Vector(0, 0, 1);
-            _center = Point(0, 0, aDataMap.at("pos"));
+            _center = Point(0, 0, aDataMap.at("position"));
         } else
             throw std::invalid_argument("Invalid axis");
         setColor({ int(aDataMap.at("r")), int(aDataMap.at("g")), int(aDataMap.at("b")) });

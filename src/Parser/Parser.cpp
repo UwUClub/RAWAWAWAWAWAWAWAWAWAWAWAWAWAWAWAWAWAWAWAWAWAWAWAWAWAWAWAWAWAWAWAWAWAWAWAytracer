@@ -71,10 +71,9 @@ namespace RayTracer::Parser
                     aPluginManager, aScene);
             } else {
                 for (int y = 0; y < myPrimitives[i].getLength()
-                                && std::strcmp(myPrimitives[i].getName(), "Planes") == 0;
-                     y++)
+                    && std::strcmp(myPrimitives[i].getName(), "Planes") == 0; y++)
                     PrimitivesParser::createPrimitive(myPrimitives[y], myPrimitiveData,
-                        aPluginManager, aScene);
+                                                      aPluginManager,aScene);
             }
         }
     }
