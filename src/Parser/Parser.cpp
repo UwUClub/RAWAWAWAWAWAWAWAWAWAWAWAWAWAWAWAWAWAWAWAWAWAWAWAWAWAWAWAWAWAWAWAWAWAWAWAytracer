@@ -21,6 +21,7 @@ namespace RayTracer::Parser
         try {
             _cfg.readFile(aAv[1]);
         } catch (const libconfig::FileIOException &fioex) {
+            std::cout << "I/O error while reading file." << aAv[1] << std::endl;
             throw ParserException("I/O error while reading file.");
         } catch (const libconfig::ParseException &pex) {
             std::string myError = "Parse error at ";
