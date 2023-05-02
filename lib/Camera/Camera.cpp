@@ -30,7 +30,7 @@ namespace RayTracer::Entity
             _rotation._z = dataMap.at("rotate_z");
     }
 
-    void Camera::setRotation(const RayTracer::Vector &aRotation)
+    void Camera::setRotation(const Vector &aRotation)
     {
         _rotation = aRotation;
     }
@@ -44,4 +44,27 @@ namespace RayTracer::Entity
     {
         _fieldOfView = aFov;
     }
+
+    std::vector<Ray> &Camera::getCastedRays() const
+    {
+        int myMinX = _position._x - _resolution.first / 2;
+        int myMaxX = _position._x + _resolution.first / 2;
+        int myMinY = _position._y - _resolution.second / 2;
+        int myMaxY = _position._y + _resolution.second / 2;
+        std::vector<Ray> myRays = std::vector<Ray>();
+
+        for (int myX = myMinX; myX <= myMaxX; myX++) {
+            for (int myY = myMinY; myY <= myMaxY; myY++) {
+                Point myOrigin(myX, myY, _position._z);
+
+                Vector myDirection(myX - _position._x, myY - _position._y, 1);
+                myDirection = myDirection * _fieldOfView;
+
+                Ray myRay();
+                // myRays.push_back(myRay);
+            }
+        }
+        return myRays;
+    }
+
 } // namespace RayTracer::Entity

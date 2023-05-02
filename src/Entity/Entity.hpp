@@ -44,13 +44,13 @@ namespace RayTracer::Entity
              * @brief Get the angle of the entity
              * @return The angle of the entity
              */
-            Euler const &getAngle() override;
+            Vector const &getRotation() override;
 
             /**
              * @brief Set the aAngle of the entity
-             * @param aAngle The aAngle of the entity
+             * @param aRotation The new rotation of the entity
              */
-            void setAngle(const Euler &aAngle) override;
+            void setRotation(const Vector &aRotation) override;
 
             /**
              * @brief Translate the entity
@@ -59,14 +59,14 @@ namespace RayTracer::Entity
             void translate(const Vector &aVector) override;
             /**
              * @brief Rotate the entity
-             * @param aAngle The vector to rotate the entity
+             * @param aRotation The vector to rotate the entity
              */
-            void rotate(const Euler &aAngle) override;
+            void rotate(const Vector &aRotation) override;
 
-        private:
+        protected:
             EntityType _type;
             Point _position;
-            Euler _angle;
+            Vector _rotation;
     };
 } // namespace RayTracer::Entity
 
