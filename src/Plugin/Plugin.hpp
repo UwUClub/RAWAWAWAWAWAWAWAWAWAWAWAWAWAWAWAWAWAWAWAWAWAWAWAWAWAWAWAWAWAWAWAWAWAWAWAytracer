@@ -5,7 +5,7 @@
 #ifndef RAYTRACER_PLUGIN_HPP
 #define RAYTRACER_PLUGIN_HPP
 
-#include "Entity/IEntity.hpp"
+#include "IEntity.hpp"
 #include <memory>
 #include <string>
 

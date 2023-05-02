@@ -4,6 +4,7 @@ project(${PROJECT_NAME})            # Create project "simple_example"
 set(CMAKE_CXX_STANDARD 20)            # Enable c++14 standard
 set(EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+set(CMAKE_CXX_FLAGS_DEBUG "-lcriterion")
 
 add_executable(${PROJECT_NAME})
 
@@ -64,5 +65,6 @@ set_target_properties(directionalLight PROPERTIES
 		LIBRARY_OUTPUT_DIRECTORY "../plugins"
 		)
 
+add_subdirectory(tests)
 add_subdirectory(src)
 add_subdirectory(lib)
