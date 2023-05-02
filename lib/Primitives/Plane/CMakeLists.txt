@@ -10,5 +10,6 @@ target_sources(plane PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Utils/Vector.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Utils/Ray.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Utils/Color.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Utils/Euler.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../../src/Entity/Primitives/Primitives.cpp"
 		)
