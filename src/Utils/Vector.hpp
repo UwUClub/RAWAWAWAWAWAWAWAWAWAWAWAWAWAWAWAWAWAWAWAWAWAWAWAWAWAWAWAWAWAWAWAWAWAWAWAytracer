@@ -8,6 +8,8 @@
 #ifndef VECTOR_HPP_
 #define VECTOR_HPP_
 
+#include "Euler.hpp"
+
 namespace RayTracer
 {
     /**
@@ -29,10 +31,15 @@ namespace RayTracer
             ~Vector() = default;
             /**
              * @brief Rotate the vector object
-             * @param rotation the rotation vector
-             * @param angle the angle in degree
+             * @param aEuler The angle values
              */
-            Vector rotate(Vector aRotation, double aAngle);
+            void rotate(Euler aEuler);
+            /**
+             * @brief Rotate the vector object
+             * @param aRotation The rotation vector
+             * @param aAngle The angle in degree
+             */
+            void rotate(Vector aRotation, double aAngle);
 
             auto operator<=>(const Vector &aOther) const;
             Vector operator+(const Vector &aOther) const;

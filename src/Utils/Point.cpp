@@ -17,7 +17,14 @@ namespace RayTracer
     {
     }
 
-    Point Point::rotate(Point aOrigin, Vector aRotation, double aAngle)
+    void Point::rotate(Point aOrigin, Euler aAngles)
+    {
+        this->rotate(aOrigin, Vector(1, 0, 0), aAngles._x);
+        this->rotate(aOrigin, Vector(0, 1, 0), aAngles._y);
+        this->rotate(aOrigin, Vector(0, 0, 1), aAngles._z);
+    }
+
+    void Point::rotate(Point aOrigin, Vector aRotation, double aAngle)
     {
         double myAngleCos = cos(aAngle);
         double myAngleSin = sin(aAngle);

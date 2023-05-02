@@ -13,7 +13,7 @@ namespace RayTracer::Entity
     Camera::Camera(const DataEntityMap &dataMap)
         : Entity(EntityType::CAMERA)
         , _resolution(0, 0)
-        , _rotation(0, 0, 0)
+        , _angles(0, 0, 0)
         , _fieldOfView(0)
     {
         if (dataMap.find("width") != dataMap.end())
@@ -23,16 +23,16 @@ namespace RayTracer::Entity
         if (dataMap.find("fov") != dataMap.end())
             _fieldOfView = dataMap.at("fov");
         if (dataMap.find("rotate_x") != dataMap.end())
-            _rotation._x = dataMap.at("rotate_x");
+            _angles._x = dataMap.at("rotate_x");
         if (dataMap.find("rotate_y") != dataMap.end())
-            _rotation._y = dataMap.at("rotate_y");
+            _angles._y = dataMap.at("rotate_y");
         if (dataMap.find("rotate_z") != dataMap.end())
-            _rotation._z = dataMap.at("rotate_z");
+            _angles._z = dataMap.at("rotate_z");
     }
 
-    void Camera::setRotation(const Vector &aRotation)
+    void Camera::setAngles(const Euler &aAngles)
     {
-        _rotation = aRotation;
+        _angles = aAngles;
     }
 
     void Camera::setResolution(const std::pair<int, int> &aResolution)
@@ -45,23 +45,25 @@ namespace RayTracer::Entity
         _fieldOfView = aFov;
     }
 
-    std::vector<Ray> &Camera::getCastedRays() const
+    std::vector<Ray> Camera::getCastedRays() const
     {
-        int myMinX = _position._x - _resolution.first / 2;
-        int myMaxX = _position._x + _resolution.first / 2;
-        int myMinY = _position._y - _resolution.second / 2;
-        int myMaxY = _position._y + _resolution.second / 2;
+        const int myMinX = _position._x - _resolution.first / 2;
+        const int myMaxX = _position._x + _resolution.first / 2;
+        const int myMinY = _position._y - _resolution.second / 2;
+        const int myMaxY = _position._y + _resolution.second / 2;
         std::vector<Ray> myRays = std::vector<Ray>();
 
         for (int myX = myMinX; myX <= myMaxX; myX++) {
             for (int myY = myMinY; myY <= myMaxY; myY++) {
                 Point myOrigin(myX, myY, _position._z);
+                myOrigin.rotate(_position, _angles);
 
                 Vector myDirection(myX - _position._x, myY - _position._y, 1);
                 myDirection = myDirection * _fieldOfView;
+                myDirection.rotate(_angles);
 
-                Ray myRay();
-                // myRays.push_back(myRay);
+                Ray myRay(myOrigin, myDirection);
+                myRays.push_back(myRay);
             }
         }
         return myRays;

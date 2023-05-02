@@ -9,6 +9,7 @@
 #define POINT_HPP_
 
 #include "Vector.hpp"
+#include "Euler.hpp"
 
 namespace RayTracer
 {
@@ -32,8 +33,16 @@ namespace RayTracer
             /**
              * @brief Rotate the Point around an origin
              * @param aOrigin The origin point
+             * @param aAngles The angle values
              */
-            Point rotate(Point aOrigin, Vector aRotation, double aAngle);
+            void rotate(Point aOrigin, Euler aAngles);
+            /**
+             * @brief Rotate the Point around an origin
+             * @param aOrigin The origin point
+             * @param aRotation The rotation vector
+             * @param aAngle The angle value
+             */
+            void rotate(Point aOrigin, Vector aRotation, double aAngle);
             Point operator+(const Vector &aOther) const;
             /**
              * @brief The x value of the point
