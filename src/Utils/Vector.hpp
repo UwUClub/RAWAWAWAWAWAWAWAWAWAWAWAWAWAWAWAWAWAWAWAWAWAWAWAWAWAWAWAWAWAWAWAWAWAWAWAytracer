@@ -27,6 +27,12 @@ namespace RayTracer
              * @brief Destroy the Vector object
              */
             ~Vector() = default;
+            /**
+             * @brief Rotate the vector object
+             * @param rotation the rotation vector
+             * @param angle the angle in degree
+             */
+            Vector rotate(Vector aRotation, double aAngle);
 
             auto operator<=>(const Vector &aOther) const;
             Vector operator+(const Vector &aOther) const;
