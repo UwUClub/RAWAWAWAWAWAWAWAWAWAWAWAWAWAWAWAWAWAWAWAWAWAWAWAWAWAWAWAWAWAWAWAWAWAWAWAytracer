@@ -26,11 +26,11 @@ namespace RayTracer
 
     void Point::rotate(Point aOrigin, Vector aRotation, double aAngle)
     {
-        double myAngleCos = cos(aAngle);
-        double myAngleSin = sin(aAngle);
-        double myPrevX = _x;
-        double myPrevY = _y;
-        double myPrevZ = _z;
+        const double myAngleCos = cos(aAngle);
+        const double myAngleSin = sin(aAngle);
+        const double myPrevX = _x;
+        const double myPrevY = _y;
+        const double myPrevZ = _z;
 
         _x -= aOrigin._x;
         _y -= aOrigin._y;
