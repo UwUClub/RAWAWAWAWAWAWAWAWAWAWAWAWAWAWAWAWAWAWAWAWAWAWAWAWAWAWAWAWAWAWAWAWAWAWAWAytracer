@@ -29,6 +29,11 @@ namespace RayTracer
              * @brief Destroy the Point object
              */
             ~Point() = default;
+            /**
+             * @brief Rotate the Point around an origin
+             * @param aOrigin The origin point
+             */
+            Point rotate(Point aOrigin, Vector aRotation, double aAngle);
             Point operator+(const Vector &aOther) const;
             /**
              * @brief The x value of the point
