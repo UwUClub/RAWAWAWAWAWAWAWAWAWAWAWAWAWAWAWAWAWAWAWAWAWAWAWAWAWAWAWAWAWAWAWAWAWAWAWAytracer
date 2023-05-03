@@ -48,6 +48,8 @@ or
 bash build.sh
 ```
 
+**If you have some errors but the compilation works, please ignore them.**
+
 ## Usage
 ./raytracer <config_file>
 
