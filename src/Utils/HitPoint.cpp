@@ -39,5 +39,6 @@ namespace RayTracer
                 }
             }
         }
+        return _color;
     }
 } // namespace RayTracer
