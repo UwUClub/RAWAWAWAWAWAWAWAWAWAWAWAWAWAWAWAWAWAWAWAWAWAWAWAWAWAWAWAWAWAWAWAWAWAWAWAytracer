@@ -16,6 +16,7 @@ target_sources(raytracer PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/Ray.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/Euler.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/Color.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/HitPoint.cpp"
 		)
 
 target_sources(unit_tests PRIVATE
