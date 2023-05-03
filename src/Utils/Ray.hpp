@@ -5,10 +5,12 @@
 ** Ray
 */
 
+#include <optional>
 #include "Color.hpp"
 #include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
+#include "HitPoint.hpp"
 
 #ifndef RAY_HPP_
 #define RAY_HPP_
@@ -35,7 +37,7 @@ namespace RayTracer
              * @param entities The entities to check
              * @return Color The color of the closest hit
              */
-            Color getClosestHit(const Entity::IEntityMap &aEntities);
+            std::optional<HitPoint> getClosestHit(const Entity::IEntityMap &aEntities);
 
             /**
              * @brief The origin of the ray
