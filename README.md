@@ -7,6 +7,7 @@ Raytracer is a little application that can simulate raytracing on geometrical el
 - [Requirements](#requirements)
 - [Communication](#communication)
 - [Installation](#installation)
+- [Compilation](#compilation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
@@ -33,6 +34,21 @@ git clone git@github.com:UwUClub/RAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAW
 ### HTTPS
 
 Use any tools that can clone by HTTPS, use https://github.com/UwUClub/RAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAytracer.git
+
+## Compilation
+
+### Using the script
+
+```bash
+./build.sh
+```
+or
+
+```bash
+bash build.sh
+```
+
+**If you have some errors but the compilation works, please ignore them.**
 
 ## Usage
 ./raytracer <config_file>
