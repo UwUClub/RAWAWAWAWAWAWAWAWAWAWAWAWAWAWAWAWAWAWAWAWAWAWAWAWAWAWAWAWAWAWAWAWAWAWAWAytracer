@@ -10,4 +10,5 @@ target_sources(camera PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Point.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Vector.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Euler.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Ray.cpp"
 		)
