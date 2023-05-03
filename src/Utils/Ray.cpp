@@ -20,7 +20,7 @@ namespace RayTracer
     {
     }
 
-    Color Ray::getClosestHit(const Entity::IEntityMap &aEntities)
+    std::optional<HitPoint> Ray::getClosestHit(const Entity::IEntityMap &aEntities)
     {
         Color myColor = { 0, 0, 0 };
         double myClosest = 0;
@@ -41,6 +41,10 @@ namespace RayTracer
                 }
             }
         }
-        return myColor;
+        if (myClosest == 0)
+            return std::nullopt;
+        Vector myPoint = this->_direction * myClosest;
+        HitPoint myHitPoint = {myPoint._x + this->_origin._x, myPoint._y + this->_origin._y, myPoint._z + this->_origin._z, myColor};
+        return myHitPoint;
     }
 } // namespace RayTracer
