@@ -41,3 +41,7 @@ raytracer.cbp
 .cache/
 build/
 unit_tests
+build.sh
+compile_commands.json
+fcleanCmake.sh
+

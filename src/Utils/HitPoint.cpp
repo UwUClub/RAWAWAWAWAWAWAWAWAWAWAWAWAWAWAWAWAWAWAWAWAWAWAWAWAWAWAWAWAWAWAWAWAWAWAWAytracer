@@ -6,8 +6,9 @@
 */
 
 #include "Ray.hpp"
+#include "IEntity.hpp"
 #include "HitPoint.hpp"
-#include "Entity.hpp"
+
 namespace RayTracer
 {
     HitPoint::HitPoint(double aX, double aY, double aZ, Color &aColor)
@@ -20,7 +21,7 @@ namespace RayTracer
     {
     }
 
-    Color HitPoint::calcColor(const Entity::IEntityMap &aEntities)
+    Color HitPoint::calcColor(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities)
     {
         Ray myRay = Ray({_x, _y, _z}, {0, 0, 0});
         for (auto &myEntity : aEntities) {

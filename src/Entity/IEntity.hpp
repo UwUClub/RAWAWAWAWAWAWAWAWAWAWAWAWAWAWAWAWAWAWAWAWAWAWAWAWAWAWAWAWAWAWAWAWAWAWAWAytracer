@@ -7,9 +7,15 @@
 
 #include "Point.hpp"
 #include "Vector.hpp"
+#include "Ray.hpp"
 #include <memory>
 #include <unordered_map>
 #include <vector>
+
+namespace RayTracer
+{
+    struct Ray;
+}
 
 namespace RayTracer::Entity
 {
@@ -72,6 +78,19 @@ namespace RayTracer::Entity
              * @param aRotation the vector applied to rotate the entity
              */
             virtual void rotate(const Vector &aRotation) = 0;
+            /**
+             * @brief Check if the ray touched the entity
+             *
+             * @param ray The ray to check
+             * @return std::optional<double> The distance between the origin of the ray and the entity
+             */
+            virtual std::optional<double> isTouched(const Ray &ray) = 0;
+            /**
+             * @brief Get the Casted Rays object
+             * @return std::vector<Ray>& The casted rays
+            */
+            virtual std::vector<Ray> getCastedRays() const = 0;
+            virtual std::optional<Color> getColor() = 0;
     };
 
     using IEntityPtr = std::unique_ptr<IEntity>;

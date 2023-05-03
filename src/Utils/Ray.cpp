@@ -5,8 +5,9 @@
 ** Ray
 */
 
+#include "IEntity.hpp"
 #include "Ray.hpp"
-#include "Primitives.hpp"
+#include "HitPoint.hpp"
 
 namespace RayTracer
 {
@@ -20,7 +21,7 @@ namespace RayTracer
     {
     }
 
-    std::optional<HitPoint> Ray::getClosestHit(const Entity::IEntityMap &aEntities)
+    std::optional<HitPoint> Ray::getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities)
     {
         Color myColor = { 0, 0, 0 };
         double myClosest = 0;
@@ -32,12 +33,12 @@ namespace RayTracer
                 continue;
             }
             for (auto &myPrimitive : myEntity.second) {
-                Entity::Primitives *prim = static_cast<Entity::Primitives *>(myPrimitive.get());
+                Entity::IEntity *prim = myPrimitive.get();
                 myNewDist = prim->isTouched(*this);
                 if (myClosest == 0
                     || (myNewDist != std::nullopt && myNewDist.value() < myClosest)) {
                     myClosest = myNewDist.value();
-                    myColor = prim->getColor();
+                    myColor = prim->getColor().value();
                 }
             }
         }

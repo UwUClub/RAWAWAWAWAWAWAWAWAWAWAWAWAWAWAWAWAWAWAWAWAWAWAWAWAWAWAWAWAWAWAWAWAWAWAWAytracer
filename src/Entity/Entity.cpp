@@ -3,6 +3,7 @@
 //
 
 #include "Entity.hpp"
+#include <vector>
 
 namespace RayTracer::Entity
 {
@@ -48,6 +49,22 @@ namespace RayTracer::Entity
     void Entity::rotate(const Vector &aRotation)
     {
         _rotation = _rotation + aRotation;
+    }
+
+    std::optional<double> Entity::isTouched(const Ray &ray)
+    {
+        (void) ray;
+        return std::nullopt;
+    }
+
+    std::vector<Ray> Entity::getCastedRays() const
+    {
+        return std::vector<Ray>();
+    }
+
+    std::optional<Color> Entity::getColor()
+    {
+        return std::nullopt;
     }
 
 } // namespace RayTracer::Entity

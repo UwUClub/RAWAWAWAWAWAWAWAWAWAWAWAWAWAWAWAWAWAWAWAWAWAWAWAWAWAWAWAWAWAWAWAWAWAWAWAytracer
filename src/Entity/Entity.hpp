@@ -9,6 +9,8 @@
 
 namespace RayTracer::Entity
 {
+    class IEntity;
+
     /**
      * @brief The Entity class
      */
@@ -62,6 +64,19 @@ namespace RayTracer::Entity
              * @param aRotation The vector to rotate the entity
              */
             void rotate(const Vector &aRotation) override;
+            /**
+             * @brief Check if the ray touched the entity
+             *
+             * @param ray The ray to check
+             * @return std::optional<double> The distance between the origin of the ray and the entity
+             */
+            std::optional<double> isTouched(const Ray &ray) override;
+            /**
+             * @brief Get the Casted Rays object
+             * @return std::vector<Ray>& The casted rays
+            */
+            std::vector<Ray> getCastedRays() const override;
+            std::optional<Color> getColor() override;
 
         protected:
             EntityType _type;

@@ -10,13 +10,20 @@
 
 #include <optional>
 #include "Color.hpp"
-#include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
-#include "HitPoint.hpp"
+#include <memory>
+#include <unordered_map>
+#include <vector>
 
 namespace RayTracer
 {
+    class HitPoint;
+
+    namespace Entity {
+        class IEntity;
+    }
+
     struct Ray {
         public:
             /**
@@ -37,7 +44,7 @@ namespace RayTracer
              * @param entities The entities to check
              * @return Color The color of the closest hit
              */
-            std::optional<HitPoint> getClosestHit(const Entity::IEntityMap &aEntities);
+            std::optional<HitPoint> getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities);
 
             /**
              * @brief The origin of the ray
