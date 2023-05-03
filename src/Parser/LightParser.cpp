@@ -15,9 +15,9 @@ namespace RayTracer::Light
     void LightParser::getLightPosition(const libconfig::Setting &aPrimitive,
         Entity::DataEntityMap &aData)
     {
-        float myX = 0;
-        float myY = 0;
-        float myZ = 0;
+        int myX = 0;
+        int myY = 0;
+        int myZ = 0;
 
         if (!aPrimitive.exists("x") || !aPrimitive.exists("y") || !aPrimitive.exists("z"))
             throw RayTracer::Parser::Parser::ParserException(
@@ -25,9 +25,12 @@ namespace RayTracer::Light
         aPrimitive.lookupValue("x", myX);
         aPrimitive.lookupValue("y", myY);
         aPrimitive.lookupValue("z", myZ);
-        aData.insert(std::make_pair("x", myX));
-        aData.insert(std::make_pair("y", myY));
-        aData.insert(std::make_pair("z", myZ));
+        auto myDoubleX = static_cast<double>(myX);
+        auto myDoubleY = static_cast<double>(myY);
+        auto myDoubleZ = static_cast<double>(myZ);
+        aData.insert(std::make_pair("x", myDoubleX));
+        aData.insert(std::make_pair("y", myDoubleY));
+        aData.insert(std::make_pair("z", myDoubleZ));
     }
 
     void LightParser::createLight(const libconfig::Setting &aLight,

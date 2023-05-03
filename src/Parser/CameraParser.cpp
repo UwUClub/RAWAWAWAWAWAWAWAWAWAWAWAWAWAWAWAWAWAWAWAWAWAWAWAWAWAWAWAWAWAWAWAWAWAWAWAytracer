@@ -13,16 +13,18 @@ namespace RayTracer::Parser
     void CameraParser::getCameraResolution(const libconfig::Setting &aCamera,
         Entity::DataEntityMap &aData)
     {
-        float myWdth = 0;
-        float myHeight = 0;
+        int myWdth = 0;
+        int myHeight = 0;
         const libconfig::Setting &myResolution = aCamera["resolution"];
 
         if (!myResolution.exists("width") || !myResolution.exists("height"))
             throw Parser::ParserException("Camera is missing parameters (width, height).");
         myResolution.lookupValue("width", myWdth);
         myResolution.lookupValue("height", myHeight);
-        aData.insert(std::make_pair("width", myWdth));
-        aData.insert(std::make_pair("height", myHeight));
+        auto myDoubleHeight = static_cast<double>(myHeight);
+        auto myDoubleWdth = static_cast<double>(myWdth);
+        aData.insert(std::make_pair("width", myDoubleWdth));
+        aData.insert(std::make_pair("height", myDoubleHeight));
     }
 
     void CameraParser::getCameraFieldOfView(const libconfig::Setting &aCamera,
@@ -39,9 +41,9 @@ namespace RayTracer::Parser
     void CameraParser::getCameraPosition(const libconfig::Setting &aCamera,
         Entity::DataEntityMap &aData)
     {
-        float myX = 0;
-        float myY = 0;
-        float myZ = 0;
+        int myX = 0;
+        int myY = 0;
+        int myZ = 0;
         const libconfig::Setting &myPosition = aCamera["position"];
 
         if (!myPosition.exists("x") || !myPosition.exists("y") || !myPosition.exists("z"))
@@ -49,17 +51,20 @@ namespace RayTracer::Parser
         myPosition.lookupValue("x", myX);
         myPosition.lookupValue("y", myY);
         myPosition.lookupValue("z", myZ);
-        aData.insert(std::make_pair("x", myX));
-        aData.insert(std::make_pair("y", myY));
-        aData.insert(std::make_pair("z", myZ));
+        auto myDoubleX = static_cast<double>(myX);
+        auto myDoubleY = static_cast<double>(myY);
+        auto myDoubleZ = static_cast<double>(myZ);
+        aData.insert(std::make_pair("x", myDoubleX));
+        aData.insert(std::make_pair("y", myDoubleY));
+        aData.insert(std::make_pair("z", myDoubleZ));
     }
 
     void CameraParser::getCameraRotation(const libconfig::Setting &aCamera,
         Entity::DataEntityMap &aData)
     {
-        float myX;
-        float myY;
-        float myZ;
+        int myX;
+        int myY;
+        int myZ;
         const libconfig::Setting &myRotation = aCamera["rotation"];
 
         if (!myRotation.exists("x") || !myRotation.exists("y") || !myRotation.exists("z"))
@@ -67,9 +72,15 @@ namespace RayTracer::Parser
         myRotation.lookupValue("x", myX);
         myRotation.lookupValue("y", myY);
         myRotation.lookupValue("z", myZ);
-        aData.insert(std::make_pair("rotate_x", myX));
-        aData.insert(std::make_pair("rotate_y", myY));
-        aData.insert(std::make_pair("rotate_z", myZ));
+        auto myDoubleX = static_cast<double>(myX);
+        auto myDoubleY = static_cast<double>(myY);
+        auto myDoubleZ = static_cast<double>(myZ);
+        std::cout << myDoubleX << std::endl;
+        std::cout << myDoubleY << std::endl;
+        std::cout << myDoubleZ << std::endl;
+        aData.insert(std::make_pair("rotate_x", myDoubleX));
+        aData.insert(std::make_pair("rotate_y", myDoubleY));
+        aData.insert(std::make_pair("rotate_z", myDoubleZ));
     }
 
     void CameraParser::createCamera(const libconfig::Setting &aCamera,
