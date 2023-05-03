@@ -5,12 +5,12 @@
 ** HitPoint
 */
 
+#ifndef HITPOINT_HPP_
+#define HITPOINT_HPP_
+
 #include "Color.hpp"
 #include "IEntity.hpp"
 #include "Point.hpp"
-
-#ifndef HITPOINT_HPP_
-#define HITPOINT_HPP_
 
 namespace RayTracer
 {

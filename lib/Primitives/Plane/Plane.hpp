@@ -5,11 +5,11 @@
 ** Plane
 */
 
-#include "IEntity.hpp"
-#include "Primitives.hpp"
-
 #ifndef PLANE_HPP_
 #define PLANE_HPP_
+
+#include "IEntity.hpp"
+#include "Primitives.hpp"
 
 namespace RayTracer
 {

@@ -5,15 +5,15 @@
 ** Ray
 */
 
+#ifndef RAY_HPP_
+#define RAY_HPP_
+
 #include <optional>
 #include "Color.hpp"
 #include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
 #include "HitPoint.hpp"
-
-#ifndef RAY_HPP_
-#define RAY_HPP_
 
 namespace RayTracer
 {

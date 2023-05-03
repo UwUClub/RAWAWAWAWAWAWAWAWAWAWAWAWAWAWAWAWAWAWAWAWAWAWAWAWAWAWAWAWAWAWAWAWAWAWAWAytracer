@@ -5,11 +5,11 @@
 ** Cone
 */
 
-#include "IEntity.hpp"
-#include "Primitives.hpp"
-
 #ifndef CONE_HPP_
 #define CONE_HPP_
+
+#include "IEntity.hpp"
+#include "Primitives.hpp"
 
 namespace RayTracer::Entity
 {

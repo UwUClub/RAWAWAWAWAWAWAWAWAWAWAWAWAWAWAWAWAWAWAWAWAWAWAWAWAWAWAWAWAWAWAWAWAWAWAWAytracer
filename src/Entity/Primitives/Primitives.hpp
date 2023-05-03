@@ -5,12 +5,12 @@
 ** Primitives
 */
 
+#ifndef PRIMITIVES_HPP_
+#define PRIMITIVES_HPP_
+
 #include "Entity.hpp"
 #include "Ray.hpp"
 #include <optional>
-
-#ifndef PRIMITIVES_HPP_
-#define PRIMITIVES_HPP_
 
 namespace RayTracer::Entity
 {

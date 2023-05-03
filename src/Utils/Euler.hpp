@@ -5,10 +5,10 @@
 ** Euler
 */
 
-#include <iostream>
-
 #ifndef Euler_HPP_
 #define Euler_HPP_
+
+#include <iostream>
 
 namespace RayTracer
 {
