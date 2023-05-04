@@ -65,6 +65,13 @@ set_target_properties(directionalLight PROPERTIES
 		LIBRARY_OUTPUT_DIRECTORY "../plugins"
 		)
 
+add_library(basicLight SHARED)
+set_target_properties(basicLight PROPERTIES
+		CXX_STANDARD 20
+		COMPILE_FLAGS "-fno-gnu-unique"
+		LIBRARY_OUTPUT_DIRECTORY "../plugins"
+		)
+
 add_subdirectory(tests)
 add_subdirectory(src)
 add_subdirectory(lib)
