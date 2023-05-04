@@ -21,7 +21,7 @@ namespace RayTracer::Parser
         try {
             _cfg.readFile(aAv[1]);
         } catch (const libconfig::FileIOException &fioex) {
-            std::cout << "I/O error while reading file." << aAv[1] << std::endl;
+            std::cerr << "I/O error while reading file." << aAv[1] << std::endl;
             throw ParserException("I/O error while reading file.");
         } catch (const libconfig::ParseException &pex) {
             std::string myError = "Parse error at ";
@@ -71,10 +71,8 @@ namespace RayTracer::Parser
                 PrimitivesParser::createPlane(myPrimitives["Planes"], myPrimitiveData,
                     aPluginManager, aScene);
             } else {
-                for (int y = 0; y < myPrimitives[i].getLength()
-                    && std::strcmp(myPrimitives[i].getName(), "Planes") == 0; y++)
-                    PrimitivesParser::createPrimitive(myPrimitives[y], myPrimitiveData,
-                                                      aPluginManager,aScene);
+                if (std::strcmp(myPrimitives[i].getName(), "Planes") != 0)
+                    PrimitivesParser::createPrimitive(myPrimitives[0], myPrimitiveData, aPluginManager, aScene);
             }
         }
     }

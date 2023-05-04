@@ -23,6 +23,10 @@ int main(int argc, char *argv[])
     try {
         RayTracer::Parser::Parser parser(argv, scene, pluginManager);
         pluginObserver.subscribe(pluginManager);
+        for (auto &it : scene.getEntities()) {
+            std::cout << it.first << std::endl;
+            std::cout << it.second.size() << std::endl;
+        }
         while (true) {
             pluginObserver.checkPlugins(entityMap);
         }
