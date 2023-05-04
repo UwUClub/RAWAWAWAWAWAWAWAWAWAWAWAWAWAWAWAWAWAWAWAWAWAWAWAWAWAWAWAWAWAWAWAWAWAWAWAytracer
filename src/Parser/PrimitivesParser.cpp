@@ -14,26 +14,29 @@ namespace RayTracer::Parser
     void PrimitivesParser::getPrimitivePosition(const libconfig::Setting &aPrimitive,
         Entity::DataEntityMap &aData)
     {
-        float myX = 0;
-        float myY = 0;
-        float myZ = 0;
+        int myX = 0;
+        int myY = 0;
+        int myZ = 0;
 
         if (!aPrimitive.exists("x") || !aPrimitive.exists("y") || !aPrimitive.exists("z"))
             throw Parser::ParserException("Primitive is missing parameters (x, y, z).");
         aPrimitive.lookupValue("x", myX);
         aPrimitive.lookupValue("y", myY);
         aPrimitive.lookupValue("z", myZ);
-        aData.insert(std::make_pair("x", myX));
-        aData.insert(std::make_pair("y", myY));
-        aData.insert(std::make_pair("z", myZ));
+        auto myDoubleX = static_cast<double>(myX);
+        auto myDoubleY = static_cast<double>(myY);
+        auto myDoubleZ = static_cast<double>(myZ);
+        aData.insert(std::make_pair("x", myDoubleX));
+        aData.insert(std::make_pair("y", myDoubleY));
+        aData.insert(std::make_pair("z", myDoubleZ));
     }
 
     void PrimitivesParser::getPrimitiveColor(const libconfig::Setting &aPrimitive,
         Entity::DataEntityMap &aData)
     {
-        float myR = 0;
-        float myG = 0;
-        float myB = 0;
+        int myR = 0;
+        int myG = 0;
+        int myB = 0;
         const libconfig::Setting &myColor = aPrimitive["color"];
 
         if (!myColor.exists("r") || !myColor.exists("g") || !myColor.exists("b"))
@@ -41,20 +44,24 @@ namespace RayTracer::Parser
         aPrimitive.lookupValue("r", myR);
         aPrimitive.lookupValue("g", myG);
         aPrimitive.lookupValue("b", myB);
-        aData.insert(std::make_pair("r", myR));
-        aData.insert(std::make_pair("g", myG));
-        aData.insert(std::make_pair("b", myB));
+        auto myDoubleR = static_cast<double>(myR);
+        auto myDoubleG = static_cast<double>(myG);
+        auto myDoubleB = static_cast<double>(myB);
+        aData.insert(std::make_pair("r", myDoubleR));
+        aData.insert(std::make_pair("g", myDoubleG));
+        aData.insert(std::make_pair("b", myDoubleB));
     }
 
     void PrimitivesParser::getPrimitiveRadius(const libconfig::Setting &aPrimitive,
         Entity::DataEntityMap &aData)
     {
-        double myRadius = 0;
+        int myRadius = 0;
 
         if (!aPrimitive.exists("r"))
             throw Parser::ParserException("Primitive is missing parameters (radius).");
         aPrimitive.lookupValue("r", myRadius);
-        aData.insert(std::make_pair("radius", myRadius));
+        auto myDoubleRadius = static_cast<double>(myRadius);
+        aData.insert(std::make_pair("radius", myDoubleRadius));
     }
 
     void PrimitivesParser::getPlaneAxis(const libconfig::Setting &aPlane,
@@ -80,12 +87,13 @@ namespace RayTracer::Parser
     void PrimitivesParser::getPlanePosition(const libconfig::Setting &aPlane,
         Entity::DataEntityMap &aData)
     {
-        float myPosition = 0;
+        int myPosition = 0;
 
         if (!aPlane.exists("position"))
             throw Parser::ParserException("Plane is missing parameters (position, normal).");
         aPlane.lookupValue("position", myPosition);
-        aData.insert(std::make_pair("position", myPosition));
+        auto myDoublePosition = static_cast<double>(myPosition);
+        aData.insert(std::make_pair("position", myDoublePosition));
     }
 
     void PrimitivesParser::createPlane(const libconfig::Setting &aPlane,
