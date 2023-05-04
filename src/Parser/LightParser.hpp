@@ -41,6 +41,9 @@ namespace RayTracer::Light
                 Entity::DataEntityMap &aPrimitiveData,
                 RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene);
 
+            static void createBasicLight(const libconfig::Setting &aLight, Entity::DataEntityMap &aLightData,
+                                       RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene);
+
         protected:
         private:
     };

@@ -21,7 +21,7 @@ namespace RayTracer::Parser
         try {
             _cfg.readFile(aAv[1]);
         } catch (const libconfig::FileIOException &fioex) {
-            std::cout << "I/O error while reading file." << aAv[1] << std::endl;
+            std::cerr << "I/O error while reading file." << aAv[1] << std::endl;
             throw ParserException("I/O error while reading file.");
         } catch (const libconfig::ParseException &pex) {
             std::string myError = "Parse error at ";
@@ -71,10 +71,8 @@ namespace RayTracer::Parser
                 PrimitivesParser::createPlane(myPrimitives["Planes"], myPrimitiveData,
                     aPluginManager, aScene);
             } else {
-                for (int y = 0; y < myPrimitives[i].getLength()
-                    && std::strcmp(myPrimitives[i].getName(), "Planes") == 0; y++)
-                    PrimitivesParser::createPrimitive(myPrimitives[y], myPrimitiveData,
-                                                      aPluginManager,aScene);
+                if (std::strcmp(myPrimitives[i].getName(), "Planes") != 0)
+                    PrimitivesParser::createPrimitive(myPrimitives[0], myPrimitiveData, aPluginManager, aScene);
             }
         }
     }
@@ -88,7 +86,12 @@ namespace RayTracer::Parser
             throw ParserException("No 'lights' setting in configuration file.");
         const libconfig::Setting &myLights = myRoot["lights"];
 
-        if (myLights.exists("point") && myLights["point"].isList())
-            Light::LightParser::createLight(myLights["point"], myLightData, aPluginManager, aScene);
+        if (myLights.exists("ambient") && myLights.exists("diffuse"))
+            Light::LightParser::createBasicLight(myLights, myLightData, aPluginManager, aScene);
+        else
+            throw ParserException("Light is missing parameters (ambient, diffuse).");
+
+        if (myLights.exists("PointLight") && myLights["PointLight"].isList())
+            Light::LightParser::createLight(myLights["PointLight"], myLightData, aPluginManager, aScene);
     }
 } // namespace RayTracer::Parser

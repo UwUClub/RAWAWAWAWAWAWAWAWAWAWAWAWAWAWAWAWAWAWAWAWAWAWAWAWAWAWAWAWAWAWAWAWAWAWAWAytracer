@@ -75,9 +75,6 @@ namespace RayTracer::Parser
         auto myDoubleX = static_cast<double>(myX);
         auto myDoubleY = static_cast<double>(myY);
         auto myDoubleZ = static_cast<double>(myZ);
-        std::cout << myDoubleX << std::endl;
-        std::cout << myDoubleY << std::endl;
-        std::cout << myDoubleZ << std::endl;
         aData.insert(std::make_pair("rotate_x", myDoubleX));
         aData.insert(std::make_pair("rotate_y", myDoubleY));
         aData.insert(std::make_pair("rotate_z", myDoubleZ));
