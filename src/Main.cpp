@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
 {
     //    RayTracer::Plugin::PluginManager pluginManager;
     RayTracer::Plugin::PluginObserver pluginObserver;
-    RayTracer::Entity::IEntityMap entityMap;
     //    RayTracer::Entity::DataEntityMap dataEntityMap;
     //
     //    dataEntityMap["r"] = 255;
@@ -30,7 +29,7 @@ int main(int argc, char *argv[])
     try {
         RayTracer::Parser::Parser parser(argv, scene, pluginManager);
         pluginObserver.subscribe(pluginManager);
-        pluginObserver.checkPlugins(entityMap);
+        pluginObserver.checkPlugins(scene.getEntities());
 
         // Get cam rays
         auto &myCam = scene.getCamera();
@@ -38,15 +37,35 @@ int main(int argc, char *argv[])
 
         std::cout << "nb of rays: " << myRays.size() << std::endl;
 
-        // Send rays
-        for (auto ray : myRays) {
-            auto hit = ray.getClosestHit(entityMap);
-            auto color = RayTracer::Color(0, 0, 0);
-            if (hit) {
-                color = hit->calcColor(entityMap);
-            }
-            std::cout << color._r << color._g << color._b << std::endl;
+        for (auto &entity : scene.getEntities()) {
+            std::cout << "entity " << entity.first << std::endl;
         }
+
+        // auto myTestRay = RayTracer::Ray(RayTracer::Point(0, 0, 0), RayTracer::Vector(0, 0, 1));
+        // auto myTestHit = myTestRay.getClosestHit(scene.getEntities());
+
+        // if (myTestHit.has_value()) {
+        //     auto color= myTestHit->calcColor(scene.getEntities());
+        //     std::cout << "hit: color " << color._r << " " << color._g << " " << color._b << std::endl;
+        // }
+
+        std::vector<RayTracer::Color> myPixels = std::vector<RayTracer::Color>();
+
+        // Send rays
+        for (auto &ray : myRays) {
+            auto hit = ray.getClosestHit(scene.getEntities());
+            auto color = RayTracer::Color(0, 0, 0);
+            //std::cout << "ray [" << ray._origin._x << " " << ray._origin._y << " " << ray._origin._z << "] [" << ray._direction._x << " " << ray._direction._y << " " << ray._direction._z << "]" << std::endl;
+            if (hit) {
+                //std::cout << "color hit" << std::endl;
+                color = hit->calcColor(scene.getEntities());
+            } else {
+                color = RayTracer::Color(255, 255, 255);
+            }
+            myPixels.push_back(color);
+            // std::cout << color._r << color._g << color._b << std::endl;
+        }
+        scene.createPPM("firstScene", myPixels, 200, 100);
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
         return 84;

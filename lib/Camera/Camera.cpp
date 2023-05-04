@@ -53,15 +53,14 @@ namespace RayTracer::Entity
         const int myMaxY = _position._y + _resolution.second / 2;
         std::vector<Ray> myRays = std::vector<Ray>();
 
-        for (int myX = myMinX; myX <= myMaxX; myX++) {
-            for (int myY = myMinY; myY <= myMaxY; myY++) {
+        for (int myY = myMaxY; myY >= myMinY; myY--) {
+            for (int myX = myMinX; myX <= myMaxX; myX++) {
                 Point myOrigin(myX, myY, _position._z);
-                myOrigin.rotate(_position, _angles);
-
-                Vector myDirection(myX - _position._x, myY - _position._y, 1);
-                myDirection = myDirection * _fieldOfView;
-                myDirection.rotate(_angles);
-
+                //myOrigin.rotate(_position, _angles);
+                //Vector myDirection(myX - _position._x, myY - _position._y, 10);
+                Vector myDirection(0, 0, 1);
+                //myDirection = myDirection * _fieldOfView;
+                //myDirection.rotate(_angles);
                 Ray myRay(myOrigin, myDirection);
                 myRays.push_back(myRay);
             }

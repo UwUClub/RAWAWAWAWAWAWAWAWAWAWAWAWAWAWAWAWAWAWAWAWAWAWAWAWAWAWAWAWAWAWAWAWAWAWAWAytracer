@@ -64,7 +64,7 @@ namespace RayTracer
             _x * aOther._y - _y * aOther._x };
     }
 
-    Vector Vector::operator*(const double aOther) const
+    Vector Vector::operator*(double aOther) const
     {
         return { _x * aOther, _y * aOther, _z * aOther };
     }

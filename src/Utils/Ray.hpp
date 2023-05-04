@@ -44,7 +44,7 @@ namespace RayTracer
              * @param entities The entities to check
              * @return Color The color of the closest hit
              */
-            std::optional<HitPoint> getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities);
+            std::optional<HitPoint> getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities) const;
 
             /**
              * @brief The origin of the ray

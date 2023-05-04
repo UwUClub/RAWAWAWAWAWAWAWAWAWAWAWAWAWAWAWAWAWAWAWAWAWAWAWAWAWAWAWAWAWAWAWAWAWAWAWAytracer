@@ -26,13 +26,12 @@ namespace RayTracer
         Ray myRay = Ray({_x, _y, _z}, {0, 0, 0});
         for (auto &myEntity : aEntities) {
             if (myEntity.first == "PointLight") {
-                for (auto &myLights : myEntity.second) {
-                    auto myLight = myLights.get();
+                for (auto &myLight : myEntity.second) {
                     myRay._direction._x = myLight->getPosition()._x - _x;
                     myRay._direction._y = myLight->getPosition()._y - _y;
                     myRay._direction._z = myLight->getPosition()._z - _z;
                     std::optional<HitPoint> myHitPoint = myRay.getClosestHit(aEntities);
-                    if (myHitPoint == std::nullopt) {
+                    if (!myHitPoint.has_value()) {
                         return _color;
                     } else {
                         return {0, 0, 0};
@@ -40,6 +39,6 @@ namespace RayTracer
                 }
             }
         }
-        return _color;
+        return RayTracer::Color(0, 0, 0);
     }
 } // namespace RayTracer

@@ -45,8 +45,7 @@ namespace RayTracer
              */
             Color calcColor(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities);
 
-        protected:
-        private:
+        public:
             Color _color;
     };
 } // namespace RayTracer

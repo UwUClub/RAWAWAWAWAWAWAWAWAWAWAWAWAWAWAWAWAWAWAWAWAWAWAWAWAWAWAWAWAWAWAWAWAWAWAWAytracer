@@ -21,7 +21,7 @@ namespace RayTracer
     {
     }
 
-    std::optional<HitPoint> Ray::getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities)
+    std::optional<HitPoint> Ray::getClosestHit(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities) const
     {
         Color myColor = { 0, 0, 0 };
         double myClosest = 0;
@@ -33,19 +33,19 @@ namespace RayTracer
                 continue;
             }
             for (auto &myPrimitive : myEntity.second) {
-                Entity::IEntity *prim = myPrimitive.get();
-                myNewDist = prim->isTouched(*this);
-                if (myClosest == 0
-                    || (myNewDist != std::nullopt && myNewDist.value() < myClosest)) {
+                myNewDist = myPrimitive->isTouched(*this);
+                if (myNewDist.has_value() && (myClosest == 0
+                    || myNewDist.value() < myClosest)) {
                     myClosest = myNewDist.value();
-                    myColor = prim->getColor().value();
+                    if (myPrimitive->getColor().has_value())
+                        myColor = myPrimitive->getColor().value();
                 }
             }
         }
         if (myClosest == 0)
             return std::nullopt;
         Vector myPoint = this->_direction * myClosest;
-        HitPoint myHitPoint = {myPoint._x + this->_origin._x, myPoint._y + this->_origin._y, myPoint._z + this->_origin._z, myColor};
+        HitPoint myHitPoint(myPoint._x + this->_origin._x, myPoint._y + this->_origin._y, myPoint._z + this->_origin._z, myColor);
         return myHitPoint;
     }
 } // namespace RayTracer

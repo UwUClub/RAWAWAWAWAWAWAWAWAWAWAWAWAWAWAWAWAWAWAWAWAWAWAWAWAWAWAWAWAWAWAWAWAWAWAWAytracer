@@ -31,7 +31,7 @@ namespace RayTracer::Entity
             std::optional<Color> getColor() override;
             void setColor(const Color &aColor);
 
-        private:
+        protected:
             Color _color;
     };
 

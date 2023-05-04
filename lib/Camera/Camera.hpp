@@ -49,7 +49,7 @@ namespace RayTracer::Entity
              * @brief Get the Casted Rays object
              * @return std::vector<Ray>& The casted rays
             */
-            std::vector<Ray> getCastedRays() const;
+            std::vector<Ray> getCastedRays() const override;
 
         private:
             resolution _resolution;
