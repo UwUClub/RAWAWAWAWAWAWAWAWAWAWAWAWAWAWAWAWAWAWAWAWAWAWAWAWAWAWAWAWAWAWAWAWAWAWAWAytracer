@@ -46,4 +46,18 @@ namespace RayTracer::Light
             aScene.addEntity(aLight.getName(), myLightEntity);
         }
     }
+
+    void LightParser::createBasicLight(const libconfig::Setting &aLight, Entity::DataEntityMap &aLightData,
+                                       RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene)
+    {
+        double myAmbient = 0;
+        double myDiffuse = 0;
+
+        aLight.lookupValue("ambient", myAmbient);
+        aLight.lookupValue("diffuse", myDiffuse);
+        aLightData.insert(std::make_pair("ambient", myAmbient));
+        aLightData.insert(std::make_pair("diffuse", myDiffuse));
+        auto myLightEntity = aPluginManager.createEntity("BasicLight", aLightData);
+        aScene.addEntity("BasicLight", myLightEntity);
+    }
 } // namespace RayTracer::Light

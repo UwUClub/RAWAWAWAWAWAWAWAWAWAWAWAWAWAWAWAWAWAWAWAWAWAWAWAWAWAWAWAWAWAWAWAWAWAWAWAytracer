@@ -86,7 +86,12 @@ namespace RayTracer::Parser
             throw ParserException("No 'lights' setting in configuration file.");
         const libconfig::Setting &myLights = myRoot["lights"];
 
-        if (myLights.exists("point") && myLights["point"].isList())
-            Light::LightParser::createLight(myLights["point"], myLightData, aPluginManager, aScene);
+        if (myLights.exists("ambient") && myLights.exists("diffuse"))
+            Light::LightParser::createBasicLight(myLights, myLightData, aPluginManager, aScene);
+        else
+            throw ParserException("Light is missing parameters (ambient, diffuse).");
+
+        if (myLights.exists("PointLight") && myLights["PointLight"].isList())
+            Light::LightParser::createLight(myLights["PointLight"], myLightData, aPluginManager, aScene);
     }
 } // namespace RayTracer::Parser

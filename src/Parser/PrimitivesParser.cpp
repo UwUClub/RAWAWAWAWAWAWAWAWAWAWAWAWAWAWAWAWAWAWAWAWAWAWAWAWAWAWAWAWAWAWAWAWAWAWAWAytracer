@@ -41,9 +41,9 @@ namespace RayTracer::Parser
 
         if (!myColor.exists("r") || !myColor.exists("g") || !myColor.exists("b"))
             throw Parser::ParserException("Color is missing parameters (r, g, b).");
-        aPrimitive.lookupValue("r", myR);
-        aPrimitive.lookupValue("g", myG);
-        aPrimitive.lookupValue("b", myB);
+        myColor.lookupValue("r", myR);
+        myColor.lookupValue("g", myG);
+        myColor.lookupValue("b", myB);
         auto myDoubleR = static_cast<double>(myR);
         auto myDoubleG = static_cast<double>(myG);
         auto myDoubleB = static_cast<double>(myB);
