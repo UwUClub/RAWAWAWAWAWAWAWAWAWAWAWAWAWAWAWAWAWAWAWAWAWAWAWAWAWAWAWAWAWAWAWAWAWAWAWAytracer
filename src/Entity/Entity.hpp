@@ -9,6 +9,8 @@
 
 namespace RayTracer::Entity
 {
+    class IEntity;
+
     /**
      * @brief The Entity class
      */
@@ -44,13 +46,13 @@ namespace RayTracer::Entity
              * @brief Get the angle of the entity
              * @return The angle of the entity
              */
-            Euler const &getAngle() override;
+            Vector const &getRotation() override;
 
             /**
              * @brief Set the aAngle of the entity
-             * @param aAngle The aAngle of the entity
+             * @param aRotation The new rotation of the entity
              */
-            void setAngle(const Euler &aAngle) override;
+            void setRotation(const Vector &aRotation) override;
 
             /**
              * @brief Translate the entity
@@ -59,14 +61,27 @@ namespace RayTracer::Entity
             void translate(const Vector &aVector) override;
             /**
              * @brief Rotate the entity
-             * @param aAngle The vector to rotate the entity
+             * @param aRotation The vector to rotate the entity
              */
-            void rotate(const Euler &aAngle) override;
+            void rotate(const Vector &aRotation) override;
+            /**
+             * @brief Check if the ray touched the entity
+             *
+             * @param ray The ray to check
+             * @return std::optional<double> The distance between the origin of the ray and the entity
+             */
+            std::optional<double> isTouched(const Ray &ray) override;
+            /**
+             * @brief Get the Casted Rays object
+             * @return std::vector<Ray>& The casted rays
+            */
+            std::vector<Ray> getCastedRays() const override;
+            std::optional<Color> getColor() override;
 
-        private:
+        protected:
             EntityType _type;
             Point _position;
-            Euler _angle;
+            Vector _rotation;
     };
 } // namespace RayTracer::Entity
 

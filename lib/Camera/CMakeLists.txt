@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.13)  # CMake version check
 
 target_include_directories(camera PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+target_include_directories(raytracer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 
 target_sources(camera PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/Api.cpp"
@@ -9,4 +10,5 @@ target_sources(camera PRIVATE
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Point.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Vector.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Euler.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/../../src/Utils/Ray.cpp"
 		)

@@ -5,12 +5,12 @@
 ** Primitives
 */
 
+#ifndef PRIMITIVES_HPP_
+#define PRIMITIVES_HPP_
+
 #include "Entity.hpp"
 #include "Ray.hpp"
 #include <optional>
-
-#ifndef PRIMITIVES_HPP_
-#define PRIMITIVES_HPP_
 
 namespace RayTracer::Entity
 {
@@ -27,17 +27,11 @@ namespace RayTracer::Entity
              */
             Primitives(const Color &color);
             virtual ~Primitives() = default;
-            /**
-             * @brief Check if the ray touched the primitive
-             *
-             * @param ray The ray to check
-             * @return std::optional<double> The distance between the ray and the primitive
-             */
-            virtual std::optional<double> isTouched(const Ray &ray) = 0;
-            Color &getColor();
+
+            std::optional<Color> getColor() override;
             void setColor(const Color &aColor);
 
-        private:
+        protected:
             Color _color;
     };
 

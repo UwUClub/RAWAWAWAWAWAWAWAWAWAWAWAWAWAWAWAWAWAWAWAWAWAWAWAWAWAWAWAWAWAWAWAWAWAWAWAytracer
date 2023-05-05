@@ -5,15 +5,21 @@
 ** HitPoint
 */
 
-#include "Color.hpp"
-#include "IEntity.hpp"
-#include "Point.hpp"
-
 #ifndef HITPOINT_HPP_
 #define HITPOINT_HPP_
 
+#include "Color.hpp"
+#include "Point.hpp"
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
 namespace RayTracer
 {
+    namespace Entity {
+        class IEntity;
+    }
+
     class HitPoint : public Point
     {
         public:
@@ -37,10 +43,9 @@ namespace RayTracer
              * @param aEntities The entities to check
              * @return Color The color of the hit point
              */
-            Color calcColor(const Entity::IEntityMap &aEntities);
+            Color calcColor(const std::unordered_map<std::string, std::vector<std::unique_ptr<Entity::IEntity>>> &aEntities);
 
-        protected:
-        private:
+        public:
             Color _color;
     };
 } // namespace RayTracer

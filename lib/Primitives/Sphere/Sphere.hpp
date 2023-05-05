@@ -5,11 +5,11 @@
 ** Sphere
 */
 
-#include "IEntity.hpp"
-#include "Primitives.hpp"
-
 #ifndef SPHERE_HPP_
 #define SPHERE_HPP_
+
+#include "IEntity.hpp"
+#include "Primitives.hpp"
 
 namespace RayTracer::Entity
 {

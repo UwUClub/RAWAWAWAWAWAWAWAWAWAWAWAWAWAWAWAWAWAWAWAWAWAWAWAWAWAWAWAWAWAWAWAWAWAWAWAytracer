@@ -12,6 +12,8 @@
 #include "IEntity.hpp"
 #include "Point.hpp"
 #include "Vector.hpp"
+#include "Ray.hpp"
+#include "Euler.hpp"
 #include <cstdint>
 #include <utility>
 
@@ -26,11 +28,11 @@ namespace RayTracer::Entity
             ~Camera() override = default;
 
             /**
-             * @brief Set the Rotation object
+             * @brief Set the Angles object
              *
-             * @param aRotation The rotation of the camera
+             * @param aAngles The angles of the camera
              */
-            void setRotation(const Vector &aRotation);
+            void setAngles(const Euler &aAngles);
             /**
              * @brief Set the Resolution object
              *
@@ -43,10 +45,15 @@ namespace RayTracer::Entity
              * @param aFov The field of view of the camera
              */
             void setFieldOfView(float aFov);
+            /**
+             * @brief Get the Casted Rays object
+             * @return std::vector<Ray>& The casted rays
+            */
+            std::vector<Ray> getCastedRays() const override;
 
         private:
             resolution _resolution;
-            RayTracer::Vector _rotation;
+            Euler _angles;
             double _fieldOfView;
     };
 

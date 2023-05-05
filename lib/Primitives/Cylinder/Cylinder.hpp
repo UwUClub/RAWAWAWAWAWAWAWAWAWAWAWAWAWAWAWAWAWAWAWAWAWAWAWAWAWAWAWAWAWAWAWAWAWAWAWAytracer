@@ -5,11 +5,11 @@
 ** Cylinder
 */
 
-#include "IEntity.hpp"
-#include "Primitives.hpp"
-
 #ifndef CYLINDER_HPP_
 #define CYLINDER_HPP_
+
+#include "IEntity.hpp"
+#include "Primitives.hpp"
 
 namespace RayTracer::Entity
 {

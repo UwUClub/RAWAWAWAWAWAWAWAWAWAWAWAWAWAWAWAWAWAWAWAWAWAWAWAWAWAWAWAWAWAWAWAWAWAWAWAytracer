@@ -5,10 +5,10 @@
 ** Color
 */
 
-#include <iostream>
-
 #ifndef COLOR_HPP_
 #define COLOR_HPP_
+
+#include <iostream>
 
 namespace RayTracer
 {

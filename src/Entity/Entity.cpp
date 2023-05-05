@@ -3,13 +3,14 @@
 //
 
 #include "Entity.hpp"
+#include <vector>
 
 namespace RayTracer::Entity
 {
     Entity::Entity(EntityType aType)
         : _type(aType)
         , _position(Point(0, 0, 0))
-        , _angle(Euler(0, 0, 0))
+        , _rotation(Vector(1, 0, 0))
     {
     }
 
@@ -30,14 +31,14 @@ namespace RayTracer::Entity
         _position = aPoint;
     }
 
-    Euler const &Entity::getAngle()
+    Vector const &Entity::getRotation()
     {
-        return _angle;
+        return _rotation;
     }
 
-    void Entity::setAngle(const Euler &aAngle)
+    void Entity::setRotation(const Vector &aRotation)
     {
-        _angle = aAngle;
+        _rotation = aRotation;
     }
 
     void Entity::translate(const Vector &aVector)
@@ -45,9 +46,25 @@ namespace RayTracer::Entity
         _position = _position + aVector;
     }
 
-    void Entity::rotate(const Euler &aAngle)
+    void Entity::rotate(const Vector &aRotation)
     {
-        _angle = _angle + aAngle;
+        _rotation = _rotation + aRotation;
+    }
+
+    std::optional<double> Entity::isTouched(const Ray &ray)
+    {
+        (void) ray;
+        return std::nullopt;
+    }
+
+    std::vector<Ray> Entity::getCastedRays() const
+    {
+        return std::vector<Ray>();
+    }
+
+    std::optional<Color> Entity::getColor()
+    {
+        return std::nullopt;
     }
 
 } // namespace RayTracer::Entity

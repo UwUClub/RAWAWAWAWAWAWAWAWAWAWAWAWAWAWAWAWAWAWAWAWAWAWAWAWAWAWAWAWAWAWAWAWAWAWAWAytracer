@@ -15,7 +15,7 @@ namespace RayTracer::Entity
     {
     }
 
-    Color &Primitives::getColor()
+    std::optional<Color> Primitives::getColor()
     {
         return _color;
     }
