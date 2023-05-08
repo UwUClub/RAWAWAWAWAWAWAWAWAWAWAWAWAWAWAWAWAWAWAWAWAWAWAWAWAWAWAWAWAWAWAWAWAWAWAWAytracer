@@ -33,12 +33,18 @@ namespace RayTracer::Entity
         double myRayDotNormal = aRay._direction | _normal;
         if (myRayDotNormal <= 0.0000001)
             return std::nullopt;
-        Vector myRayToCenter = Vector(_center._x - aRay._origin._x, _center._y - aRay._origin._y,
-            _center._z - aRay._origin._z);
+        Vector myRayToCenter = Vector(aRay._origin._x - _center._x, aRay._origin._y - _center._y,
+            aRay._origin._z - _center._z);
 
         myT = (_normal | myRayToCenter) / myRayDotNormal;
         if (myT <= 0)
             return std::nullopt;
         return myT;
+    }
+
+    Vector Plane::getNormal(const Point &aPoint)
+    {
+        (void)aPoint;
+        return _normal;
     }
 } // namespace RayTracer::Entity

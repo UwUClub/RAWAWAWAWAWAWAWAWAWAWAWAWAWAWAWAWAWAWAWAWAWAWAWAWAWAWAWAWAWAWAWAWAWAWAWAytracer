@@ -19,4 +19,12 @@ namespace RayTracer::Entity
         _ambient = aDataMap.at("ambient");
         _diffuse = aDataMap.at("diffuse");
     }
+
+    double BasicLight::getAmbient() const {
+        return _ambient;
+    }
+
+    double BasicLight::getDiffuse() const {
+        return _diffuse;
+    }
 } // namespace RayTracer::Entity

@@ -48,4 +48,13 @@ namespace RayTracer::Entity
             return std::nullopt;
         return myT;
     }
+
+    Vector Cylinder::getNormal(const Point &aPoint)
+    {
+        Vector myNormal = Vector(aPoint._x - _center._x, 0,
+            aPoint._z - _center._z);
+        myNormal._x /= myNormal._dist;
+        myNormal._z /= myNormal._dist;
+        return myNormal;
+    }
 } // namespace RayTracer::Entity

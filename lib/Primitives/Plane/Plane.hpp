@@ -21,7 +21,7 @@ namespace RayTracer
                 Plane(const DataEntityMap &aDataMap);
                 ~Plane() override = default;
                 std::optional<double> isTouched(const Ray &aRay) override;
-
+                Vector getNormal(const Point &aPoint) override;
             protected:
             private:
                 Point _center;

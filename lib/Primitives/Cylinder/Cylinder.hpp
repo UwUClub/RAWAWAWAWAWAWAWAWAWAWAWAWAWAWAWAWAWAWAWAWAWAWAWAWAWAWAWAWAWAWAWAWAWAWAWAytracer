@@ -19,6 +19,7 @@ namespace RayTracer::Entity
             Cylinder(const DataEntityMap &aDataMap);
             ~Cylinder() override = default;
             std::optional<double> isTouched(const Ray &aRay) override;
+            Vector getNormal(const Point &aPoint) override;
 
         protected:
         private:

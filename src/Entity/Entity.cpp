@@ -67,4 +67,20 @@ namespace RayTracer::Entity
         return std::nullopt;
     }
 
+    double Entity::getAmbient() const
+    {
+        return 0;
+    }
+
+    double Entity::getDiffuse() const
+    {
+        return 0;
+    }
+
+    Vector Entity::getNormal(const Point &aPoint)
+    {
+        (void) aPoint;
+        return Vector(0, 0, 0);
+    }
+
 } // namespace RayTracer::Entity

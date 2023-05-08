@@ -51,4 +51,14 @@ namespace RayTracer::Entity
         }
         return myT;
     }
+
+    Vector Cone::getNormal(const Point &aPoint)
+    {
+        Vector myNormal = Vector(aPoint._x - _center._x, aPoint._y - _center._y,
+            aPoint._z - _center._z);
+        myNormal._x /= myNormal._dist;
+        myNormal._y /= myNormal._dist;
+        myNormal._z /= myNormal._dist;
+        return myNormal;
+    }
 } // namespace RayTracer::Entity
