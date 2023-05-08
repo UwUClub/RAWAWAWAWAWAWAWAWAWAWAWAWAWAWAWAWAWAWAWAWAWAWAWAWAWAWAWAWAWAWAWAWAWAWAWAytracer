@@ -50,7 +50,10 @@ namespace RayTracer
         if (myClosest == 0)
             return std::nullopt;
         Vector myPoint = this->_direction * myClosest;
-        HitPoint myHitPoint(myPoint._x + this->_origin._x, myPoint._y + this->_origin._y, myPoint._z + this->_origin._z, myColor, myNormalVect);
+        Vector myViewVector = Vector(this->_direction._x / this->_direction._dist,
+            this->_direction._y / this->_direction._dist,
+            this->_direction._z / this->_direction._dist);
+        HitPoint myHitPoint(myPoint._x + this->_origin._x, myPoint._y + this->_origin._y, myPoint._z + this->_origin._z, myColor, myNormalVect, myViewVector);
         return myHitPoint;
     }
 } // namespace RayTracer

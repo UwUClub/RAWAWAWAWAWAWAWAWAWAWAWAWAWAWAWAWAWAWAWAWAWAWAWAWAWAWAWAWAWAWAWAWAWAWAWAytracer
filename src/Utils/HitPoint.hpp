@@ -31,7 +31,7 @@ namespace RayTracer
              * @param aZ The z position of the hit point
              * @param aColor The color of the hit point
              */
-            HitPoint(double aX, double aY, double aZ, Color &aColor, Vector &aNormal);
+            HitPoint(double aX, double aY, double aZ, Color &aColor, Vector &aNormal, Vector &aViewVector);
             /**
              * @brief Destroy the Hit Point object
              *
@@ -48,6 +48,7 @@ namespace RayTracer
         public:
             Color _color;
             Vector _normal;
+            Vector _viewVector;
     };
 } // namespace RayTracer
 
