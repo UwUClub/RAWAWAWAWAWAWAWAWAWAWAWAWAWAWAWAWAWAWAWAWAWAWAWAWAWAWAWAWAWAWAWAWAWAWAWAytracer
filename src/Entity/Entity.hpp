@@ -77,6 +77,7 @@ namespace RayTracer::Entity
             */
             std::vector<Ray> getCastedRays() const override;
             std::optional<Color> getColor() override;
+            std::pair<int, int> getResolution() const override;
 
         protected:
             EntityType _type;

@@ -67,4 +67,9 @@ namespace RayTracer::Entity
         return std::nullopt;
     }
 
+    std::pair<int, int> Entity::getResolution() const
+    {
+        return std::pair<int, int>(0, 0);
+    }
+
 } // namespace RayTracer::Entity

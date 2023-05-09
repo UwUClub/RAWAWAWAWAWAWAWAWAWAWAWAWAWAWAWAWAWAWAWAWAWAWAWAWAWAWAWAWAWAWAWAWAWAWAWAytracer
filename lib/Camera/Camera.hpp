@@ -34,6 +34,12 @@ namespace RayTracer::Entity
              */
             void setAngles(const Euler &aAngles);
             /**
+             * @brief Get the Resolution object
+             *
+             * @return resolution The resolution of the camera
+             */
+            resolution getResolution() const;
+            /**
              * @brief Set the Resolution object
              *
              * @param aResolution The resolution of the camera

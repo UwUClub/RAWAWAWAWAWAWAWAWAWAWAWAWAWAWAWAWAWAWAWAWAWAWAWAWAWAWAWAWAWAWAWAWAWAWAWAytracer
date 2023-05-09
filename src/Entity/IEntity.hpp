@@ -91,6 +91,7 @@ namespace RayTracer::Entity
             */
             virtual std::vector<Ray> getCastedRays() const = 0;
             virtual std::optional<Color> getColor() = 0;
+            virtual std::pair<int, int> getResolution() const = 0;
     };
 
     using IEntityPtr = std::unique_ptr<IEntity>;
