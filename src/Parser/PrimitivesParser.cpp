@@ -64,6 +64,18 @@ namespace RayTracer::Parser
         aData.insert(std::make_pair("radius", myDoubleRadius));
     }
 
+    void PrimitivesParser::getPrimitiveHeight(const libconfig::Setting &aPrimitive,
+        Entity::DataEntityMap &aData)
+    {
+        int myHeight = 0;
+
+        if (!aPrimitive.exists("h"))
+            throw Parser::ParserException("Primitive is missing parameters (height).");
+        aPrimitive.lookupValue("h", myHeight);
+        auto myDoubleHeight = static_cast<double>(myHeight);
+        aData.insert(std::make_pair("height", myDoubleHeight));
+    }
+
     void PrimitivesParser::getPlaneAxis(const libconfig::Setting &aPlane,
         Entity::DataEntityMap &aData)
     {
@@ -114,9 +126,13 @@ namespace RayTracer::Parser
         RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene)
     {
         for (int i = 0; i < aSphere.getLength(); i++) {
+            std::cout << "Creating primitive" << aSphere.getName() << std::endl;
             getPrimitivePosition(aSphere[i], aPrimitiveData);
             getPrimitiveRadius(aSphere[i], aPrimitiveData);
             getPrimitiveColor(aSphere[i], aPrimitiveData);
+            if (aSphere[i].exists("h")) {
+                getPrimitiveHeight(aSphere[i], aPrimitiveData);
+            }
             auto myPrimitiveEntity = aPluginManager.createEntity(aSphere.getName(), aPrimitiveData);
             aScene.addEntity(aSphere.getName(), myPrimitiveEntity);
             aPrimitiveData.clear();

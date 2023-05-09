@@ -60,6 +60,14 @@ namespace RayTracer::Parser
                 Entity::DataEntityMap &aData);
 
             /**
+             * @brief Get the Primitive Height object
+             * @param aPrimitive
+             * @param aData
+             */
+            static void getPrimitiveHeight(const libconfig::Setting &aPrimitive,
+            Entity::DataEntityMap &aData);
+
+            /**
              * @brief Get the Plane Normal object
              * @param aPlane the primitive to parse
              * @param aData the data to fill
