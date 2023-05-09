@@ -119,6 +119,8 @@ namespace RayTracer::Parser
             getPrimitiveColor(aSphere[i], aPrimitiveData);
             auto myPrimitiveEntity = aPluginManager.createEntity(aSphere.getName(), aPrimitiveData);
             aScene.addEntity(aSphere.getName(), myPrimitiveEntity);
+            aPrimitiveData.clear();
+
         }
     }
 } // namespace RayTracer::Parser
