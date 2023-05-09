@@ -80,6 +80,7 @@ namespace RayTracer::Entity
             double getAmbient() const override;
             double getDiffuse() const override;
             Vector getNormal(const Point &aPoint) override;
+            std::pair<int, int> getResolution() const override;
 
         protected:
             EntityType _type;

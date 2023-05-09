@@ -30,7 +30,7 @@ namespace RayTracer
 
         for (auto &myEntity : aEntities) {
             if (myEntity.first == "Camera" || myEntity.first == "DirectionalLight"
-                || myEntity.first == "PointLight") {
+                || myEntity.first == "PointLight" || myEntity.first == "BasicLight") {
                 continue;
             }
             for (auto &myPrimitive : myEntity.second) {

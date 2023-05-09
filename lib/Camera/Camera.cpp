@@ -28,11 +28,22 @@ namespace RayTracer::Entity
             _angles._y = dataMap.at("rotate_y");
         if (dataMap.find("rotate_z") != dataMap.end())
             _angles._z = dataMap.at("rotate_z");
+        if (dataMap.find("x") != dataMap.end())
+            _position._x = dataMap.at("x");
+        if (dataMap.find("y") != dataMap.end())
+            _position._y = dataMap.at("y");
+        if (dataMap.find("z") != dataMap.end())
+            _position._z = dataMap.at("z");
     }
 
     void Camera::setAngles(const Euler &aAngles)
     {
         _angles = aAngles;
+    }
+
+    resolution Camera::getResolution() const
+    {
+        return _resolution;
     }
 
     void Camera::setResolution(const std::pair<int, int> &aResolution)
@@ -57,9 +68,7 @@ namespace RayTracer::Entity
             for (int myX = myMinX; myX < myMaxX; myX++) {
                 Point myOrigin(myX, myY, _position._z);
                 //myOrigin.rotate(_position, _angles);
-                //Vector myDirection(myX - _position._x, myY - _position._y, 10);
-                Vector myDirection(0, 0, 1);
-                //myDirection = myDirection * _fieldOfView;
+                Vector myDirection(myX + (myX - _position._x), myY + (myY - _position._y), _fieldOfView);
                 //myDirection.rotate(_angles);
                 Ray myRay(myOrigin, myDirection);
                 myRays.push_back(myRay);

@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
             myPixels.push_back(color);
             // std::cout << color._r << color._g << color._b << std::endl;
         }
-        scene.createPPM("firstScene", myPixels, 200, 100);
+        scene.createPPM("firstScene.ppm", myPixels, myCam->getResolution().first, myCam->getResolution().second);
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
         return 84;

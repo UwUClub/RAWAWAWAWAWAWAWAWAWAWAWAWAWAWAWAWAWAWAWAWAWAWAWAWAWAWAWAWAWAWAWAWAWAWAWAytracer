@@ -30,9 +30,9 @@ namespace RayTracer
         for (auto &myEntity : aEntities) {
             if (myEntity.first == "BasicLight") {
                 double myAmbient = myEntity.second[0]->getAmbient();
-                aColor._r = aColor._r * myAmbient;
-                aColor._g = aColor._g * myAmbient;
-                aColor._b = aColor._b * myAmbient;
+                aColor._r = aColor._r * myAmbient * 0.6;
+                aColor._g = aColor._g * myAmbient * 0.6;
+                aColor._b = aColor._b * myAmbient * 0.6;
             }
         }
     }

@@ -41,7 +41,7 @@ namespace RayTracer::Entity
         else {
             myT = (-myB + sqrt(myDelta)) / (2 * myA);
             if (myT > (-myB - sqrt(myDelta)) / (2 * myA)) {
-                myT = (-myB - sqrt(myDelta) / (2 * myA));
+                myT = (-myB - sqrt(myDelta)) / (2 * myA);
             }
         }
         if (myT <= 0)

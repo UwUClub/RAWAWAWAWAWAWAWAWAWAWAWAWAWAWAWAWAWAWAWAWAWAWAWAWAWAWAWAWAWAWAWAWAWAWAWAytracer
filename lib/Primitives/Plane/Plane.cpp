@@ -33,8 +33,8 @@ namespace RayTracer::Entity
         double myRayDotNormal = aRay._direction | _normal;
         if (myRayDotNormal <= 0.0000001)
             return std::nullopt;
-        Vector myRayToCenter = Vector(aRay._origin._x - _center._x, aRay._origin._y - _center._y,
-            aRay._origin._z - _center._z);
+        Vector myRayToCenter = Vector(_center._x - aRay._origin._x, _center._y - aRay._origin._y,
+            _center._z - aRay._origin._z);
 
         myT = (_normal | myRayToCenter) / myRayDotNormal;
         if (myT <= 0)
