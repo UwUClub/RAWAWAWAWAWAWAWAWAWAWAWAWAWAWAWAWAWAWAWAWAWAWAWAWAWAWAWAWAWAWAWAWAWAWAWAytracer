@@ -47,7 +47,7 @@ namespace RayTracer
                     aLight._direction._y / aLight._direction._dist,
                     aLight._direction._z / aLight._direction._dist);
                 double diffuseFactor = std::max(aHitPoint._normal|(myLightDirection), 0.0);
-                double specularFactor = pow(std::max(aHitPoint._viewVector|(myLightDirection*-1 - (aHitPoint._normal) * ((aHitPoint._normal|(myLightDirection*-1)) * 2.0)), 0.0), 32);
+                double specularFactor = pow(std::max(aHitPoint._viewVector|(myLightDirection - (aHitPoint._normal) * ((aHitPoint._normal|(myLightDirection)) * 2.0)), 0.0), 32);
                 aHitPoint._color._r = aHitPoint._color._r * myAmbient + (aHitPoint._color._r * myDiffuse * diffuseFactor) + (aHitPoint._color._r * 0.9 * specularFactor);
                 if (aHitPoint._color._r > 255)
                     aHitPoint._color._r = 255;
