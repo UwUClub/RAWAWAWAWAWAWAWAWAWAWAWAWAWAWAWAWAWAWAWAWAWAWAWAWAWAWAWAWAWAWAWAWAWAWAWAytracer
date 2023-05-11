@@ -12,7 +12,6 @@ namespace RayTracer::Entity
 {
     PointLight::PointLight(const DataEntityMap &aDataMap)
         : Entity(EntityType::LIGHT)
-        , _position(0, 0, 0)
     {
         if (aDataMap.find("x") != aDataMap.end())
             _position._x = aDataMap.at("x");

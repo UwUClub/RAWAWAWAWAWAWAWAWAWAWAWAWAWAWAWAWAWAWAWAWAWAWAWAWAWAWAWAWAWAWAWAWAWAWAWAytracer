@@ -20,19 +20,33 @@ namespace RayTracer::Entity
             _resolution.first = dataMap.at("width");
         if (dataMap.find("height") != dataMap.end())
             _resolution.second = dataMap.at("height");
-        if (dataMap.find("fov") != dataMap.end())
+        if (dataMap.find("fov") != dataMap.end()) {
             _fieldOfView = dataMap.at("fov");
+            if (_fieldOfView < 0 || _fieldOfView > 180)
+                _fieldOfView = 90;
+        }
         if (dataMap.find("rotate_x") != dataMap.end())
             _angles._x = dataMap.at("rotate_x");
         if (dataMap.find("rotate_y") != dataMap.end())
             _angles._y = dataMap.at("rotate_y");
         if (dataMap.find("rotate_z") != dataMap.end())
             _angles._z = dataMap.at("rotate_z");
+        if (dataMap.find("x") != dataMap.end())
+            _position._x = dataMap.at("x");
+        if (dataMap.find("y") != dataMap.end())
+            _position._y = dataMap.at("y");
+        if (dataMap.find("z") != dataMap.end())
+            _position._z = dataMap.at("z");
     }
 
     void Camera::setAngles(const Euler &aAngles)
     {
         _angles = aAngles;
+    }
+
+    resolution Camera::getResolution() const
+    {
+        return _resolution;
     }
 
     void Camera::setResolution(const std::pair<int, int> &aResolution)
@@ -51,16 +65,27 @@ namespace RayTracer::Entity
         const int myMaxX = _position._x + _resolution.first / 2;
         const int myMinY = _position._y - _resolution.second / 2;
         const int myMaxY = _position._y + _resolution.second / 2;
+        float myDepth = (float(-650)/float(180)) * _fieldOfView + 700;
+        if (myDepth < 1)
+            myDepth = 0;
+        std::cout << "depth " << myDepth << std::endl;
         std::vector<Ray> myRays = std::vector<Ray>();
 
+        std::cout << _fieldOfView << std::endl;
         for (int myY = myMaxY; myY > myMinY; myY--) {
             for (int myX = myMinX; myX < myMaxX; myX++) {
                 Point myOrigin(myX, myY, _position._z);
-                //myOrigin.rotate(_position, _angles);
-                //Vector myDirection(myX - _position._x, myY - _position._y, 10);
-                Vector myDirection(0, 0, 1);
-                //myDirection = myDirection * _fieldOfView;
-                //myDirection.rotate(_angles);
+
+                // myOrigin.debug();
+                // myOrigin.rotate(_position, _angles);
+                // myOrigin.debug();
+
+                Vector myDirection(myX + (myX - _position._x), myY + (myY - _position._y), myDepth);
+
+                // myDirection.debug();
+                // myDirection.rotate(_angles);
+                // myDirection.debug();
+
                 Ray myRay(myOrigin, myDirection);
                 myRays.push_back(myRay);
             }

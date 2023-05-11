@@ -21,7 +21,6 @@ namespace RayTracer::Entity
             ~PointLight() override = default;
 
         private:
-            Point _position;
     };
 } // namespace RayTracer::Entity
 

@@ -41,4 +41,10 @@ namespace RayTracer::Entity
             return std::nullopt;
         return myT;
     }
+
+    Vector Plane::getNormal(const Point &aPoint)
+    {
+        (void)aPoint;
+        return _normal;
+    }
 } // namespace RayTracer::Entity
