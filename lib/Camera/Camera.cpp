@@ -65,27 +65,14 @@ namespace RayTracer::Entity
         const int myMaxX = _position._x + _resolution.first / 2;
         const int myMinY = _position._y - _resolution.second / 2;
         const int myMaxY = _position._y + _resolution.second / 2;
-        float myDepth = (float(-650)/float(180)) * _fieldOfView + 700;
-        if (myDepth < 1)
-            myDepth = 0;
-        std::cout << "depth " << myDepth << std::endl;
+        const float myFovFactor = _fieldOfView * (0.001/180);
         std::vector<Ray> myRays = std::vector<Ray>();
 
         std::cout << _fieldOfView << std::endl;
         for (int myY = myMaxY; myY > myMinY; myY--) {
             for (int myX = myMinX; myX < myMaxX; myX++) {
                 Point myOrigin(myX, myY, _position._z);
-
-                // myOrigin.debug();
-                // myOrigin.rotate(_position, _angles);
-                // myOrigin.debug();
-
-                Vector myDirection(myX + (myX - _position._x), myY + (myY - _position._y), myDepth);
-
-                // myDirection.debug();
-                // myDirection.rotate(_angles);
-                // myDirection.debug();
-
+                Vector myDirection((myX - _position._x) * myFovFactor, (myY - _position._y) * myFovFactor, 1);
                 Ray myRay(myOrigin, myDirection);
                 myRays.push_back(myRay);
             }
