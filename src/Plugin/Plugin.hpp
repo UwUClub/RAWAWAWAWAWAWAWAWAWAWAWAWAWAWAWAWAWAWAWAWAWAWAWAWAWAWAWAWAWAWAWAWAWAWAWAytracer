@@ -11,22 +11,52 @@
 
 namespace RayTracer::Plugin
 {
-    class Plugin
+    /**
+     * @brief The Plugin class
+     */
+    class Plugin final
     {
         public:
-            explicit Plugin(const std::string &path);
+            /**
+             * @brief Plugin constructor
+             * @param path The path of the plugin
+             * @throw PluginException if the plugin can't be loaded
+             */
+            explicit Plugin(const std::string &aPath);
+            /**
+             * @brief Plugin destructor
+             */
             ~Plugin();
 
-            Primitive::IEntity *createEntity();
+            /**
+             * @brief Create an entity
+             * @return The entity of the plugin
+             * @throw PluginException if the plugin doesn't have the createEntity function
+             */
+            Entity::IEntity *createEntity(Entity::DataEntityMap &aData);
+            /**
+             * @brief Get the name of the plugin
+             * @return The name of the plugin which is the name of all the entities created by the
+             * plugin
+             * @throw PluginException if the plugin doesn't have the getName function
+             */
             [[nodiscard]] const std::string &getName() const;
 
-            void destroyEntity(std::unique_ptr<Primitive::IEntity> &entity);
+            /**
+             * @brief Destroy an aEntity
+             * @param aEntity The aEntity to destroy
+             * @throw PluginException if the plugin doesn't have the destroyEntity function
+             */
+            void destroyEntity(std::unique_ptr<Entity::IEntity> &aEntity);
 
+            /**
+             * @brief The PluginException class
+             */
             class PluginException : public std::exception
             {
                 public:
-                    explicit PluginException(const std::string &message)
-                        : _message(message)
+                    explicit PluginException(const std::string &aMessage)
+                        : _message(aMessage)
                     {
                     }
 

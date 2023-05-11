@@ -4,22 +4,23 @@
 
 #include "Plugin.hpp"
 #include <dlfcn.h>
+#include <iostream>
 
 namespace RayTracer::Plugin
 {
-    Plugin::Plugin(const std::string &path)
+    Plugin::Plugin(const std::string &aPath)
     {
-        _handle = dlopen(path.c_str(), RTLD_LAZY);
+        _handle = dlopen(aPath.c_str(), RTLD_LAZY);
         if (!_handle)
             throw PluginException("Cannot open library: " + std::string(dlerror()));
         dlerror();
-        auto nameGetter = reinterpret_cast<const char *(*) ()>(dlsym(_handle, "getName"));
-        const char *dlsym_error = dlerror();
-        if (dlsym_error) {
+        auto myNameGetter = reinterpret_cast<const char *(*) ()>(dlsym(_handle, "getName"));
+        const char *myDlSymError = dlerror();
+        if (myDlSymError) {
             dlclose(_handle);
-            throw PluginException("Cannot load symbol 'getName': " + std::string(dlsym_error));
+            throw PluginException("Cannot load symbol 'getName': " + std::string(myDlSymError));
         }
-        _name = std::string(nameGetter());
+        _name = std::string(myNameGetter());
     }
 
     Plugin::~Plugin()
@@ -29,24 +30,29 @@ namespace RayTracer::Plugin
         dlclose(_handle);
     }
 
-    Primitive::IEntity *Plugin::createEntity()
+    Entity::IEntity *Plugin::createEntity(Entity::DataEntityMap &aData)
     {
-        auto getEntity
-            = reinterpret_cast<Primitive::IEntity *(*) ()>(dlsym(_handle, "createEntity"));
+        auto myGetEntity = reinterpret_cast<Entity::IEntity *(*) (Entity::DataEntityMap &)>(
+            dlsym(_handle, "createEntity"));
 
-        if (!getEntity)
+        if (!myGetEntity)
             throw PluginException("Cannot load symbol 'getEntity': " + std::string(dlerror()));
-        return getEntity();
+        try {
+            auto myEntity = myGetEntity(aData);
+            return myEntity;
+        } catch (std::exception &e) {
+            throw PluginException("Cannot create entity: " + std::string(e.what()));
+        }
     }
 
-    void Plugin::destroyEntity(std::unique_ptr<Primitive::IEntity> &entity)
+    void Plugin::destroyEntity(Entity::IEntityPtr &aEntity)
     {
-        auto destroyEntity
-            = reinterpret_cast<void (*)(Primitive::IEntity *)>(dlsym(_handle, "destroyEntity"));
+        auto myDestroyEntity
+            = reinterpret_cast<void (*)(Entity::IEntity *)>(dlsym(_handle, "destroyEntity"));
 
-        if (!destroyEntity)
+        if (!myDestroyEntity)
             throw PluginException("Cannot load symbol 'destroyEntity': " + std::string(dlerror()));
-        destroyEntity(entity.release());
+        myDestroyEntity(aEntity.release());
     }
 
     const std::string &Plugin::getName() const
