@@ -2,9 +2,9 @@
 camera :
 {
   resolution = { width = 1920; height = 1080; };
-  position = { x = 0; y = -100; z = 20; };
+  position = { x = 0; y = 0; z = 0; };
   rotation = { x = 0; y = 0; z = 0; };
-  fieldOfView = 72.0; # In degree
+  fieldOfView = 15.0; # In degree
 };
 
 # Primitives in the scene
@@ -12,12 +12,15 @@ primitives :
 {
   # List of spheres
   Sphere = (
-    { x = 60; y = 5; z = 40; r = 25; color = { r = 255; g = 64; b = 64; }; } ,
-    { x = -40; y = 20; z = -10; r = 35; color = { r = 64; g = 255; b = 64; }; }
+    { x = -600; y = -200; z = 150; r = 70; color = { r = 255; g = 64; b = 64; }; } ,
+    { x = -400; y = 300; z = 220; r = 60; color = { r = 64; g = 255; b = 64; }; }
+  ) ;
+  Cylinder = (
+    #{ x = 300; y = -200; z = 100; r = 20; h = 20; color = { r = 255; g = 64; b = 255; }; }
   ) ;
   # List of planes
   Planes = (
-    { axis = "Z" ; position = -20; color = { r = 64; g = 64; b = 255; }; }
+    { axis = "Z" ; position = 400; color = { r = 64; g = 64; b = 255; }; }
   ) ;
 };
 
@@ -29,6 +32,6 @@ lights :
 
   # List of point lights
   PointLight = (
-    { x = 400; y = 100; z = 500; }
+    { x = -400; y = -50; z = -100; }
   ) ;
 };

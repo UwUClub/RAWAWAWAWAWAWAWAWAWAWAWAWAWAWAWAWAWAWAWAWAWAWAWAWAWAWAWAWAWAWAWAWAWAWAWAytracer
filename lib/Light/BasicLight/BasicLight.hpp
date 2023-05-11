@@ -18,6 +18,8 @@ namespace RayTracer::Entity
         public:
             explicit BasicLight(const DataEntityMap &aDataMap);
             ~BasicLight() override = default;
+            double getAmbient() const override;
+            double getDiffuse() const override;
 
         private:
             double _ambient;

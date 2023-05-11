@@ -25,7 +25,7 @@ Raytracer is a little application that can simulate raytracing on geometrical el
 
 ### SSH
 
-> G++ 20+ is required to build Raytracer.
+> G++ 20+, LibConfig and SFML are required to build Raytracer.
 
 ```bash
 git clone git@github.com:UwUClub/RAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAWAytracer.git raytracer

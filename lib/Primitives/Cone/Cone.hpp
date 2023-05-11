@@ -34,6 +34,13 @@ namespace RayTracer::Entity
              * @return std::optional<double> The distance between the ray and the cone
              */
             std::optional<double> isTouched(const Ray &ray) override;
+            /**
+             * @brief Get the normal of the cone
+             *
+             * @param point The point to check
+             * @return Vector The normal of the cone
+             */
+            Vector getNormal(const Point &point) override;
 
         protected:
         private:

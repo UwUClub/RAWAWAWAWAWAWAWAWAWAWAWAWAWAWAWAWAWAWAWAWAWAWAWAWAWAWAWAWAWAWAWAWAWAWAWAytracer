@@ -19,6 +19,7 @@ namespace RayTracer::Entity
             Sphere(const DataEntityMap &dataMap);
             ~Sphere() override = default;
             std::optional<double> isTouched(const Ray &ray) override;
+            Vector getNormal(const Point &point) override;
 
         protected:
         private:

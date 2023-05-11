@@ -32,7 +32,7 @@ namespace RayTracer::Entity
                          + aRay._direction._z * (aRay._origin._z - _center._z));
         double myC = pow(aRay._origin._x - _center._x, 2) + pow(aRay._origin._y - _center._y, 2)
                      + pow(aRay._origin._z - _center._z, 2) - pow(_radius, 2);
-        double myDelta = pow(myB, 2) - 4 * myA * myC;
+        double myDelta = pow(myB, 2) - (4 * myA * myC);
         double myT = 0;
 
         if (myDelta < 0)
@@ -42,11 +42,21 @@ namespace RayTracer::Entity
         else {
             myT = (-myB + sqrt(myDelta)) / (2 * myA);
             if (myT > (-myB - sqrt(myDelta)) / (2 * myA)) {
-                myT = (-myB - sqrt(myDelta) / (2 * myA));
+                myT = (-myB - sqrt(myDelta)) / (2 * myA);
             }
         }
         if (myT <= 0)
             return std::nullopt;
         return myT;
+    }
+
+    Vector Sphere::getNormal(const Point &aPoint)
+    {
+        Vector myNormal = Vector(aPoint._x - _center._x, aPoint._y - _center._y,
+            aPoint._z - _center._z);
+        myNormal._x /= myNormal._dist;
+        myNormal._y /= myNormal._dist;
+        myNormal._z /= myNormal._dist;
+        return myNormal;
     }
 } // namespace RayTracer::Entity
