@@ -15,6 +15,8 @@ Raytracer is a little application that can simulate raytracing on geometrical el
 ## Requirements
 
 - g++ 20+
+- Libconfig
+- SFML
 
 ## Communication
 
