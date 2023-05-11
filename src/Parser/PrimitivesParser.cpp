@@ -126,7 +126,6 @@ namespace RayTracer::Parser
         RayTracer::Plugin::PluginManager &aPluginManager, RayTracer::Scene::Scene &aScene)
     {
         for (int i = 0; i < aSphere.getLength(); i++) {
-            std::cout << "Creating primitive" << aSphere.getName() << std::endl;
             getPrimitivePosition(aSphere[i], aPrimitiveData);
             getPrimitiveRadius(aSphere[i], aPrimitiveData);
             getPrimitiveColor(aSphere[i], aPrimitiveData);
