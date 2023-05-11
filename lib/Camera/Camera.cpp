@@ -68,7 +68,6 @@ namespace RayTracer::Entity
         const float myFovFactor = _fieldOfView * (0.001/180);
         std::vector<Ray> myRays = std::vector<Ray>();
 
-        std::cout << _fieldOfView << std::endl;
         for (int myY = myMaxY; myY > myMinY; myY--) {
             for (int myX = myMinX; myX < myMaxX; myX++) {
                 Point myOrigin(myX, myY, _position._z);
