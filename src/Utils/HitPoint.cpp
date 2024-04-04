@@ -70,6 +70,9 @@ namespace RayTracer
                     myRay._direction._x = myLight->getPosition()._x - _x;
                     myRay._direction._y = myLight->getPosition()._y - _y;
                     myRay._direction._z = myLight->getPosition()._z - _z;
+                    myRay._origin._x -= 0.0001 * myRay._direction._x;
+                    myRay._origin._y -= 0.0001 * myRay._direction._y;
+                    myRay._origin._z -= 0.0001 * myRay._direction._z;
                     myRay._direction._dist = sqrt(pow(myRay._direction._x, 2) + pow(myRay._direction._y, 2) + pow(myRay._direction._z, 2));
                     std::optional<HitPoint> myHitPoint = myRay.getClosestHit(aEntities);
                     if (!myHitPoint.has_value()) {
